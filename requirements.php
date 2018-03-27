@@ -1,5 +1,5 @@
 <?php
-/**
+/** 
  * Application requirement checker script.
  *
  * In order to run this script use the following console command:
