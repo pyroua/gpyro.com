@@ -34,8 +34,8 @@ phpunit.phar
 # vagrant runtime
 /.vagrant
 
-/frontend/config/db.php
-/backend/config/db.php
-/common/config/main-local.php
+#/frontend/config/db.php
+#/backend/config/db.php
+#/common/config/main-local.php
 /commit.sh
 /cherry-pick.sh
