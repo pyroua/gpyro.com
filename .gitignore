@@ -39,3 +39,5 @@ phpunit.phar
 #/common/config/main-local.php
 /commit.sh
 /cherry-pick.sh
+
+/config/db.php
