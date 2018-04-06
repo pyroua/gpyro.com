@@ -60,7 +60,7 @@ class GhostAccessControl extends ActionFilter
 		}
 
 		// Superadmin owns everyone
-		if ( Yii::$app->user->isSuperadmin )
+		if ( Yii::$app->user->identity->superadmin )
 		{
 			return true;
 		}

@@ -32,7 +32,7 @@ class UserSearch extends User
 
 		$query->with(['roles']);
 
-		if ( !Yii::$app->user->isSuperadmin )
+		if ( !Yii::$app->user->identity->superadmin )
 		{
 			$query->where(['superadmin'=>0]);
 		}

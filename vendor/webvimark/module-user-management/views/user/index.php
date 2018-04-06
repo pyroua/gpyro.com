@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					[
 						'class'=>'webvimark\components\StatusColumn',
 						'attribute'=>'superadmin',
-						'visible'=>Yii::$app->user->isSuperadmin,
+						'visible'=>Yii::$app->user->identity->superadmin,
 					],
 
 					[
@@ -97,7 +97,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					],
 					[
 						'attribute'=>'gridRoleSearch',
-						'filter'=>ArrayHelper::map(Role::getAvailableRoles(Yii::$app->user->isSuperAdmin),'name', 'description'),
+						'filter'=>ArrayHelper::map(Role::getAvailableRoles(Yii::$app->user->identity->superadmin),'name', 'description'),
 						'value'=>function(User $model){
 								return implode(', ', ArrayHelper::map($model->roles, 'name', 'description'));
 							},

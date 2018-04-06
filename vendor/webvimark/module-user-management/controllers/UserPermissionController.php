@@ -51,7 +51,7 @@ class UserPermissionController extends BaseController
 	 */
 	public function actionSetRoles($id)
 	{
-		if ( !Yii::$app->user->isSuperadmin AND Yii::$app->user->id == $id )
+		if ( !Yii::$app->user->identity->superadmin AND Yii::$app->user->id == $id )
 		{
 			Yii::$app->session->setFlash('error', UserManagementModule::t('back', 'You can not change own permissions'));
 			return $this->redirect(['set', 'id'=>$id]);
@@ -60,7 +60,7 @@ class UserPermissionController extends BaseController
 		$oldAssignments = array_keys(Role::getUserRoles($id));
 
 		// To be sure that user didn't attempt to assign himself some unavailable roles
-		$newAssignments = array_intersect(Role::getAvailableRoles(Yii::$app->user->isSuperAdmin, true), (array)Yii::$app->request->post('roles', []));
+		$newAssignments = array_intersect(Role::getAvailableRoles(Yii::$app->user->identity->superadmin, true), (array)Yii::$app->request->post('roles', []));
 
 		$toAssign = array_diff($newAssignments, $oldAssignments);
 		$toRevoke = array_diff($oldAssignments, $newAssignments);

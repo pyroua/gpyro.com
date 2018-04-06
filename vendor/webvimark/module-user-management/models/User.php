@@ -135,7 +135,7 @@ class User extends UserIdentity
 	 */
 	public static function hasRole($roles, $superAdminAllowed = true)
 	{
-		if ( $superAdminAllowed AND Yii::$app->user->isSuperadmin )
+		if ( $superAdminAllowed AND Yii::$app->user->identity->superadmin )
 		{
 			return true;
 		}
@@ -154,7 +154,7 @@ class User extends UserIdentity
 	 */
 	public static function hasPermission($permission, $superAdminAllowed = true)
 	{
-		if ( $superAdminAllowed AND Yii::$app->user->isSuperadmin )
+		if ( $superAdminAllowed AND Yii::$app->user->identity->superadmin )
 		{
 			return true;
 		}
@@ -180,7 +180,7 @@ class User extends UserIdentity
 	 */
 	public static function canRoute($route, $superAdminAllowed = true)
 	{
-		if ( $superAdminAllowed AND Yii::$app->user->isSuperadmin )
+		if ( $superAdminAllowed AND Yii::$app->user->identity->superadmin )
 		{
 			return true;
 		}
@@ -369,14 +369,14 @@ class User extends UserIdentity
 					$this->status = static::STATUS_ACTIVE;
 
 					// Superadmin could not demote himself
-					if ( Yii::$app->user->isSuperadmin AND $this->superadmin != 1 )
+					if ( Yii::$app->user->identity->superadmin AND $this->superadmin != 1 )
 					{
 						$this->superadmin = 1;
 					}
 				}
 
 				// Don't let non-superadmin edit superadmin
-				if ( isset($this->oldAttributes['superadmin']) && !Yii::$app->user->isSuperadmin && $this->oldAttributes['superadmin'] == 1 )
+				if ( isset($this->oldAttributes['superadmin']) && !Yii::$app->user->identity->superadmin && $this->oldAttributes['superadmin'] == 1 )
 				{
 					return false;
 				}
@@ -409,7 +409,7 @@ class User extends UserIdentity
 			}
 
 			// Don't let non-superadmin delete superadmin
-			if ( !Yii::$app->user->isSuperadmin AND $this->superadmin == 1 )
+			if ( !Yii::$app->user->identity->superadmin AND $this->superadmin == 1 )
 			{
 				return false;
 			}

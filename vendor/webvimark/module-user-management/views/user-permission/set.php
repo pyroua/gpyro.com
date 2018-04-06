@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<br/>
 
-				<?php if ( Yii::$app->user->isSuperadmin OR Yii::$app->user->id != $user->id ): ?>
+				<?php if ( Yii::$app->user->identity->superadmin OR Yii::$app->user->id != $user->id ): ?>
 
 					<?= Html::submitButton(
 						'<span class="glyphicon glyphicon-ok"></span> ' . UserManagementModule::t('back', 'Save'),
