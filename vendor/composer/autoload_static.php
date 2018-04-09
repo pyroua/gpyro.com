@@ -4,15 +4,15 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
+class ComposerStaticInit9e6ad80a95914d37d49951ad3674c6d7
 {
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '180092cfc969a12e06f2132a203a3184' => __DIR__ . '/..' . '/codeception/verify/src/Codeception/function.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -20,63 +20,24 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
         array (
             'yii\\swiftmailer\\' => 16,
             'yii\\jui\\' => 8,
-            'yii\\httpclient\\' => 15,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
             'yii\\composer\\' => 13,
             'yii\\bootstrap\\' => 14,
-            'yii\\authclient\\' => 15,
             'yii\\' => 4,
-        ),
-        'w' => 
-        array (
-            'webvimark\\modules\\UserManagement\\' => 33,
-            'webvimark\\image\\' => 16,
-            'webvimark\\helpers\\' => 18,
-            'webvimark\\extensions\\GridPageSize\\' => 34,
-            'webvimark\\extensions\\GridBulkActions\\' => 37,
-            'webvimark\\extensions\\DateRangePicker\\' => 37,
-            'webvimark\\extensions\\BootstrapSwitch\\' => 37,
-            'webvimark\\components\\' => 21,
         ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'k' => 
+        'e' => 
         array (
-            'kartik\\widgets\\' => 15,
-            'kartik\\typeahead\\' => 17,
-            'kartik\\touchspin\\' => 17,
-            'kartik\\time\\' => 12,
-            'kartik\\switchinput\\' => 19,
-            'kartik\\spinner\\' => 15,
-            'kartik\\sidenav\\' => 15,
-            'kartik\\select2\\' => 15,
-            'kartik\\rating\\' => 14,
-            'kartik\\range\\' => 13,
-            'kartik\\plugins\\fileinput\\' => 25,
-            'kartik\\plugins\\depdrop\\' => 23,
-            'kartik\\growl\\' => 13,
-            'kartik\\form\\' => 12,
-            'kartik\\file\\' => 12,
-            'kartik\\depdrop\\' => 15,
-            'kartik\\datetime\\' => 16,
-            'kartik\\date\\' => 12,
-            'kartik\\color\\' => 13,
-            'kartik\\base\\' => 12,
-            'kartik\\alert\\' => 13,
-            'kartik\\affix\\' => 13,
-        ),
-        'd' => 
-        array (
-            'dektrium\\user\\' => 14,
-            'dektrium\\rbac\\' => 14,
+            'execut\\yii\\' => 11,
+            'execut\\widget\\' => 14,
         ),
         'c' => 
         array (
-            'cinghie\\userextended\\' => 21,
             'cebe\\markdown\\' => 14,
         ),
         'W' => 
@@ -106,6 +67,10 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
         array (
             'Faker\\' => 6,
         ),
+        'E' => 
+        array (
+            'Egulias\\EmailValidator\\' => 23,
+        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
@@ -128,10 +93,6 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-jui',
         ),
-        'yii\\httpclient\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yiisoft/yii2-httpclient/src',
-        ),
         'yii\\gii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-gii',
@@ -152,45 +113,9 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap/src',
         ),
-        'yii\\authclient\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yiisoft/yii2-authclient/src',
-        ),
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
-        ),
-        'webvimark\\modules\\UserManagement\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webvimark/module-user-management',
-        ),
-        'webvimark\\image\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webvimark/image',
-        ),
-        'webvimark\\helpers\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webvimark/helpers',
-        ),
-        'webvimark\\extensions\\GridPageSize\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webvimark/grid-page-size',
-        ),
-        'webvimark\\extensions\\GridBulkActions\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webvimark/grid-bulk-actions',
-        ),
-        'webvimark\\extensions\\DateRangePicker\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webvimark/date-range-picker',
-        ),
-        'webvimark\\extensions\\BootstrapSwitch\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webvimark/bootstrap-switch',
-        ),
-        'webvimark\\components\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webvimark/components',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
@@ -198,105 +123,13 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'kartik\\widgets\\' => 
+        'execut\\yii\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widgets',
+            0 => __DIR__ . '/..' . '/execut/yii2-base',
         ),
-        'kartik\\typeahead\\' => 
+        'execut\\widget\\' => 
         array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-typeahead',
-        ),
-        'kartik\\touchspin\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-touchspin',
-        ),
-        'kartik\\time\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-timepicker',
-        ),
-        'kartik\\switchinput\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-switchinput',
-        ),
-        'kartik\\spinner\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-spinner',
-        ),
-        'kartik\\sidenav\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-sidenav',
-        ),
-        'kartik\\select2\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2',
-        ),
-        'kartik\\rating\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-rating',
-        ),
-        'kartik\\range\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-rangeinput',
-        ),
-        'kartik\\plugins\\fileinput\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/bootstrap-fileinput',
-        ),
-        'kartik\\plugins\\depdrop\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/dependent-dropdown',
-        ),
-        'kartik\\growl\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-growl',
-        ),
-        'kartik\\form\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-activeform',
-        ),
-        'kartik\\file\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-fileinput',
-        ),
-        'kartik\\depdrop\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-depdrop',
-        ),
-        'kartik\\datetime\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-datetimepicker',
-        ),
-        'kartik\\date\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-datepicker',
-        ),
-        'kartik\\color\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-colorinput',
-        ),
-        'kartik\\base\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base',
-        ),
-        'kartik\\alert\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-alert',
-        ),
-        'kartik\\affix\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-affix',
-        ),
-        'dektrium\\user\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dektrium/yii2-user',
-        ),
-        'dektrium\\rbac\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dektrium/yii2-rbac',
-        ),
-        'cinghie\\userextended\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/cinghie/yii2-user-extended',
+            0 => __DIR__ . '/..' . '/execut/yii2-widget-bootstraptreeview',
         ),
         'cebe\\markdown\\' => 
         array (
@@ -350,6 +183,10 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
+        'Egulias\\EmailValidator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
+        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -381,13 +218,6 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
             ),
         ),
-        'I' => 
-        array (
-            'Ikimea\\Browser\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/ikimea/browser/lib',
-            ),
-        ),
         'H' => 
         array (
             'HTMLPurifier' => 
@@ -397,16 +227,13 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
         ),
         'D' => 
         array (
+            'Doctrine\\Common\\Lexer\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
+            ),
             'Diff' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/php-diff/lib',
-            ),
-        ),
-        'C' => 
-        array (
-            'Codeception\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/codeception/specify/src',
             ),
         ),
         'B' => 
@@ -506,6 +333,7 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
         'PHPUnit\\Framework\\MockObject\\Matcher\\AnyInvokedCount' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Matcher/AnyInvokedCount.php',
         'PHPUnit\\Framework\\MockObject\\Matcher\\AnyParameters' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Matcher/AnyParameters.php',
         'PHPUnit\\Framework\\MockObject\\Matcher\\ConsecutiveParameters' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Matcher/ConsecutiveParameters.php',
+        'PHPUnit\\Framework\\MockObject\\Matcher\\DeferredError' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Matcher/DeferredError.php',
         'PHPUnit\\Framework\\MockObject\\Matcher\\Invocation' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Matcher/Invocation.php',
         'PHPUnit\\Framework\\MockObject\\Matcher\\InvokedAtIndex' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Matcher/InvokedAtIndex.php',
         'PHPUnit\\Framework\\MockObject\\Matcher\\InvokedAtLeastCount' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/Matcher/InvokedAtLeastCount.php',
@@ -550,15 +378,28 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
         'PHPUnit\\Framework\\UnintentionallyCoveredCodeError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/UnintentionallyCoveredCodeError.php',
         'PHPUnit\\Framework\\Warning' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Warning.php',
         'PHPUnit\\Framework\\WarningTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/WarningTestCase.php',
+        'PHPUnit\\Runner\\AfterIncompleteTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterIncompleteTestHook.php',
+        'PHPUnit\\Runner\\AfterLastTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterLastTestHook.php',
+        'PHPUnit\\Runner\\AfterRiskyTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterRiskyTestHook.php',
+        'PHPUnit\\Runner\\AfterSkippedTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterSkippedTestHook.php',
+        'PHPUnit\\Runner\\AfterSuccessfulTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterSuccessfulTestHook.php',
+        'PHPUnit\\Runner\\AfterTestErrorHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestErrorHook.php',
+        'PHPUnit\\Runner\\AfterTestFailureHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestFailureHook.php',
+        'PHPUnit\\Runner\\AfterTestWarningHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/AfterTestWarningHook.php',
         'PHPUnit\\Runner\\BaseTestRunner' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/BaseTestRunner.php',
+        'PHPUnit\\Runner\\BeforeFirstTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/BeforeFirstTestHook.php',
+        'PHPUnit\\Runner\\BeforeTestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/BeforeTestHook.php',
         'PHPUnit\\Runner\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Exception.php',
         'PHPUnit\\Runner\\Filter\\ExcludeGroupFilterIterator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Filter/ExcludeGroupFilterIterator.php',
         'PHPUnit\\Runner\\Filter\\Factory' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Filter/Factory.php',
         'PHPUnit\\Runner\\Filter\\GroupFilterIterator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Filter/GroupFilterIterator.php',
         'PHPUnit\\Runner\\Filter\\IncludeGroupFilterIterator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Filter/IncludeGroupFilterIterator.php',
         'PHPUnit\\Runner\\Filter\\NameFilterIterator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Filter/NameFilterIterator.php',
+        'PHPUnit\\Runner\\Hook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/Hook.php',
         'PHPUnit\\Runner\\PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/PhptTestCase.php',
         'PHPUnit\\Runner\\StandardTestSuiteLoader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/StandardTestSuiteLoader.php',
+        'PHPUnit\\Runner\\TestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/TestHook.php',
+        'PHPUnit\\Runner\\TestListenerAdapter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/TestListenerAdapter.php',
         'PHPUnit\\Runner\\TestSuiteLoader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestSuiteLoader.php',
         'PHPUnit\\Runner\\Version' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Version.php',
         'PHPUnit\\TextUI\\Command' => __DIR__ . '/..' . '/phpunit/phpunit/src/TextUI/Command.php',
@@ -943,10 +784,10 @@ class ComposerStaticInit65d87637d9db485adfaac86ad2449cbb
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit65d87637d9db485adfaac86ad2449cbb::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit65d87637d9db485adfaac86ad2449cbb::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit65d87637d9db485adfaac86ad2449cbb::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit65d87637d9db485adfaac86ad2449cbb::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9e6ad80a95914d37d49951ad3674c6d7::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9e6ad80a95914d37d49951ad3674c6d7::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit9e6ad80a95914d37d49951ad3674c6d7::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit9e6ad80a95914d37d49951ad3674c6d7::$classMap;
 
         }, null, ClassLoader::class);
     }

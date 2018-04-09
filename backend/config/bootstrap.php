@@ -1,0 +1,3 @@
+<?php
+
+Yii::setAlias('@backend', '../');

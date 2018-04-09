@@ -1,7 +1,7 @@
 # yii console commands
-#/yii
-#/yii_test
-#/yii_test.bat
+/yii
+/yii_test
+/yii_test.bat
 
 # phpstorm project files
 .idea
@@ -18,10 +18,11 @@ nbproject
 Thumbs.db
 
 # composer vendor dir
-#/vendor
+/vendor
 
 # composer itself is not needed
 composer.phar
+/composer.lock
 
 # Mac DS_Store Files
 .DS_Store
@@ -33,11 +34,3 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
-
-#/frontend/config/db.php
-#/backend/config/db.php
-#/common/config/main-local.php
-/commit.sh
-/cherry-pick.sh
-
-/config/db.php
