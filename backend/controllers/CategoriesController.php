@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Category;
-use backend\models\CategoryForm;
+use backend\models\forms\CategoryForm;
 use backend\helpers\CategoryHelper;
 use yii\base\Exception;
 use yii\web\NotFoundHttpException;
