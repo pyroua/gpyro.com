@@ -46,7 +46,7 @@ class CategoriesController extends BaseController
      * @return null|static
      * @throws NotFoundHttpException
      */
-    private function getModel(int $id)
+    private function getModel($id)
     {
         $category = Category::getById($id);
         if (empty($category)) {
@@ -61,7 +61,7 @@ class CategoriesController extends BaseController
      * @return CategoryForm|string
      * @throws NotFoundHttpException
      */
-    public function actionUpdate(int $id)
+    public function actionUpdate($id)
     {
         /** @var Category $category */
         $category = $this->getModel($id);
@@ -122,7 +122,7 @@ class CategoriesController extends BaseController
      * @throws \Throwable
      * @throws \yii\db\StaleObjectException
      */
-    public function actionDelete(int $id)
+    public function actionDelete($id)
     {
         /** @var Category $category */
         $category = $this->getModel($id);

@@ -52,7 +52,7 @@ class Category extends \yii\db\ActiveRecord
      * @param int $id
      * @return null|static
      */
-    public static function getById(int $id)
+    public static function getById($id)
     {
         return self::findOne(['id' => $id]);
     }

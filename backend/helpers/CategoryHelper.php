@@ -71,7 +71,7 @@ class CategoryHelper
      * @param int $id
      * @return string
      */
-    private static function getCatTreeButtons(int $id)
+    private static function getCatTreeButtons($id)
     {
         return Yii::$app->view->render('/categories/_tree_buttons', [
             'id' => $id,
