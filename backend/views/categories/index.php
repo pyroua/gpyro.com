@@ -9,9 +9,8 @@ use yii\web\JsExpression;
     <h2>Categories</h2>
 
     <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-primary ">
-        <span class="glyphicon-plus" aria-hidden="true"></span>
-        Create
-        </a>
+        Add new
+    </a>
 
 <?php
 
@@ -39,7 +38,7 @@ JS
     'header' => 'Categories tree',
     'searchOptions' => [
         'inputOptions' => [
-            'placeholder' => 'Введите название...'
+            'placeholder' => 'Search...'
         ],
     ],
     'clientOptions' => [

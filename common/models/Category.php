@@ -62,7 +62,30 @@ class Category extends \yii\db\ActiveRecord
      * @throws \Throwable
      * @throws \yii\db\StaleObjectException
      */
-    public function deleteCategory() {
+    public function deleteCategory()
+    {
         return $this->delete();
+    }
+
+    public static function getArrayList()
+    {
+        $data = self::find()->select(['id', 'title'])->asArray()->all();
+        $result = [];
+
+        foreach ($data as $val)
+        {
+            $result[$val['id']] = $val['title'];
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param string $title
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function search(string $title)
+    {
+         return self::find()->where(['ilike', 'title', $title])->all();
     }
 }

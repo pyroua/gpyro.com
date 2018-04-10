@@ -30,7 +30,16 @@ use dmstr\widgets\Alert;
     </section>
 
     <section class="content">
-        <?= Alert::widget() ?>
+
+        <?=\insolita\wgadminlte\FlashAlerts::widget([
+            'errorIcon'=>'<i class="fa fa-warning"></i>',
+            'successIcon'=>'<i class="fa fa-check"></i>',
+            'successTitle'=>'Done!',
+            'closable'=>true,
+            'encode'=>false,
+            'bold'=>false
+        ]);?>
+
         <?= $content ?>
     </section>
 </div>

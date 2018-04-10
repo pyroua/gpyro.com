@@ -2,33 +2,39 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\select2\Select2;
 
-$form = ActiveForm::begin([
-    'method' => 'post',
-    'id' => 'create-form',
-    'options' => ['class' => 'form-horizontal'],
-]) ?>
+/* @var $this yii\web\View */
+/* @var $model common\models\Measure */
+/* @var $form ActiveForm */
+
+?>
+
+<div class="CategoryForm">
+    <?php $form = ActiveForm::begin([
+        'method' => 'post',
+        'id' => 'create-form',
+    ]) ?>
+    <?= $form->field($model, 'title') ?>
+
+    <?= $form->field($model, 'parent')->widget(Select2::class, [
+        'data' => $categoriesList,
+        'language' => 'en',
+        'options' => ['placeholder' => 'Select a parent category...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]) ?>
 
 
-    <div class="row">
-        <div class="col-md-4"><?= $form->field($model, 'title') ?></div>
+    <div class="form-group">
+        <?= Html::submitButton(
+            $action == 'create' ?
+                Yii::t('app', 'Create') :
+                Yii::t('app', 'Update'),
+            ['class' => 'btn btn-primary'])
+        ?>
     </div>
-    <div class="row">
-        <div class="col-md-4"><?= $form->field($model, 'parent') ?>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="form-group">
-                <?= Html::submitButton(
-                    $action == 'create' ?
-                        Yii::t('app', 'Create') :
-                        Yii::t('app', 'Update'),
-                    ['class' => 'btn btn-primary'])
-                ?>
-            </div>
-        </div>
-    </div>
+    <?php ActiveForm::end() ?>
+</div>
 
-
-<?php ActiveForm::end() ?>

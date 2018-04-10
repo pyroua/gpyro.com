@@ -2,12 +2,12 @@
     [
         'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
         'items' => [
-            ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-            ['label' => Yii::t('app', 'Users'), 'url' => ['/users']],
-            ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories']],
-            ['label' => Yii::t('app', 'Items'), 'url' => ['/items']],
-            ['label' => Yii::t('app', 'Item options'), 'url' => ['/item-options']],
-            ['label' => Yii::t('app', 'Measures'), 'url' => ['/item-measures']],
+//            ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+            ['label' => Yii::t('app', 'Users'), 'url' => ['/users'], 'icon' => ' fa-users'],
+            ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories'], 'icon' => ' fa-align-justify'],
+//          ['label' => Yii::t('app', 'Items'), 'url' => ['/items']],
+//          ['label' => Yii::t('app', 'Item options'), 'url' => ['/item-options']],
+            ['label' => Yii::t('app', 'Measures'), 'url' => ['/measures'], 'icon' => ' fa-arrows-v'],
             ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
             ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
             ['label' => 'Login', 'url' => ['main/login'], 'visible' => Yii::$app->user->isGuest],
@@ -18,7 +18,7 @@
                 'items' => [
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
-                    [
+                    /*[
                         'label' => 'Level One',
                         'icon' => 'circle-o',
                         'url' => '#',
@@ -34,7 +34,7 @@
                                 ],
                             ],
                         ],
-                    ],
+                    ],*/
                 ],
             ],
         ],

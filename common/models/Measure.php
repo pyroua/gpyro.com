@@ -46,4 +46,23 @@ class Measure extends \yii\db\ActiveRecord
             'category_id' => Yii::t('app', 'Category ID'),
         ];
     }
+
+    /**
+     * @param int $id
+     * @return null|static
+     */
+    public static function getById(int $id)
+    {
+        return self::findOne(['id' => $id]);
+    }
+
+    /**
+     * @return false|int
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
+    public function deleteMeasure()
+    {
+        return $this->delete();
+    }
 }

@@ -34,7 +34,8 @@ class CategoriesController extends BaseController
         if ($formModel instanceof CategoryForm) {
             return $this->render('create', [
                 'action' => 'create',
-                'formModel' => $formModel
+                'formModel' => $formModel,
+                'categoriesList' => Category::getArrayList()
             ]);
         }
 
@@ -75,7 +76,8 @@ class CategoriesController extends BaseController
 
             return $this->render('create', [
                 'action' => 'update',
-                'formModel' => $formModel
+                'formModel' => $formModel,
+                'categoriesList' => Category::getArrayList()
             ]);
         }
 
@@ -99,7 +101,7 @@ class CategoriesController extends BaseController
                     $model->setAttributes($formModel->getAttributes());
                     if ($model->save()) {
                         $this->setFlash('success', Yii::t('app', 'Success!'));
-                        $this->redirect(['categories/index']);
+                        return $this->redirect(['categories/index']);
                     } else {
                         $this->setFlash('error', 'Cant save model: ' . print_r($model->getErrors(), 1));
                     }
@@ -127,11 +129,10 @@ class CategoriesController extends BaseController
         /** @var Category $category */
         $category = $this->getModel($id);
         $category->deleteCategory() ?
-            $this->setFlash('success', Yii::t('app', 'Success! Deleted')) :
+            $this->setFlash('success', Yii::t('app', 'Deleted')) :
             $this->setFlash('error', 'Cant delete category: some reason');
 
         return $this->redirect(['categories/index']);
-
     }
 
 }

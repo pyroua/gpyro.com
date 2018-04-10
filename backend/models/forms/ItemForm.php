@@ -5,7 +5,7 @@ namespace backend\models\forms;
 /**
  * Class ItemForm
  */
-class CategoryForm extends \yii\base\Model
+class ItemForm extends \yii\base\Model
 {
     public $title;
     public $parent;
@@ -13,9 +13,7 @@ class CategoryForm extends \yii\base\Model
     public function rules()
     {
         return [
-            [['title'], 'required'],
-            [['title'], 'string'],
-            [['parent'], 'integer']
+
         ];
     }
 }

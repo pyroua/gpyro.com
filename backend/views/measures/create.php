@@ -2,11 +2,11 @@
     <?= $action == 'create' ?
         Yii::t('app', 'Create') :
         Yii::t('app', 'Update')
-    ?> category
+    ?> measure
 </h3>
 
 <?= $this->render('_form', [
+    'categoriesList' => $categoriesList,
     'model' => $formModel,
-    'action' => $action,
-    'categoriesList' => $categoriesList
+    'action' => $action
 ]); ?>
