@@ -17,6 +17,7 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
+            'class' => 'backend\components\User',
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
@@ -41,6 +42,13 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => require 'routs.php',
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@backend/views'
+                ],
+            ],
         ],
     ],
     'params' => $params,

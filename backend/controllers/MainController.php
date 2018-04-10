@@ -9,7 +9,7 @@ use common\models\LoginForm;
 use backend\models\Category;
 
 /**
- * Site controller
+ * Main controller
  */
 class MainController extends Controller
 {

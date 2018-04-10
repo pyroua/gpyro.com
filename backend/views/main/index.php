@@ -2,12 +2,12 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'gpyro';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Welcome to gpyro</h1>
+        <h1>Welcome</h1>
     </div>
 
 </div>

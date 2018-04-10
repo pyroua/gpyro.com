@@ -26,6 +26,8 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
+    public $loginUrl = ['main/login'];
+
 
     /**
      * {@inheritdoc}
