@@ -1,0 +1,624 @@
+2018-03-29 20:44:57 [-][-][-][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: You should configure "authManager" component to use database before executing this migration. in /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/rbac/migrations/m140506_102106_rbac_init.php:27
+Stack trace:
+#0 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/rbac/migrations/m140506_102106_rbac_init.php(51): m140506_102106_rbac_init->getAuthManager()
+#1 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(725): m140506_102106_rbac_init->up()
+#2 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(199): yii\console\controllers\BaseMigrateController->migrateUp('m140506_102106_...')
+#3 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#4 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#5 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('up', Array)
+#7 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('up', Array)
+#8 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('migrate/up', Array)
+#9 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('migrate/up', Array)
+#10 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 /var/www/pirosintez/gp.com/yii(20): yii\base\Application->run()
+#12 {main}
+2018-03-29 20:44:56 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'LC_PAPER' => 'uk_UA.UTF-8'
+    'XDG_VTNR' => '7'
+    'XDG_SESSION_ID' => 'c1'
+    'LC_ADDRESS' => 'uk_UA.UTF-8'
+    'CLUTTER_IM_MODULE' => 'xim'
+    'LC_MONETARY' => 'uk_UA.UTF-8'
+    'XDG_GREETER_DATA_DIR' => '/var/lib/lightdm-data/maksim'
+    'SESSION' => 'ubuntu'
+    'GPG_AGENT_INFO' => '/home/maksim/.gnupg/S.gpg-agent:0:1'
+    'SHELL' => '/bin/bash'
+    'XDG_MENU_PREFIX' => 'gnome-'
+    'VTE_VERSION' => '4205'
+    'TERM' => 'xterm-256color'
+    'DERBY_HOME' => '/usr/lib/jvm/java-8-oracle/db'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'LC_NUMERIC' => 'uk_UA.UTF-8'
+    'WINDOWID' => '88080394'
+    'GNOME_KEYRING_CONTROL' => ''
+    'UPSTART_SESSION' => 'unix:abstract=/com/ubuntu/upstart-session/1000/2667'
+    'GTK_MODULES' => 'gail:atk-bridge:unity-gtk-module'
+    'USER' => 'maksim'
+    'QT_ACCESSIBILITY' => '1'
+    'LC_TELEPHONE' => 'uk_UA.UTF-8'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'UNITY_HAS_3D_SUPPORT' => 'true'
+    'XDG_SESSION_PATH' => '/org/freedesktop/DisplayManager/Session0'
+    'XDG_SEAT_PATH' => '/org/freedesktop/DisplayManager/Seat0'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'DEFAULTS_PATH' => '/usr/share/gconf/ubuntu.default.path'
+    'MC_TMPDIR' => '/tmp/mc-maksim'
+    'UNITY_DEFAULT_PROFILE' => 'unity'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin'
+    'DESKTOP_SESSION' => 'ubuntu'
+    'QT_QPA_PLATFORMTHEME' => 'appmenu-qt5'
+    'QT_IM_MODULE' => 'ibus'
+    'LC_IDENTIFICATION' => 'uk_UA.UTF-8'
+    'JOB' => 'unity-settings-daemon'
+    'PWD' => '/var/www/pirosintez/gp.com'
+    'XDG_SESSION_TYPE' => 'x11'
+    'JAVA_HOME' => '/usr/lib/jvm/java-8-oracle'
+    'XMODIFIERS' => '@im=ibus'
+    'LANG' => 'en_US.UTF-8'
+    'GNOME_KEYRING_PID' => ''
+    'MANDATORY_PATH' => '/usr/share/gconf/ubuntu.mandatory.path'
+    'GDM_LANG' => 'en_US'
+    'LC_MEASUREMENT' => 'uk_UA.UTF-8'
+    'IM_CONFIG_PHASE' => '1'
+    'COMPIZ_CONFIG_PROFILE' => 'ubuntu'
+    'GDMSESSION' => 'ubuntu'
+    'HISTCONTROL' => 'ignoreboth'
+    'GTK2_MODULES' => 'overlay-scrollbar'
+    'SESSIONTYPE' => 'gnome-session'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/maksim'
+    'SHLVL' => '2'
+    'LANGUAGE' => 'en_US'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'MC_SID' => '29756'
+    'UPSTART_INSTANCE' => ''
+    'LOGNAME' => 'maksim'
+    'XDG_SESSION_DESKTOP' => 'ubuntu'
+    'UPSTART_EVENTS' => 'xsession started'
+    'COMPIZ_BIN_PATH' => '/usr/bin/'
+    'QT4_IM_MODULE' => 'xim'
+    'XDG_DATA_DIRS' => '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/var/lib/snapd/desktop'
+    'J2SDKDIR' => '/usr/lib/jvm/java-8-oracle'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-WI6n5VEIY4'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'UPSTART_JOB' => 'unity7'
+    'INSTANCE' => ''
+    'DISPLAY' => ':0'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'J2REDIR' => '/usr/lib/jvm/java-8-oracle/jre'
+    'GTK_IM_MODULE' => 'ibus'
+    'XDG_CURRENT_DESKTOP' => 'Unity'
+    'LC_TIME' => 'uk_UA.UTF-8'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/maksim/.Xauthority'
+    'LC_NAME' => 'uk_UA.UTF-8'
+    'OLDPWD' => '/var/www/pirosintez/gp.com/config'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1522356296.025
+    'REQUEST_TIME' => 1522356296
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/up'
+        2 => '--migrationPath=@yii/rbac/migrations'
+    ]
+    'argc' => 3
+]
+2018-03-29 20:46:34 [-][-][-][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: You should configure "authManager" component to use database before executing this migration. in /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/rbac/migrations/m140506_102106_rbac_init.php:27
+Stack trace:
+#0 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/rbac/migrations/m140506_102106_rbac_init.php(51): m140506_102106_rbac_init->getAuthManager()
+#1 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(725): m140506_102106_rbac_init->up()
+#2 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(199): yii\console\controllers\BaseMigrateController->migrateUp('m140506_102106_...')
+#3 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#4 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#5 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#6 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('up', Array)
+#7 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('up', Array)
+#8 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('migrate/up', Array)
+#9 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('migrate/up', Array)
+#10 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#11 /var/www/pirosintez/gp.com/yii(20): yii\base\Application->run()
+#12 {main}
+2018-03-29 20:46:31 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'LC_PAPER' => 'uk_UA.UTF-8'
+    'XDG_VTNR' => '7'
+    'XDG_SESSION_ID' => 'c1'
+    'LC_ADDRESS' => 'uk_UA.UTF-8'
+    'CLUTTER_IM_MODULE' => 'xim'
+    'LC_MONETARY' => 'uk_UA.UTF-8'
+    'XDG_GREETER_DATA_DIR' => '/var/lib/lightdm-data/maksim'
+    'SESSION' => 'ubuntu'
+    'GPG_AGENT_INFO' => '/home/maksim/.gnupg/S.gpg-agent:0:1'
+    'SHELL' => '/bin/bash'
+    'XDG_MENU_PREFIX' => 'gnome-'
+    'VTE_VERSION' => '4205'
+    'TERM' => 'xterm-256color'
+    'DERBY_HOME' => '/usr/lib/jvm/java-8-oracle/db'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'LC_NUMERIC' => 'uk_UA.UTF-8'
+    'WINDOWID' => '88080394'
+    'GNOME_KEYRING_CONTROL' => ''
+    'UPSTART_SESSION' => 'unix:abstract=/com/ubuntu/upstart-session/1000/2667'
+    'GTK_MODULES' => 'gail:atk-bridge:unity-gtk-module'
+    'USER' => 'maksim'
+    'QT_ACCESSIBILITY' => '1'
+    'LC_TELEPHONE' => 'uk_UA.UTF-8'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'UNITY_HAS_3D_SUPPORT' => 'true'
+    'XDG_SESSION_PATH' => '/org/freedesktop/DisplayManager/Session0'
+    'XDG_SEAT_PATH' => '/org/freedesktop/DisplayManager/Seat0'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'DEFAULTS_PATH' => '/usr/share/gconf/ubuntu.default.path'
+    'MC_TMPDIR' => '/tmp/mc-maksim'
+    'UNITY_DEFAULT_PROFILE' => 'unity'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin'
+    'DESKTOP_SESSION' => 'ubuntu'
+    'QT_QPA_PLATFORMTHEME' => 'appmenu-qt5'
+    'QT_IM_MODULE' => 'ibus'
+    'LC_IDENTIFICATION' => 'uk_UA.UTF-8'
+    'JOB' => 'unity-settings-daemon'
+    'PWD' => '/var/www/pirosintez/gp.com'
+    'XDG_SESSION_TYPE' => 'x11'
+    'JAVA_HOME' => '/usr/lib/jvm/java-8-oracle'
+    'XMODIFIERS' => '@im=ibus'
+    'LANG' => 'en_US.UTF-8'
+    'GNOME_KEYRING_PID' => ''
+    'MANDATORY_PATH' => '/usr/share/gconf/ubuntu.mandatory.path'
+    'GDM_LANG' => 'en_US'
+    'LC_MEASUREMENT' => 'uk_UA.UTF-8'
+    'IM_CONFIG_PHASE' => '1'
+    'COMPIZ_CONFIG_PROFILE' => 'ubuntu'
+    'GDMSESSION' => 'ubuntu'
+    'HISTCONTROL' => 'ignoreboth'
+    'GTK2_MODULES' => 'overlay-scrollbar'
+    'SESSIONTYPE' => 'gnome-session'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/maksim'
+    'SHLVL' => '2'
+    'LANGUAGE' => 'en_US'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'MC_SID' => '29756'
+    'UPSTART_INSTANCE' => ''
+    'LOGNAME' => 'maksim'
+    'XDG_SESSION_DESKTOP' => 'ubuntu'
+    'UPSTART_EVENTS' => 'xsession started'
+    'COMPIZ_BIN_PATH' => '/usr/bin/'
+    'QT4_IM_MODULE' => 'xim'
+    'XDG_DATA_DIRS' => '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/var/lib/snapd/desktop'
+    'J2SDKDIR' => '/usr/lib/jvm/java-8-oracle'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-WI6n5VEIY4'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'UPSTART_JOB' => 'unity7'
+    'INSTANCE' => ''
+    'DISPLAY' => ':0'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'J2REDIR' => '/usr/lib/jvm/java-8-oracle/jre'
+    'GTK_IM_MODULE' => 'ibus'
+    'XDG_CURRENT_DESKTOP' => 'Unity'
+    'LC_TIME' => 'uk_UA.UTF-8'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/maksim/.Xauthority'
+    'LC_NAME' => 'uk_UA.UTF-8'
+    'OLDPWD' => '/var/www/pirosintez/gp.com/config'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1522356391.6038
+    'REQUEST_TIME' => 1522356391
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/up'
+        2 => '--migrationPath=@yii/rbac/migrations'
+    ]
+    'argc' => 3
+]
+2018-03-29 20:49:04 [-][-][-][error][yii\base\ErrorException:1] yii\base\ErrorException: Class 'cinghie\traits\migrations\Migration' not found in /var/www/pirosintez/gp.com/vendor/cinghie/yii2-user-extended/migrations/m151020_213100_update_profile_table.php:16
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2018-03-29 20:48:56 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'LC_PAPER' => 'uk_UA.UTF-8'
+    'XDG_VTNR' => '7'
+    'XDG_SESSION_ID' => 'c1'
+    'LC_ADDRESS' => 'uk_UA.UTF-8'
+    'CLUTTER_IM_MODULE' => 'xim'
+    'LC_MONETARY' => 'uk_UA.UTF-8'
+    'XDG_GREETER_DATA_DIR' => '/var/lib/lightdm-data/maksim'
+    'SESSION' => 'ubuntu'
+    'GPG_AGENT_INFO' => '/home/maksim/.gnupg/S.gpg-agent:0:1'
+    'SHELL' => '/bin/bash'
+    'XDG_MENU_PREFIX' => 'gnome-'
+    'VTE_VERSION' => '4205'
+    'TERM' => 'xterm-256color'
+    'DERBY_HOME' => '/usr/lib/jvm/java-8-oracle/db'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'LC_NUMERIC' => 'uk_UA.UTF-8'
+    'WINDOWID' => '88080394'
+    'GNOME_KEYRING_CONTROL' => ''
+    'UPSTART_SESSION' => 'unix:abstract=/com/ubuntu/upstart-session/1000/2667'
+    'GTK_MODULES' => 'gail:atk-bridge:unity-gtk-module'
+    'USER' => 'maksim'
+    'QT_ACCESSIBILITY' => '1'
+    'LC_TELEPHONE' => 'uk_UA.UTF-8'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'UNITY_HAS_3D_SUPPORT' => 'true'
+    'XDG_SESSION_PATH' => '/org/freedesktop/DisplayManager/Session0'
+    'XDG_SEAT_PATH' => '/org/freedesktop/DisplayManager/Seat0'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'DEFAULTS_PATH' => '/usr/share/gconf/ubuntu.default.path'
+    'MC_TMPDIR' => '/tmp/mc-maksim'
+    'UNITY_DEFAULT_PROFILE' => 'unity'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin'
+    'DESKTOP_SESSION' => 'ubuntu'
+    'QT_QPA_PLATFORMTHEME' => 'appmenu-qt5'
+    'QT_IM_MODULE' => 'ibus'
+    'LC_IDENTIFICATION' => 'uk_UA.UTF-8'
+    'JOB' => 'unity-settings-daemon'
+    'PWD' => '/var/www/pirosintez/gp.com'
+    'XDG_SESSION_TYPE' => 'x11'
+    'JAVA_HOME' => '/usr/lib/jvm/java-8-oracle'
+    'XMODIFIERS' => '@im=ibus'
+    'LANG' => 'en_US.UTF-8'
+    'GNOME_KEYRING_PID' => ''
+    'MANDATORY_PATH' => '/usr/share/gconf/ubuntu.mandatory.path'
+    'GDM_LANG' => 'en_US'
+    'LC_MEASUREMENT' => 'uk_UA.UTF-8'
+    'IM_CONFIG_PHASE' => '1'
+    'COMPIZ_CONFIG_PROFILE' => 'ubuntu'
+    'GDMSESSION' => 'ubuntu'
+    'HISTCONTROL' => 'ignoreboth'
+    'GTK2_MODULES' => 'overlay-scrollbar'
+    'SESSIONTYPE' => 'gnome-session'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/maksim'
+    'SHLVL' => '2'
+    'LANGUAGE' => 'en_US'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'MC_SID' => '29756'
+    'UPSTART_INSTANCE' => ''
+    'LOGNAME' => 'maksim'
+    'XDG_SESSION_DESKTOP' => 'ubuntu'
+    'UPSTART_EVENTS' => 'xsession started'
+    'COMPIZ_BIN_PATH' => '/usr/bin/'
+    'QT4_IM_MODULE' => 'xim'
+    'XDG_DATA_DIRS' => '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/var/lib/snapd/desktop'
+    'J2SDKDIR' => '/usr/lib/jvm/java-8-oracle'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-WI6n5VEIY4'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'UPSTART_JOB' => 'unity7'
+    'INSTANCE' => ''
+    'DISPLAY' => ':0'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'J2REDIR' => '/usr/lib/jvm/java-8-oracle/jre'
+    'GTK_IM_MODULE' => 'ibus'
+    'XDG_CURRENT_DESKTOP' => 'Unity'
+    'LC_TIME' => 'uk_UA.UTF-8'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/maksim/.Xauthority'
+    'LC_NAME' => 'uk_UA.UTF-8'
+    'OLDPWD' => '/var/www/pirosintez/gp.com/config'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1522356536.9094
+    'REQUEST_TIME' => 1522356536
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/up'
+        2 => '--migrationPath=@vendor/cinghie/yii2-user-extended/migrations'
+    ]
+    'argc' => 3
+]
+2018-03-31 22:38:29 [-][-][-][error][yii\console\UnknownCommandException] yii\base\InvalidRouteException: Unable to resolve the request "--migrationPath=vendor/webvimark/module-user-management/migrations/". in /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Module.php:537
+Stack trace:
+#0 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('--migrationPath...', Array)
+#1 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('--migrationPath...', Array)
+#2 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#3 /var/www/pirosintez/gp.com/yii(20): yii\base\Application->run()
+#4 {main}
+
+Next yii\console\UnknownCommandException: Unknown command "--migrationPath=vendor/webvimark/module-user-management/migrations/". in /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php:183
+Stack trace:
+#0 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('--migrationPath...', Array)
+#1 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#2 /var/www/pirosintez/gp.com/yii(20): yii\base\Application->run()
+#3 {main}
+2018-03-31 22:38:29 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'LC_PAPER' => 'uk_UA.UTF-8'
+    'XDG_VTNR' => '7'
+    'XDG_SESSION_ID' => 'c1'
+    'LC_ADDRESS' => 'uk_UA.UTF-8'
+    'CLUTTER_IM_MODULE' => 'xim'
+    'LC_MONETARY' => 'uk_UA.UTF-8'
+    'XDG_GREETER_DATA_DIR' => '/var/lib/lightdm-data/maksim'
+    'SESSION' => 'ubuntu'
+    'GPG_AGENT_INFO' => '/home/maksim/.gnupg/S.gpg-agent:0:1'
+    'SHELL' => '/bin/bash'
+    'XDG_MENU_PREFIX' => 'gnome-'
+    'VTE_VERSION' => '4205'
+    'TERM' => 'xterm-256color'
+    'DERBY_HOME' => '/usr/lib/jvm/java-8-oracle/db'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'LC_NUMERIC' => 'uk_UA.UTF-8'
+    'WINDOWID' => '88080394'
+    'OLDPWD' => '/home/maksim/.AA_www/pirosintez/gp.com/vendor'
+    'GNOME_KEYRING_CONTROL' => ''
+    'UPSTART_SESSION' => 'unix:abstract=/com/ubuntu/upstart-session/1000/2667'
+    'GTK_MODULES' => 'gail:atk-bridge:unity-gtk-module'
+    'USER' => 'maksim'
+    'QT_ACCESSIBILITY' => '1'
+    'LC_TELEPHONE' => 'uk_UA.UTF-8'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'UNITY_HAS_3D_SUPPORT' => 'true'
+    'XDG_SESSION_PATH' => '/org/freedesktop/DisplayManager/Session0'
+    'XDG_SEAT_PATH' => '/org/freedesktop/DisplayManager/Seat0'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'DEFAULTS_PATH' => '/usr/share/gconf/ubuntu.default.path'
+    'MC_TMPDIR' => '/tmp/mc-maksim'
+    'UNITY_DEFAULT_PROFILE' => 'unity'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin'
+    'DESKTOP_SESSION' => 'ubuntu'
+    'QT_QPA_PLATFORMTHEME' => 'appmenu-qt5'
+    'QT_IM_MODULE' => 'ibus'
+    'LC_IDENTIFICATION' => 'uk_UA.UTF-8'
+    'JOB' => 'unity-settings-daemon'
+    'PWD' => '/home/maksim/.AA_www/pirosintez/gp.com'
+    'XDG_SESSION_TYPE' => 'x11'
+    'JAVA_HOME' => '/usr/lib/jvm/java-8-oracle'
+    'XMODIFIERS' => '@im=ibus'
+    'LANG' => 'en_US.UTF-8'
+    'GNOME_KEYRING_PID' => ''
+    'MANDATORY_PATH' => '/usr/share/gconf/ubuntu.mandatory.path'
+    'GDM_LANG' => 'en_US'
+    'LC_MEASUREMENT' => 'uk_UA.UTF-8'
+    'IM_CONFIG_PHASE' => '1'
+    'COMPIZ_CONFIG_PROFILE' => 'ubuntu'
+    'GDMSESSION' => 'ubuntu'
+    'HISTCONTROL' => 'ignoreboth'
+    'GTK2_MODULES' => 'overlay-scrollbar'
+    'SESSIONTYPE' => 'gnome-session'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/maksim'
+    'SHLVL' => '2'
+    'LANGUAGE' => 'en_US'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'MC_SID' => '29756'
+    'UPSTART_INSTANCE' => ''
+    'LOGNAME' => 'maksim'
+    'XDG_SESSION_DESKTOP' => 'ubuntu'
+    'UPSTART_EVENTS' => 'xsession started'
+    'COMPIZ_BIN_PATH' => '/usr/bin/'
+    'QT4_IM_MODULE' => 'xim'
+    'XDG_DATA_DIRS' => '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/var/lib/snapd/desktop'
+    'J2SDKDIR' => '/usr/lib/jvm/java-8-oracle'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-WI6n5VEIY4'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'UPSTART_JOB' => 'unity7'
+    'INSTANCE' => ''
+    'DISPLAY' => ':0'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'J2REDIR' => '/usr/lib/jvm/java-8-oracle/jre'
+    'GTK_IM_MODULE' => 'ibus'
+    'XDG_CURRENT_DESKTOP' => 'Unity'
+    'LC_TIME' => 'uk_UA.UTF-8'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/maksim/.Xauthority'
+    'LC_NAME' => 'uk_UA.UTF-8'
+    '_' => './yii'
+    'PHP_SELF' => './yii'
+    'SCRIPT_NAME' => './yii'
+    'SCRIPT_FILENAME' => './yii'
+    'PATH_TRANSLATED' => './yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1522535909.0469
+    'REQUEST_TIME' => 1522535909
+    'argv' => [
+        0 => './yii'
+        1 => '--migrationPath=vendor/webvimark/module-user-management/migrations/'
+    ]
+    'argc' => 2
+]
+2018-03-31 22:39:33 [-][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint in /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/db/Command.php:1258
+Stack trace:
+#0 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/db/Command.php(1258): PDOStatement->execute()
+#1 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/db/Command.php(1075): yii\db\Command->internalExecute('CREATE TABLE `a...')
+#2 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/db/Migration.php(323): yii\db\Command->execute()
+#3 /var/www/pirosintez/gp.com/vendor/webvimark/module-user-management/migrations/m140611_133903_init_rbac.php(60): yii\db\Migration->createTable('{{%auth_item_ch...', Array, 'CHARACTER SET u...')
+#4 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(725): m140611_133903_init_rbac->up()
+#5 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(199): yii\console\controllers\BaseMigrateController->migrateUp('m140611_133903_...')
+#6 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#7 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#8 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#9 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('up', Array)
+#10 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('up', Array)
+#11 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('migrate/up', Array)
+#12 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('migrate/up', Array)
+#13 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#14 /var/www/pirosintez/gp.com/yii(20): yii\base\Application->run()
+#15 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint
+The SQL being executed was: CREATE TABLE `auth_item_child` (
+	`parent` varchar(64) NOT NULL,
+	`child` varchar(64) NOT NULL,
+	PRIMARY KEY (parent, child),
+	FOREIGN KEY (parent) REFERENCES `auth_item` (name) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (child) REFERENCES `auth_item` (name) ON DELETE CASCADE ON UPDATE CASCADE
+) CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB in /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/db/Schema.php:664
+Stack trace:
+#0 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/db/Command.php(1263): yii\db\Schema->convertException(Object(PDOException), 'CREATE TABLE `a...')
+#1 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/db/Command.php(1075): yii\db\Command->internalExecute('CREATE TABLE `a...')
+#2 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/db/Migration.php(323): yii\db\Command->execute()
+#3 /var/www/pirosintez/gp.com/vendor/webvimark/module-user-management/migrations/m140611_133903_init_rbac.php(60): yii\db\Migration->createTable('{{%auth_item_ch...', Array, 'CHARACTER SET u...')
+#4 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(725): m140611_133903_init_rbac->up()
+#5 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(199): yii\console\controllers\BaseMigrateController->migrateUp('m140611_133903_...')
+#6 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#7 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#8 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#9 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('up', Array)
+#10 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('up', Array)
+#11 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('migrate/up', Array)
+#12 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('migrate/up', Array)
+#13 /var/www/pirosintez/gp.com/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#14 /var/www/pirosintez/gp.com/yii(20): yii\base\Application->run()
+#15 {main}
+Additional Information:
+Array
+(
+    [0] => HY000
+    [1] => 1215
+    [2] => Cannot add foreign key constraint
+)
+
+2018-03-31 22:39:29 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'LC_PAPER' => 'uk_UA.UTF-8'
+    'XDG_VTNR' => '7'
+    'XDG_SESSION_ID' => 'c1'
+    'LC_ADDRESS' => 'uk_UA.UTF-8'
+    'CLUTTER_IM_MODULE' => 'xim'
+    'LC_MONETARY' => 'uk_UA.UTF-8'
+    'XDG_GREETER_DATA_DIR' => '/var/lib/lightdm-data/maksim'
+    'SESSION' => 'ubuntu'
+    'GPG_AGENT_INFO' => '/home/maksim/.gnupg/S.gpg-agent:0:1'
+    'SHELL' => '/bin/bash'
+    'XDG_MENU_PREFIX' => 'gnome-'
+    'VTE_VERSION' => '4205'
+    'TERM' => 'xterm-256color'
+    'DERBY_HOME' => '/usr/lib/jvm/java-8-oracle/db'
+    'QT_LINUX_ACCESSIBILITY_ALWAYS_ON' => '1'
+    'LC_NUMERIC' => 'uk_UA.UTF-8'
+    'WINDOWID' => '88080394'
+    'OLDPWD' => '/home/maksim/.AA_www/pirosintez/gp.com/vendor'
+    'GNOME_KEYRING_CONTROL' => ''
+    'UPSTART_SESSION' => 'unix:abstract=/com/ubuntu/upstart-session/1000/2667'
+    'GTK_MODULES' => 'gail:atk-bridge:unity-gtk-module'
+    'USER' => 'maksim'
+    'QT_ACCESSIBILITY' => '1'
+    'LC_TELEPHONE' => 'uk_UA.UTF-8'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'UNITY_HAS_3D_SUPPORT' => 'true'
+    'XDG_SESSION_PATH' => '/org/freedesktop/DisplayManager/Session0'
+    'XDG_SEAT_PATH' => '/org/freedesktop/DisplayManager/Seat0'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'DEFAULTS_PATH' => '/usr/share/gconf/ubuntu.default.path'
+    'MC_TMPDIR' => '/tmp/mc-maksim'
+    'UNITY_DEFAULT_PROFILE' => 'unity'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-ubuntu:/usr/share/upstart/xdg:/etc/xdg'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin'
+    'DESKTOP_SESSION' => 'ubuntu'
+    'QT_QPA_PLATFORMTHEME' => 'appmenu-qt5'
+    'QT_IM_MODULE' => 'ibus'
+    'LC_IDENTIFICATION' => 'uk_UA.UTF-8'
+    'JOB' => 'unity-settings-daemon'
+    'PWD' => '/home/maksim/.AA_www/pirosintez/gp.com'
+    'XDG_SESSION_TYPE' => 'x11'
+    'JAVA_HOME' => '/usr/lib/jvm/java-8-oracle'
+    'XMODIFIERS' => '@im=ibus'
+    'LANG' => 'en_US.UTF-8'
+    'GNOME_KEYRING_PID' => ''
+    'MANDATORY_PATH' => '/usr/share/gconf/ubuntu.mandatory.path'
+    'GDM_LANG' => 'en_US'
+    'LC_MEASUREMENT' => 'uk_UA.UTF-8'
+    'IM_CONFIG_PHASE' => '1'
+    'COMPIZ_CONFIG_PROFILE' => 'ubuntu'
+    'GDMSESSION' => 'ubuntu'
+    'HISTCONTROL' => 'ignoreboth'
+    'GTK2_MODULES' => 'overlay-scrollbar'
+    'SESSIONTYPE' => 'gnome-session'
+    'XDG_SEAT' => 'seat0'
+    'HOME' => '/home/maksim'
+    'SHLVL' => '2'
+    'LANGUAGE' => 'en_US'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'MC_SID' => '29756'
+    'UPSTART_INSTANCE' => ''
+    'LOGNAME' => 'maksim'
+    'XDG_SESSION_DESKTOP' => 'ubuntu'
+    'UPSTART_EVENTS' => 'xsession started'
+    'COMPIZ_BIN_PATH' => '/usr/bin/'
+    'QT4_IM_MODULE' => 'xim'
+    'XDG_DATA_DIRS' => '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/var/lib/snapd/desktop'
+    'J2SDKDIR' => '/usr/lib/jvm/java-8-oracle'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:abstract=/tmp/dbus-WI6n5VEIY4'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'UPSTART_JOB' => 'unity7'
+    'INSTANCE' => ''
+    'DISPLAY' => ':0'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'J2REDIR' => '/usr/lib/jvm/java-8-oracle/jre'
+    'GTK_IM_MODULE' => 'ibus'
+    'XDG_CURRENT_DESKTOP' => 'Unity'
+    'LC_TIME' => 'uk_UA.UTF-8'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XAUTHORITY' => '/home/maksim/.Xauthority'
+    'LC_NAME' => 'uk_UA.UTF-8'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1522535969.9599
+    'REQUEST_TIME' => 1522535969
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate/up'
+        2 => '--migrationPath=vendor/webvimark/module-user-management/migrations/'
+    ]
+    'argc' => 3
+]
