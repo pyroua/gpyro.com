@@ -71,8 +71,10 @@ return [
             'class' => 'dektrium\user\Module',
             'as backend' => 'cinghie\userextended\filters\BackendFilter',
             // Settings
-            'enableRegistration' => false,
-            'admins' => ['admin1']
+            //'enableRegistration' => true,
+            'admins' => ['admin2'],
+            'adminPermission' => 1,
+            'enableUnconfirmedLogin' => true,
         ],
     ],
 ];

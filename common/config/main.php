@@ -10,23 +10,23 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        /*'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            'viewPath' => '@app/mail',
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
-                'username' => '',
-                'password' => '',
-                'port' => 587,
-                'encryption' => 'ssl',
-            ],
-            'useFileTransport' => false,
-        ],*/
 
-        'authManager'  => [
-            'class'        => 'yii\rbac\DbManager',
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages', // if advanced application, set @frontend/messages
+                    'sourceLanguage' => 'ru-RU',
+                    'fileMap' => [
+                        //'main' => 'main.php',
+                    ],
+                ],
+            ],
         ],
+
+//        'authManager'  => [
+//            'class' => 'dektrium\rbac\components\DbManager',
+//        ],
 
         'view' => [
             'theme' => [
@@ -56,16 +56,27 @@ return [
     ],
 
     'modules' => [
+        'gridview' => ['class' => 'kartik\grid\Module'],
+
         // Yii2 RBAC
         'rbac' => [
-            'class' => 'dektrium\rbac\Module'
+            'class' => 'dektrium\rbac\RbacWebModule',
+
+//            'admins' => ['admin2'],
+//
+//            // Yii2 User Controllers Overrides
+//            'controllerMap' => [
+//                'role' => 'dektrium\rbac\controllers\RoleController',
+//                'permission' => 'dektrium\rbac\controllers\PermissionController',
+//            ],
         ],
         // Yii2 User
         'user' => [
             'class' => 'dektrium\user\Module',
+
             // Yii2 User Controllers Overrides
             'controllerMap' => [
-                'admin' => 'cinghie\userextended\controllers\AdminController',
+                'admin' => 'backend\controllers\AdminController',
                 'settings' => 'cinghie\userextended\controllers\SettingsController'
             ],
             // Yii2 User Models Overrides
