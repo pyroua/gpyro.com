@@ -72,9 +72,10 @@ return [
             'as backend' => 'cinghie\userextended\filters\BackendFilter',
             // Settings
             //'enableRegistration' => true,
-            'admins' => ['admin'],
-            'adminPermission' => 1,
             'enableUnconfirmedLogin' => false,
+            'modelMap' => [
+                'User' => 'backend\models\User',
+            ],
         ],
     ],
 ];

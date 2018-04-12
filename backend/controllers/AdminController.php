@@ -9,6 +9,17 @@ use cinghie\userextended\controllers\AdminController as Admin;
 
 class AdminController extends Admin
 {
+    public function beforeAction($action)
+    {
+        if (parent::beforeAction($action)) {
+            if (!\Yii::$app->user->can('admin')) {
+                throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
     /**
      * @inheritdoc
      */

@@ -9,7 +9,8 @@ echo dmstr\widgets\Menu::widget(
             [
                 'label' => Yii::t('app', 'Users'),
                 'url' => ['/user/admin/index'],
-                'icon' => ' fa-users'
+                'icon' => ' fa-users',
+                'visible' => Yii::$app->user->can('admin')
             ],
             [
                 'label' => Yii::t('app', 'Categories'),

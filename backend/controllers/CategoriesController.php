@@ -18,7 +18,7 @@ class CategoriesController extends BaseController
      */
     public function actionIndex()
     {
-        if (!\Yii::$app->user->can('categories')) {
+        if (!\Yii::$app->user->can('categories') && !\Yii::$app->user->can('addEditCategory') && !\Yii::$app->user->can('deleteCategory')) {
             throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
         }
 
