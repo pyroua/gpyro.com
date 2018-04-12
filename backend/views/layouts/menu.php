@@ -15,7 +15,8 @@ echo dmstr\widgets\Menu::widget(
                 'label' => Yii::t('app', 'Categories'),
                 'url' => ['/categories'],
                 'icon' => ' fa-align-justify',
-                'active' => ViewHelper::isActive($this->context, 'categories', ['index', 'create', 'update'])
+                'active' => ViewHelper::isActive($this->context, 'categories', ['index', 'create', 'update']),
+                'visible' => Yii::$app->user->can('categories') || Yii::$app->user->can('deleteCategory') || Yii::$app->user->can('addEditCategory')
             ],
             [
                 'label' => Yii::t('app', 'Measures'),
@@ -39,7 +40,8 @@ echo dmstr\widgets\Menu::widget(
             [
                 'label' => 'Login',
                 'url' => ['main/login'],
-                'visible' => Yii::$app->user->isGuest],
+                'visible' => Yii::$app->user->isGuest
+            ],
             [
                 'label' => 'Some tools',
                 'icon' => 'share',

@@ -129,7 +129,7 @@ class CategoriesController extends BaseController
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['categories']
+                        'roles' => ['categories', 'deleteCategory', 'addEditCategory']
                     ],
                 ],
             ],

@@ -1,11 +1,15 @@
 <span class="action-buttons" style="margin-left: 50px;">
-   <a href="<?= $editUrl ?>" type="button" class="btn btn-default btn-xs">
-       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
-   </a>
+    <?php if (Yii::$app->user->can('addEditCategory')) : ?>
+       <a href="<?= $editUrl ?>" type="button" class="btn btn-default btn-xs">
+           <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+       </a>
+    <?php endif;?>
 
-   <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal<?= $id ?>">
-       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
-   </button>
+    <?php if (Yii::$app->user->can('deleteCategory')) : ?>
+        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal<?= $id ?>">
+           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
+        </button>
+    <?php endif;?>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal<?= $id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
