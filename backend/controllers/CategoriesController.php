@@ -18,6 +18,10 @@ class CategoriesController extends BaseController
      */
     public function actionIndex()
     {
+        if (!\Yii::$app->user->can('categories')) {
+            throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
+        }
+
         $categories = Category::find()->all();
 
         return $this->render('index', [
@@ -30,6 +34,10 @@ class CategoriesController extends BaseController
      */
     public function actionCreate()
     {
+        if (!\Yii::$app->user->can('addEditCategory')) {
+            throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
+        }
+
         $formModel = new CategoryForm();
         $formModel = $this->processData($formModel);
 
@@ -51,6 +59,10 @@ class CategoriesController extends BaseController
      */
     public function actionUpdate($id)
     {
+        if (!\Yii::$app->user->can('addEditCategory')) {
+            throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
+        }
+
         /** @var Category $category */
         $category = $this->getModel($id);
 
@@ -113,6 +125,10 @@ class CategoriesController extends BaseController
      */
     public function actionDelete($id)
     {
+        if (!\Yii::$app->user->can('deleteCategory')) {
+            throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
+        }
+
         /** @var Category $category */
         $category = $this->getModel($id);
         $category->deleteCategory() ?
