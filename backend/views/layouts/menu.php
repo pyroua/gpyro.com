@@ -16,7 +16,7 @@ echo dmstr\widgets\Menu::widget(
                 'url' => ['/categories'],
                 'icon' => ' fa-align-justify',
                 'active' => ViewHelper::isActive($this->context, 'categories', ['index', 'create', 'update']),
-                'visible' => Yii::$app->user->can('categories') || Yii::$app->user->can('deleteCategory') || Yii::$app->user->can('addEditCategory')
+                'visible' => Yii::$app->user->can('admin') || Yii::$app->user->can('categories') || Yii::$app->user->can('deleteCategory') || Yii::$app->user->can('addEditCategory')
             ],
             [
                 'label' => Yii::t('app', 'Measures'),

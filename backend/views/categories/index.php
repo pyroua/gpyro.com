@@ -8,7 +8,7 @@ use yii\web\JsExpression;
 ?>
     <h2>Categories</h2>
 
-    <?php if (Yii::$app->user->can('addEditCategory')) : ?>
+    <?php if (Yii::$app->user->can('admin') || Yii::$app->user->can('addEditCategory')) : ?>
         <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-primary ">
             Add new
         </a>

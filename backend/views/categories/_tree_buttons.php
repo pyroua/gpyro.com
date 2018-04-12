@@ -1,11 +1,11 @@
 <span class="action-buttons" style="margin-left: 50px;">
-    <?php if (Yii::$app->user->can('addEditCategory')) : ?>
+    <?php if (Yii::$app->user->can('admin') || Yii::$app->user->can('addEditCategory')) : ?>
        <a href="<?= $editUrl ?>" type="button" class="btn btn-default btn-xs">
            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
        </a>
     <?php endif;?>
 
-    <?php if (Yii::$app->user->can('deleteCategory')) : ?>
+    <?php if (Yii::$app->user->can('admin') || Yii::$app->user->can('deleteCategory')) : ?>
         <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal<?= $id ?>">
            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
         </button>
