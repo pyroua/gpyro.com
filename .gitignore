@@ -34,3 +34,10 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
+
+cherry-pick.sh
+commit.sh
+
+frontend/web/img/users/*
+
+/runtime

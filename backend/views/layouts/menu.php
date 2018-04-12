@@ -6,8 +6,11 @@ echo dmstr\widgets\Menu::widget(
     [
         'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
         'items' => [
-//            ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-            ['label' => Yii::t('app', 'Users'), 'url' => ['/users'], 'icon' => ' fa-users'],
+            [
+                'label' => Yii::t('app', 'Users'),
+                'url' => ['/user/admin/index'],
+                'icon' => ' fa-users'
+            ],
             [
                 'label' => Yii::t('app', 'Categories'),
                 'url' => ['/categories'],

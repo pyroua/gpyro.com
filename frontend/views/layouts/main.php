@@ -41,17 +41,13 @@ AppAsset::register($this);
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest];
+        $menuItems[] = ['label' => 'Sign in', 'url' => ['/user/security/login']];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
+        $menuItems[] = ['label' => 'Profile', 'url' => ['/user/settings/profile']];
+        $menuItems[] = ['label' => 'Sign out (' . Yii::$app->user->identity->username . ')',
+            'url' => ['/user/security/logout'],
+            'linkOptions' => ['data-method' => 'post']];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

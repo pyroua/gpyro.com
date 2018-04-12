@@ -8,9 +8,11 @@ use yii\web\JsExpression;
 ?>
     <h2>Categories</h2>
 
-    <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-primary ">
-        Add new
-    </a>
+    <?php if (Yii::$app->user->can('addEditCategory')) : ?>
+        <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-primary ">
+            Add new
+        </a>
+    <?php endif;?>
 
 
 <?= TreeView::widget([
