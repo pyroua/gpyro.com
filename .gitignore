@@ -37,3 +37,5 @@ phpunit.phar
 
 cherry-pick.sh
 commit.sh
+
+frontend/web/img/users/*

@@ -3,8 +3,8 @@
         'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
         'items' => [
 //            ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-            ['label' => Yii::t('app', 'Users'), 'url' => ['/users'], 'icon' => ' fa-users'],
-            ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories'], 'icon' => ' fa-align-justify'],
+            ['label' => Yii::t('app', 'Users'), 'url' => ['/user/admin/index'], 'icon' => ' fa-users'],
+            ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories'], 'icon' => ' fa-align-justify', 'visible' => Yii::$app->user->can('categories')],
 //          ['label' => Yii::t('app', 'Items'), 'url' => ['/items']],
 //          ['label' => Yii::t('app', 'Item options'), 'url' => ['/item-options']],
             ['label' => Yii::t('app', 'Measures'), 'url' => ['/measures'], 'icon' => ' fa-arrows-v'],
