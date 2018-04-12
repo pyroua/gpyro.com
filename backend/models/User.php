@@ -29,6 +29,6 @@ class User extends BaseUser
      */
     public function getIsAdmin()
     {
-        return Yii::$app->user->can('admin');
+        return Yii::$app->user->can('manageUsers');
     }
 }
