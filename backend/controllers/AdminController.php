@@ -12,7 +12,7 @@ class AdminController extends Admin
     public function beforeAction($action)
     {
         if (parent::beforeAction($action)) {
-            if (!\Yii::$app->user->can('admin')) {
+            if (!\Yii::$app->user->can('manageUsers')) {
                 throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
             }
             return true;
