@@ -11,14 +11,14 @@ use yii\helpers\Url;
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Delete measure</h4>
+                <h4 class="modal-title" id="myModalLabel">Delete item option</h4>
             </div>
             <div class="modal-body">
                 Are you shure?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="<?= Url::to(['measures/delete/' . $id]) ?>" type="button" class="btn btn-danger">Yes</a>
+                <a href="<?= Url::to(['item-options/delete/' . $id]) ?>" type="button" class="btn btn-danger">Yes</a>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@ use Yii;
  * @property double $decimal
  * @property string $string
  */
-class ItemOptionValue extends \yii\db\ActiveRecord
+class ItemOptionValue extends BaseModel
 {
     /**
      * @inheritdoc

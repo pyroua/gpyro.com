@@ -12,29 +12,10 @@ use yii\web\JsExpression;
         Add new
     </a>
 
-<?php
-
-$onSelect = new JsExpression(<<<JS
-function (undefined, item) {
-    $('span.action-buttons').addClass('hide')
-    $(item['$' + 'el']).find('span.action-buttons').removeClass('hide');
-}
-JS
-);
-
-$onUnSelect = new JsExpression(<<<JS
-function (undefined, item) {
-    console.log(item);
-    $(item['$' + 'el']).find('span.action-buttons').addClass('hide');
-}
-JS
-);
-
-?>
 
 <?= TreeView::widget([
     'data' => $catTree,
-    'size' => TreeView::SIZE_SMALL,
+    'size' => TreeView::SIZE_MIDDLE,
     'header' => 'Categories tree',
     'searchOptions' => [
         'inputOptions' => [
@@ -42,8 +23,8 @@ JS
         ],
     ],
     'clientOptions' => [
-        'onNodeSelected' => $onSelect,
-        'onNodeUnselected  ' => $onUnSelect,
+//        'onNodeSelected' => $onSelect,
+//        'onNodeUnselected  ' => $onUnSelect,
         //'selectedBackColor' => 'rgb(40, 153, 57)',
         'borderColor' => '#fff',
         'levels' => 15

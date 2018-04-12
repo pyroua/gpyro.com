@@ -1,4 +1,4 @@
-<span class="action-buttons hide">
+<span class="action-buttons" style="margin-left: 50px;">
    <a href="<?= $editUrl ?>" type="button" class="btn btn-default btn-xs">
        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
    </a>

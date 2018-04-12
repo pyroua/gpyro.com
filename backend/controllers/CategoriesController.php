@@ -11,6 +11,8 @@ use yii\web\NotFoundHttpException;
 
 class CategoriesController extends BaseController
 {
+    public $modelClass = Category::class;
+
     /**
      * @return string
      */
@@ -43,24 +45,9 @@ class CategoriesController extends BaseController
     }
 
     /**
-     * @param int $id
-     * @return null|static
-     * @throws NotFoundHttpException
-     */
-    private function getModel($id)
-    {
-        $category = Category::getById($id);
-        if (empty($category)) {
-            throw new NotFoundHttpException('Category not found');
-        }
-
-        return $category;
-    }
-
-    /**
-     * @param int $id
+     * @param $id
      * @return CategoryForm|string
-     * @throws NotFoundHttpException
+     * @throws \Exception
      */
     public function actionUpdate($id)
     {

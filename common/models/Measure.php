@@ -12,7 +12,7 @@ use Yii;
  * @property string $title_full
  * @property int $category_id
  */
-class Measure extends \yii\db\ActiveRecord
+class Measure extends BaseModel
 {
     /**
      * @inheritdoc
@@ -45,15 +45,6 @@ class Measure extends \yii\db\ActiveRecord
             'title_full' => Yii::t('app', 'Title Full'),
             'category_id' => Yii::t('app', 'Category ID'),
         ];
-    }
-
-    /**
-     * @param int $id
-     * @return null|static
-     */
-    public static function getById(int $id)
-    {
-        return self::findOne(['id' => $id]);
     }
 
     /**

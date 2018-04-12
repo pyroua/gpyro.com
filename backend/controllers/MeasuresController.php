@@ -10,6 +10,9 @@ use yii\data\ActiveDataProvider;
 
 class MeasuresController extends BaseController
 {
+
+    public $modelClass = Measure::class;
+
     /**
      * @return MeasureForm|string
      */
@@ -65,8 +68,7 @@ class MeasuresController extends BaseController
     /**
      * @param $id
      * @return \yii\web\Response
-     * @throws \Throwable
-     * @throws \yii\db\StaleObjectException
+     * @throws \Exception
      */
     public function actionDelete($id)
     {
@@ -97,6 +99,7 @@ class MeasuresController extends BaseController
     /**
      * @param $id
      * @return MeasureForm|string
+     * @throws \Exception
      */
     public function actionUpdate($id)
     {
@@ -118,16 +121,6 @@ class MeasuresController extends BaseController
         }
 
         return $formModel;
-    }
-
-    private function getModel($id)
-    {
-        $measure = Measure::getById($id);
-        if (empty($measure)) {
-            throw new NotFoundHttpException('Category not found');
-        }
-
-        return $measure;
     }
 
 }

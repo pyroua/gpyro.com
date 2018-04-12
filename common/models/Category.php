@@ -12,7 +12,7 @@ use Yii;
  * @property int $parent
  * @property string $logo
  */
-class Category extends \yii\db\ActiveRecord
+class Category extends BaseModel
 {
     /**
      * @inheritdoc
@@ -49,15 +49,6 @@ class Category extends \yii\db\ActiveRecord
     }
 
     /**
-     * @param int $id
-     * @return null|static
-     */
-    public static function getById($id)
-    {
-        return self::findOne(['id' => $id]);
-    }
-
-    /**
      * @return false|int
      * @throws \Throwable
      * @throws \yii\db\StaleObjectException
@@ -65,19 +56,6 @@ class Category extends \yii\db\ActiveRecord
     public function deleteCategory()
     {
         return $this->delete();
-    }
-
-    public static function getArrayList()
-    {
-        $data = self::find()->select(['id', 'title'])->asArray()->all();
-        $result = [];
-
-        foreach ($data as $val)
-        {
-            $result[$val['id']] = $val['title'];
-        }
-
-        return $result;
     }
 
     /**

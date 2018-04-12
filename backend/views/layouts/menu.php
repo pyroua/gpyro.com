@@ -1,16 +1,42 @@
-<?= dmstr\widgets\Menu::widget(
+<?php
+
+use backend\helpers\ViewHelper;
+
+echo dmstr\widgets\Menu::widget(
     [
         'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
         'items' => [
 //            ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
             ['label' => Yii::t('app', 'Users'), 'url' => ['/users'], 'icon' => ' fa-users'],
-            ['label' => Yii::t('app', 'Categories'), 'url' => ['/categories'], 'icon' => ' fa-align-justify'],
-//          ['label' => Yii::t('app', 'Items'), 'url' => ['/items']],
-//          ['label' => Yii::t('app', 'Item options'), 'url' => ['/item-options']],
-            ['label' => Yii::t('app', 'Measures'), 'url' => ['/measures'], 'icon' => ' fa-arrows-v'],
-            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-            ['label' => 'Login', 'url' => ['main/login'], 'visible' => Yii::$app->user->isGuest],
+            [
+                'label' => Yii::t('app', 'Categories'),
+                'url' => ['/categories'],
+                'icon' => ' fa-align-justify',
+                'active' => ViewHelper::isActive($this->context, 'categories', ['index', 'create', 'update'])
+            ],
+            [
+                'label' => Yii::t('app', 'Measures'),
+                'url' => ['/measures'],
+                'icon' => ' fa-arrows-v',
+                'active' => ViewHelper::isActive($this->context, 'measures', ['index', 'create', 'update'])
+            ],
+            [
+                'label' => Yii::t('app', 'Item options'),
+                'url' => ['/item-options'],
+                'active' => ViewHelper::isActive($this->context, 'item-options', ['index', 'create', 'update'])
+            ],
+            [
+                'label' => 'Gii',
+                'icon' => 'file-code-o',
+                'url' => ['/gii']],
+            [
+                'label' => 'Debug',
+                'icon' => 'dashboard',
+                'url' => ['/debug']],
+            [
+                'label' => 'Login',
+                'url' => ['main/login'],
+                'visible' => Yii::$app->user->isGuest],
             [
                 'label' => 'Some tools',
                 'icon' => 'share',
