@@ -14,6 +14,42 @@ class MeasuresController extends BaseController
     public $modelClass = Measure::class;
 
     /**
+     * @return array
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'denyCallback' => function () {
+                    throw new ForbiddenHttpException('Access denied');
+                },
+                'rules' => [
+                    [
+                        'actions' => ['index'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['measures', 'addEditMeasure', 'deleteMeasure'],
+                    ],
+                    [
+                        'actions' => ['create' , 'update'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['addEditMeasure'],
+                    ],
+                    [
+                        'actions' => ['delete'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['deleteMeasure'],
+                    ],
+                    [    // all the action are accessible to admin
+                        'allow' => true,
+                        'roles' => ['admin'], //
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    /**
      * @return MeasureForm|string
      */
     public function actionCreate()

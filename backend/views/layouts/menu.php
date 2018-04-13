@@ -25,12 +25,18 @@ echo dmstr\widgets\Menu::widget(
                 'label' => Yii::t('app', 'Measures'),
                 'url' => ['/measures'],
                 'icon' => ' fa-arrows-v',
-                'active' => ViewHelper::isActive($this->context, 'measures', ['index', 'create', 'update'])
+                'active' => ViewHelper::isActive($this->context, 'measures', ['index', 'create', 'update']),
+                'visible' => Yii::$app->user->can('measures') ||
+                    Yii::$app->user->can('deleteMeasure') ||
+                    Yii::$app->user->can('addEditMeasure')
             ],
             [
                 'label' => Yii::t('app', 'Item options'),
                 'url' => ['/item-options'],
-                'active' => ViewHelper::isActive($this->context, 'item-options', ['index', 'create', 'update'])
+                'active' => ViewHelper::isActive($this->context, 'item-options', ['index', 'create', 'update']),
+                'visible' => Yii::$app->user->can('itemOptions') ||
+                    Yii::$app->user->can('deleteItemOption') ||
+                    Yii::$app->user->can('addEditItemOption')
             ],
             [
                 'label' => 'Gii',

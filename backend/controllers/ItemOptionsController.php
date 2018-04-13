@@ -14,6 +14,42 @@ class ItemOptionsController extends BaseController
     public $modelClass = ItemOption::class;
 
     /**
+     * @return array
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'denyCallback' => function () {
+                    throw new ForbiddenHttpException('Access denied');
+                },
+                'rules' => [
+                    [
+                        'actions' => ['index'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['itemOptions', 'addEditItemOption', 'deleteItemOption'],
+                    ],
+                    [
+                        'actions' => ['create' , 'update'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['addEditItemOption'],
+                    ],
+                    [
+                        'actions' => ['delete'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['deleteItemOption'],
+                    ],
+                    [    // all the action are accessible to admin
+                        'allow' => true,
+                        'roles' => ['admin'], //
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    /**
      * @return string
      */
     public function actionIndex()
