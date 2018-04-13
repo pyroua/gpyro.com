@@ -1,28 +1,52 @@
 <?php
 
 use yii\db\Migration;
+use yii\rbac\DbManager;
+use yii\base\InvalidConfigException;
 
 /**
  * Class m180413_092417_categories_permissions
  */
 class m180413_092417_categories_permissions extends Migration
 {
+
     /**
-     * {@inheritdoc}
+     * @throws yii\base\InvalidConfigException
+     * @return DbManager
+     */
+    protected function getAuthManager()
+    {
+        $authManager = Yii::$app->getAuthManager();
+        if (!$authManager instanceof DbManager) {
+            throw new InvalidConfigException('You should configure "authManager" component to use database before executing this migration.');
+        }
+
+        return $authManager;
+    }
+
+    /**
+     * @return bool|void
+     * @throws \yii\base\Exception
+     * @throws \yii\base\InvalidConfigException
      */
     public function safeUp()
     {
-        $this->batchInsert('auth_item', ['name', 'type', 'description', 'created_at', 'updated_at'], [
-                ['categories', '2', 'view categories page', time(), time()],
-                ['addEditCategory', '2', '', time(), time()],
-                ['deleteCategory', '2', '', time(), time()],
-        ]);
+        $auth = $this->getAuthManager();
 
-        $this->batchInsert('auth_item_child', ['parent', 'child'], [
-            ['categories', 'addEditCategory'],
-            ['categories', 'deleteCategory'],
-            ['admin', 'categories'],
-        ]);
+        $categories = $auth->createPermission('categories');
+        $categories->description = 'view categories page';
+        $auth->add($categories);
+
+        $addEditCategory = $auth->createPermission('addEditCategory');
+        $auth->add($addEditCategory);
+
+        $deleteCategory = $auth->createPermission('deleteCategory');
+        $auth->add($deleteCategory);
+
+        $auth->addChild($categories, $addEditCategory);
+        $auth->addChild($categories, $deleteCategory);
+        $auth->addChild($auth->getRole('admin'), $categories);
+
     }
 
     /**

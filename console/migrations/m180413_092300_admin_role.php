@@ -5,10 +5,11 @@ use yii\rbac\DbManager;
 use yii\base\InvalidConfigException;
 
 /**
- * Class m180413_105309_item_options_permissions
+ * Class m180413_092417_categories_permissions
  */
-class m180413_105309_item_options_permissions extends Migration
+class m180413_092300_admin_role extends Migration
 {
+
     /**
      * @throws yii\base\InvalidConfigException
      * @return DbManager
@@ -24,26 +25,15 @@ class m180413_105309_item_options_permissions extends Migration
     }
 
     /**
-     * {@inheritdoc}
+     * @return bool|void
+     * @throws \yii\base\Exception
+     * @throws \yii\base\InvalidConfigException
      */
     public function safeUp()
     {
         $auth = $this->getAuthManager();
-
-        $itemOptions = $auth->createPermission('itemOptions');
-        $itemOptions->description = 'view item options page';
-        $auth->add($itemOptions);
-
-        $addEditItemOption = $auth->createPermission('addEditItemOption');
-        $auth->add($addEditItemOption);
-
-        $deleteItemOption = $auth->createPermission('deleteItemOption');
-        $auth->add($deleteItemOption);
-
-        $auth->addChild($itemOptions, $addEditItemOption);
-        $auth->addChild($itemOptions, $deleteItemOption);
-        $auth->addChild($auth->getRole('admin'), $itemOptions);
-
+        $admin = $auth->createRole('admin');
+        $auth->add($admin);
     }
 
     /**
@@ -51,7 +41,7 @@ class m180413_105309_item_options_permissions extends Migration
      */
     public function safeDown()
     {
-        echo "m180413_105309_item_options_permissions cannot be reverted.\n";
+        echo "m180413_092417_categories_permissions cannot be reverted.\n";
 
         return false;
     }
@@ -65,7 +55,7 @@ class m180413_105309_item_options_permissions extends Migration
 
     public function down()
     {
-        echo "m180413_105309_item_options_permissions cannot be reverted.\n";
+        echo "m180413_092417_categories_permissions cannot be reverted.\n";
 
         return false;
     }

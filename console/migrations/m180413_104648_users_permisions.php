@@ -1,6 +1,8 @@
 <?php
 
 use yii\db\Migration;
+use yii\rbac\DbManager;
+use yii\base\InvalidConfigException;
 
 /**
  * Class m180413_104648_users_permisions
@@ -8,22 +10,28 @@ use yii\db\Migration;
 class m180413_104648_users_permisions extends Migration
 {
     /**
+     * @throws yii\base\InvalidConfigException
+     * @return DbManager
+     */
+    protected function getAuthManager()
+    {
+        $authManager = Yii::$app->getAuthManager();
+        if (!$authManager instanceof DbManager) {
+            throw new InvalidConfigException('You should configure "authManager" component to use database before executing this migration.');
+        }
+
+        return $authManager;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->insert('auth_item', [
-            'name' => 'manageUsers',
-            'type' => '2',
-            'description' => '',
-            'created_at' => time(),
-            'updated_at' => time(),
-        ]);
-
-        $this->insert('auth_item_child', [
-            'parent' => 'admin',
-            'child' => 'manageUsers',
-        ]);
+        $auth = $this->getAuthManager();
+        $manageUsers = $auth->createPermission('manageUsers');
+        $auth->add($manageUsers);
+        $auth->addChild($auth->getRole('admin'), $manageUsers);
     }
 
     /**
