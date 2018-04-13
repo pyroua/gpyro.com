@@ -9,6 +9,7 @@ use backend\helpers\CategoryHelper;
 use yii\base\Exception;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
+use yii\web\ForbiddenHttpException;
 
 class CategoriesController extends BaseController
 {
