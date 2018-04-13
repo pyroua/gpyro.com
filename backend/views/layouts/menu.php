@@ -17,7 +17,9 @@ echo dmstr\widgets\Menu::widget(
                 'url' => ['/categories'],
                 'icon' => ' fa-align-justify',
                 'active' => ViewHelper::isActive($this->context, 'categories', ['index', 'create', 'update']),
-                'visible' => Yii::$app->user->can('categories') || Yii::$app->user->can('deleteCategory') || Yii::$app->user->can('addEditCategory')
+                'visible' => Yii::$app->user->can('categories') ||
+                    Yii::$app->user->can('deleteCategory') ||
+                    Yii::$app->user->can('addEditCategory')
             ],
             [
                 'label' => Yii::t('app', 'Measures'),
@@ -33,11 +35,15 @@ echo dmstr\widgets\Menu::widget(
             [
                 'label' => 'Gii',
                 'icon' => 'file-code-o',
-                'url' => ['/gii']],
+                'url' => ['/gii'],
+                'visible' => Yii::$app->user->can('developerTools')
+            ],
             [
                 'label' => 'Debug',
                 'icon' => 'dashboard',
-                'url' => ['/debug']],
+                'url' => ['/debug'],
+                'visible' => Yii::$app->user->can('developerTools')
+            ],
             [
                 'label' => 'Login',
                 'url' => ['main/login'],
@@ -48,8 +54,18 @@ echo dmstr\widgets\Menu::widget(
                 'icon' => 'share',
                 'url' => '#',
                 'items' => [
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+                    [
+                        'label' => 'Gii',
+                        'icon' => 'file-code-o',
+                        'url' => ['/gii'],
+                        Yii::$app->user->can('developerTools')
+                    ],
+                    [
+                        'label' => 'Debug',
+                        'icon' => 'dashboard',
+                        'url' => ['/debug'],
+                        Yii::$app->user->can('developerTools')
+                    ],
                     /*[
                         'label' => 'Level One',
                         'icon' => 'circle-o',

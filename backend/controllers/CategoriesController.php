@@ -8,20 +8,53 @@ use backend\models\forms\CategoryForm;
 use backend\helpers\CategoryHelper;
 use yii\base\Exception;
 use yii\web\NotFoundHttpException;
+use yii\filters\AccessControl;
 
 class CategoriesController extends BaseController
 {
     public $modelClass = Category::class;
 
     /**
+     * @return array
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'denyCallback' => function () {
+                    throw new ForbiddenHttpException('Access denied');
+                },
+                'rules' => [
+                    [
+                        'actions' => ['index'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['categories', 'addEditCategory', 'deleteCategory'],
+                    ],
+                    [
+                        'actions' => ['create' , 'update'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['addEditCategory'],
+                    ],
+                    [
+                        'actions' => ['delete'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['deleteCategory'],
+                    ],
+                    [    // all the action are accessible to admin
+                        'allow' => true,
+                        'roles' => ['admin'], //
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    /**
      * @return string
      */
     public function actionIndex()
     {
-        if (!\Yii::$app->user->can('categories') && !\Yii::$app->user->can('addEditCategory') && !\Yii::$app->user->can('deleteCategory')) {
-            throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
-        }
-
         $categories = Category::find()->all();
 
         return $this->render('index', [
@@ -34,10 +67,6 @@ class CategoriesController extends BaseController
      */
     public function actionCreate()
     {
-        if (!\Yii::$app->user->can('addEditCategory')) {
-            throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
-        }
-
         $formModel = new CategoryForm();
         $formModel = $this->processData($formModel);
 
@@ -59,10 +88,6 @@ class CategoriesController extends BaseController
      */
     public function actionUpdate($id)
     {
-        if (!\Yii::$app->user->can('addEditCategory')) {
-            throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
-        }
-
         /** @var Category $category */
         $category = $this->getModel($id);
 
@@ -125,10 +150,6 @@ class CategoriesController extends BaseController
      */
     public function actionDelete($id)
     {
-        if (!\Yii::$app->user->can('deleteCategory')) {
-            throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
-        }
-
         /** @var Category $category */
         $category = $this->getModel($id);
         $category->deleteCategory() ?
@@ -138,18 +159,6 @@ class CategoriesController extends BaseController
         return $this->redirect(['categories/index']);
     }
 
-    public function behaviors() {
-        return [
-            'access' => [
-                'class' => \yii\filters\AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['admin', 'categories', 'deleteCategory', 'addEditCategory']
-                    ],
-                ],
-            ],
-        ];
-    }
+
 
 }

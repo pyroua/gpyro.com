@@ -2,10 +2,6 @@
 namespace backend\models;
 
 use Yii;
-use yii\base\NotSupportedException;
-use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
-use yii\web\IdentityInterface;
 use cinghie\userextended\models\User as BaseUser;
 
 /**
@@ -29,6 +25,9 @@ class User extends BaseUser
      */
     public function getIsAdmin()
     {
-        return Yii::$app->user->can('manageUsers');
+        return array_key_exists(
+            'admin',
+            \Yii::$app->authManager->getRolesByUser(\Yii::$app->user->id)
+        );
     }
 }

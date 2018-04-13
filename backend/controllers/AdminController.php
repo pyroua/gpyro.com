@@ -5,21 +5,12 @@ namespace backend\controllers;
 use yii\filters\AccessControl;
 use yii\filters\AccessRule;
 use yii\filters\VerbFilter;
+use \yii\web\ForbiddenHttpException;
 use cinghie\userextended\controllers\AdminController as Admin;
 
 class AdminController extends Admin
 {
-    public function beforeAction($action)
-    {
-        if (parent::beforeAction($action)) {
-            if (!\Yii::$app->user->can('manageUsers')) {
-                throw new \yii\web\ForbiddenHttpException('Доступ закрыт.');
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
+
     /**
      * @inheritdoc
      */
@@ -27,10 +18,13 @@ class AdminController extends Admin
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'ruleConfig' => [
-                    'class' => AccessRule::className(),
+                    'class' => AccessRule::class,
                 ],
+                'denyCallback' => function ($rule, $action) {
+                    throw new ForbiddenHttpException('Access denied');
+                },
                 'rules' => [
                     [
                         'allow' => true,
@@ -39,12 +33,12 @@ class AdminController extends Admin
                     ],
                     [
                         'allow' => true,
-                        //'roles' => ['admin'],
+                        'permissions' => ['manageUsers'],
                     ],
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'activemultiple' => ['post'],
                     'deactivemultiple' => ['post'],

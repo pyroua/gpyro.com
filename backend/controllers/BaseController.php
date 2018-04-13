@@ -3,13 +3,19 @@
 namespace backend\controllers;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 class BaseController extends \yii\web\Controller
 {
 
     protected $modelClass;
 
-    protected function getModel(int $id)
+    /**
+     * @param int $id
+     * @return mixed
+     * @throws \Exception
+     */
+    protected function getModel(int $id): ActiveRecord
     {
         if (empty($this->modelClass))
         {
@@ -18,7 +24,7 @@ class BaseController extends \yii\web\Controller
 
         $model = $this->modelClass::getById($id);
         if (empty($model)) {
-            throw new NotFoundHttpException('Category not found');
+            throw new NotFoundHttpException('Model not found');
         }
 
         return $model;

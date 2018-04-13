@@ -2,18 +2,16 @@
 
 use yii\helpers\Url;
 use execut\widget\TreeView;
-use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 ?>
     <h2>Categories</h2>
 
-    <?php if (Yii::$app->user->can('addEditCategory')) : ?>
-        <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-primary ">
-            Add new
-        </a>
-    <?php endif;?>
-
+<?php if (Yii::$app->user->can('addEditCategory')) : ?>
+    <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-primary ">
+        Add new
+    </a>
+<?php endif; ?>
 
 <?= TreeView::widget([
     'data' => $catTree,
