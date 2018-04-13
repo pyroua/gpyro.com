@@ -24,9 +24,9 @@ return [
             ],
         ],
 
-//        'authManager'  => [
-//            'class' => 'dektrium\rbac\components\DbManager',
-//        ],
+        'authManager'  => [
+            'class' => 'dektrium\rbac\components\DbManager',
+        ],
 
         'view' => [
             'theme' => [
