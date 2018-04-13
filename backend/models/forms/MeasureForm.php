@@ -11,7 +11,6 @@ class MeasureForm extends \yii\base\Model
     public $id;
     public $title;
     public $title_full;
-    public $category_id;
 
     /**
      * @inheritdoc
@@ -21,7 +20,6 @@ class MeasureForm extends \yii\base\Model
         return [
             [['id'], 'integer'],
             [['title'], 'required'],
-            [['category_id'], 'integer'],
             [['title', 'title_full'], 'string', 'max' => 255],
         ];
     }

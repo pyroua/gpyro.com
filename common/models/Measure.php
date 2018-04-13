@@ -29,7 +29,6 @@ class Measure extends BaseModel
     {
         return [
             [['title'], 'required'],
-            [['category_id'], 'integer'],
             [['title', 'title_full'], 'string', 'max' => 255],
         ];
     }
@@ -43,7 +42,6 @@ class Measure extends BaseModel
             'id' => Yii::t('app', 'ID'),
             'title' => Yii::t('app', 'Title'),
             'title_full' => Yii::t('app', 'Title Full'),
-            'category_id' => Yii::t('app', 'Category ID'),
         ];
     }
 
