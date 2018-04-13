@@ -8,6 +8,8 @@ use common\models\ItemOption;
 use common\models\Category;
 use common\models\Measure;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
+use yii\web\ForbiddenHttpException;
 
 class ItemOptionsController extends BaseController
 {
