@@ -229,18 +229,18 @@ use yii\helpers\Html;
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <img src="<?= Yii::$app->urlManagerFrontend->baseUrl?>/img/users/<?=Yii::$app->user->identity->profile->avatar?>" class="user-image" alt="User Image"/>
+                        <span class="hidden-xs"><?= Html::encode(Yii::$app->user->identity->profile->firstname)." ".Html::encode(Yii::$app->user->identity->profile->lastname) ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle"
+                            <img src="<?= Yii::$app->urlManagerFrontend->baseUrl?>/img/users/<?=Yii::$app->user->identity->profile->avatar?>" class="img-circle"
                                  alt="User Image"/>
 
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                <?= Html::encode(Yii::$app->user->identity->profile->firstname)." ".Html::encode(Yii::$app->user->identity->profile->lastname) ?> - <?= Html::encode(Yii::$app->user->identity->profile->signature)?>
+                                <small>Member since <?= Yii::t('user', '{0, date, MMMM dd, YYYY}', [Yii::$app->user->identity->created_at]) ?></small>
                             </p>
                         </li>
                         <!-- Menu Body -->
@@ -258,7 +258,7 @@ use yii\helpers\Html;
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="/user/admin/update?id=<?= Yii::$app->user->id; ?>" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(

@@ -56,6 +56,16 @@ return [
             'showScriptName' => false,
             'rules' => require 'routs.php',
         ],
+
+        'urlManagerFrontend'=>[
+            'enablePrettyUrl' => true,
+            'class' => 'yii\web\UrlManager',
+            'showScriptName'=>false,
+            'suffix' => '.html',
+            'hostInfo' => 'http://gp.loc',
+            'baseUrl' => 'http://gp.loc',
+        ],
+
         'view' => [
             'theme' => [
                 'pathMap' => [
