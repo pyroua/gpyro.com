@@ -31,6 +31,15 @@ echo dmstr\widgets\Menu::widget(
                     Yii::$app->user->can('addEditMeasure')
             ],
             [
+                'label' => Yii::t('app', 'Items'),
+                'url' => ['/items'],
+                'icon' => '  fa-cart-plus',
+                'active' => ViewHelper::isActive($this->context, 'items', ['index', 'create', 'update']),
+                'visible' => Yii::$app->user->can('items') ||
+                    Yii::$app->user->can('deleteItems') ||
+                    Yii::$app->user->can('addEditItems')
+            ],
+            [
                 'label' => Yii::t('app', 'Item options'),
                 'url' => ['/item-options'],
                 'active' => ViewHelper::isActive($this->context, 'item-options', ['index', 'create', 'update']),

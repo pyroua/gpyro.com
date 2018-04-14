@@ -8,7 +8,9 @@ namespace backend\models\forms;
 class ItemForm extends \yii\base\Model
 {
     public $title;
-    public $parent;
+    public $description;
+    public $article;
+    public $category_id;
 
     public function rules()
     {
