@@ -12,7 +12,7 @@ class m180414_115235_charset_fix extends Migration
      */
     public function safeUp()
     {
-        $this->execute("ALTER DATABASE pyro CHARACTER SET utf8 COLLATE utf8_unicode_ci");
+        $this->execute("ALTER DATABASE CHARACTER SET utf8 COLLATE utf8_unicode_ci");
         $this->execute("ALTER TABLE categories CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci");
         $this->execute("ALTER TABLE measures CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci");
         $this->execute("ALTER TABLE item_options CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci");
