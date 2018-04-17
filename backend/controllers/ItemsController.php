@@ -131,7 +131,7 @@ class ItemsController extends BaseController
                             // save image
                             $imagesPath = $model->getImagesPath();
                             if (!is_dir($imagesPath)) {
-                                mkdir($imagesPath, 644, true);
+                                mkdir($imagesPath, 775, true);
                             }
 
                             $imageName = $formModel->getFileName();
