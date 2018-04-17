@@ -18,7 +18,7 @@ use kartik\select2\Select2;
     <?= $form->field($model, 'measure_id')->widget(Select2::class, [
         'data' => $measuresList,
         'language' => 'en',
-        'options' => ['placeholder' => 'Select a category...'],
+        'options' => ['placeholder' => 'Select a measure...'],
         'pluginOptions' => [
             'allowClear' => true
         ],

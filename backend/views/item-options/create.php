@@ -1,8 +1,20 @@
+<?php
+
+$header = ucfirst($action) . ' item option';
+
+$this->params['breadcrumbs'][] = [
+    'label' => 'Item options',
+    'url' => ['/item-options'],
+];
+
+$this->params['breadcrumbs'][] = [
+    'label' => $header,
+];
+
+?>
+
 <h3>
-    <?= $action == 'create' ?
-        Yii::t('app', 'Create') :
-        Yii::t('app', 'Update')
-    ?> item option
+    <?= $header?>
 </h3>
 
 <?= $this->render('_form', [

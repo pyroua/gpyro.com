@@ -5,21 +5,20 @@ namespace backend\assets;
 use yii\web\AssetBundle;
 
 /**
- * Main backend application asset bundle.
+ * backend application asset bundle.
  */
-class AppAsset extends AssetBundle
+class ItemAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    public $css = [
-        'css/site.css',
-    ];
+    public $css = [];
     public $js = [
+
         '/js/items/create_form.js'
+
     ];
     public $depends = [
         'yii\web\JqueryAsset',
-        'yii\web\YiiAsset',
-        //'yii\bootstrap\BootstrapAsset',
     ];
+
 }

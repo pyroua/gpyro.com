@@ -12,6 +12,8 @@ use Yii;
  * @property int $int
  * @property double $decimal
  * @property string $string
+ *
+ * @property ItemOption $itemOption
  */
 class ItemOptionValue extends BaseModel
 {
@@ -49,5 +51,13 @@ class ItemOptionValue extends BaseModel
             'decimal' => Yii::t('app', 'Decimal'),
             'string' => Yii::t('app', 'String'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getItemOption()
+    {
+        return $this->hasOne(ItemOption::class, ['id' => 'option_id']);
     }
 }

@@ -54,7 +54,7 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => require 'routs.php',
+            'rules' => require 'routes.php',
         ],
 
         'urlManagerFrontend'=>[
@@ -62,8 +62,8 @@ return [
             'class' => 'yii\web\UrlManager',
             'showScriptName'=>false,
             'suffix' => '.html',
-            'hostInfo' => 'http://gp.loc',
-            'baseUrl' => 'http://gp.loc',
+            'hostInfo' => 'http://devbackend.gpyro.com',
+            'baseUrl' => 'http://devbackend.gpyro.com',
         ],
 
         'view' => [

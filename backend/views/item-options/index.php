@@ -6,8 +6,15 @@ use yii\helpers\Html;
 use \common\models\ItemOption;
 
 /* @var $this yii\web\View */
+
+$header = 'Item options';
+
+$this->params['breadcrumbs'][] = [
+    'label' => $header,
+];
+
 ?>
-<h2>Item options</h2>
+<h2><?= $header ?></h2>
 
 <a href="<?= Url::to(['item-options/create']) ?>" type="button" class="btn btn-primary ">
     Add new

@@ -12,17 +12,20 @@ use yii\base\Exception;
  * @property string $title
  * @property string $description
  * @property int $type
- * @property ItemOptionCategories[] $categories
  * @property int $measure_id
  * @property string $default_value
  * @property int $required
+ *
+ * @property ItemOptionCategories[] $categories
+ * @property ItemOptionValue[] $itemOptionValues
  */
 class ItemOption extends BaseModel
 {
 
-    const TYPE_STRING = 'string';
     const TYPE_INT = 'integer';
     const TYPE_DECIMAL = 'decimal';
+    const TYPE_STRING = 'string';
+
 
     /**
      * @return array
@@ -35,6 +38,19 @@ class ItemOption extends BaseModel
             self::TYPE_STRING,
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function getTypesTitles()
+    {
+        return [
+            self::TYPE_INT => 'Integer',
+            self::TYPE_DECIMAL => 'decimal',
+            self::TYPE_STRING => 'string',
+        ];
+    }
+
 
     /**
      * @inheritdoc
@@ -93,10 +109,19 @@ class ItemOption extends BaseModel
     public function afterSave($insert, $changedAttributes)
     {
         if ($insert) {
-            foreach ($this->categories as $category) {
-                $category->setAttribute('option_id', $this->id);
-                if (!$category->save()) {
+            /** @var ItemOptionCategories $itemOptionCategory */
+            foreach ($this->categories as $itemOptionCategory) {
+                $itemOptionCategory->setAttribute('option_id', $this->id);
+                if (!$itemOptionCategory->save()) {
                     throw new Exception('Save category error');
+                }
+
+                // треба всім товарам проставити цей параметр, інакше він ен відобразиться в формі
+                // при великій кількості товарів у майбутньому це може працювати дуже довго
+                foreach ($itemOptionCategory->category->items as $item) {
+                    $itemOptionValue = new ItemOptionValue();
+                    $itemOptionValue->setAttributes(['item_id' => $item->id, 'option_id' => $this->id]);
+                    $itemOptionValue->save();
                 }
             }
         }
@@ -126,6 +151,14 @@ class ItemOption extends BaseModel
     public function getCategories()
     {
         return $this->hasMany(ItemOptionCategories::class, ['option_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getItemOptionValues()
+    {
+        return $this->hasMany(ItemOptionValue::class, ['option_id' => 'id']);
     }
 
     /**
@@ -177,6 +210,11 @@ class ItemOption extends BaseModel
         /** @var ItemOptionCategories $cat */
         foreach ($this->categories as $cat) {
             $cat->delete();
+        }
+
+        // delete from item_option_values
+        foreach ($this->itemOptionValues as $optionValue) {
+            $optionValue->delete();
         }
 
         return $this->delete();

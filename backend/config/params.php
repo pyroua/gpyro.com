@@ -1,4 +1,8 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
+    'webDirs' => [
+        'images' => [
+            'items' => '/img/items'
+        ]
+    ]
 ];
