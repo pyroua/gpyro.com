@@ -8,14 +8,14 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-
+$header = 'Items';
 $this->params['breadcrumbs'][] = [
-    'label' => 'Items',
+    'label' => $header,
 ];
 
 ItemIndexAsset::register($this);
 ?>
-<h2>Items</h2>
+<h2><?= $header ?></h2>
 
 <?php if (Yii::$app->user->can('addEditItems')) { ?>
     <div>
