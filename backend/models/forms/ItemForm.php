@@ -22,6 +22,7 @@ class ItemForm extends \yii\base\Model
     public $description;
     public $article;
     public $category_id;
+    public $price;
     public $video_url;
 
     public $file;
@@ -33,6 +34,7 @@ class ItemForm extends \yii\base\Model
     {
         return [
             [['title', 'description', 'category_id', 'article'], 'required'],
+            [['price'], 'double'],
             [['video_url'], 'string'],
             [['file'], 'file', 'extensions' => 'png, jpg'],
         ];

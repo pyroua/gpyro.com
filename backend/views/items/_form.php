@@ -23,6 +23,8 @@ ItemAsset::register($this);
 
     <?= $form->field($model, 'description') ?>
 
+    <?= $form->field($model, 'price') ?>
+
     <?= $form->field($model, 'category_id')
         ->widget(Select2::class, [
             'data' => $categoriesList,
