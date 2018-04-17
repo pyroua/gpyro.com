@@ -1,8 +1,20 @@
+<?php
+
+$this->params['breadcrumbs'][] = [
+    'label' => 'Items',
+    'url' => ['/items'],
+];
+
+$header = ucfirst($action) . ' item';
+
+$this->params['breadcrumbs'][] = [
+    'label' => $header,
+];
+
+?>
+
 <h3>
-    <?= $action == 'create' ?
-        Yii::t('app', 'Create') :
-        Yii::t('app', 'Update')
-    ?> item
+    <?= $header ?>
 </h3>
 
 

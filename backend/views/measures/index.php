@@ -5,8 +5,16 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
+
+$header = 'Measures';
+
+$this->params['breadcrumbs'][] = [
+    'label' => $header,
+];
+
+
 ?>
-<h2>Measures</h2>
+<h2><?= $header ?></h2>
 
 <a href="<?= Url::to(['measures/create']) ?>" type="button" class="btn btn-primary ">
     Add new

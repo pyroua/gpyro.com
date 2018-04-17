@@ -1,8 +1,20 @@
+<?php
+
+$this->params['breadcrumbs'][] = [
+    'label' => 'Categories',
+    'url' => ['/categories'],
+];
+
+$header = ucfirst($action) . ' category';
+
+$this->params['breadcrumbs'][] = [
+    'label' => $header,
+];
+
+?>
+
 <h3>
-    <?= $action == 'create' ?
-        Yii::t('app', 'Create') :
-        Yii::t('app', 'Update')
-    ?> category
+    <?= $header ?>
 </h3>
 
 <?= $this->render('_form', [

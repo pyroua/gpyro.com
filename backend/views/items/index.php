@@ -9,12 +9,17 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 
+$this->params['breadcrumbs'][] = [
+    'label' => 'Items',
+];
+
 ItemIndexAsset::register($this);
 ?>
 <h2>Items</h2>
 
 <div>
-    <a href="<?= Url::to(['items/create' . (isset($category) ? '/' . $category->id : '')]) ?>" type="button" class="btn btn-primary ">
+    <a href="<?= Url::to(['items/create' . (isset($category) ? '/' . $category->id : '')]) ?>" type="button"
+       class="btn btn-primary ">
         Add new
     </a>
 </div>
