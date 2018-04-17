@@ -28,4 +28,14 @@ class BaseModel extends \yii\db\ActiveRecord
 
         return $result;
     }
+
+    /**
+     * @return string
+     * @throws \ReflectionException
+     */
+    public function getClassShortName()
+    {
+        $reflect = new \ReflectionClass($this);
+        return $reflect->getShortName();
+    }
 }

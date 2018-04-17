@@ -9,6 +9,8 @@ use Yii;
  *
  * @property int $option_id
  * @property int $category_id
+ *
+ * @property Category $category
  */
 class ItemOptionCategories extends BaseModel
 {

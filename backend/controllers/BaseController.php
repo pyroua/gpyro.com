@@ -19,7 +19,7 @@ class BaseController extends \yii\web\Controller
     {
         if (empty($this->modelClass))
         {
-            throw new \Exception("Model not set!");
+            throw new \Exception("Model not set in controller!");
         }
 
         $model = $this->modelClass::getById($id);

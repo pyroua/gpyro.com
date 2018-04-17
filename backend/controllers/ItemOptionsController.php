@@ -149,6 +149,11 @@ class ItemOptionsController extends BaseController
         return $formModel;
     }
 
+    /**
+     * @param $id
+     * @return \yii\web\Response
+     * @throws \Exception
+     */
     public function actionDelete($id)
     {
         /** @var ItemOption $category */

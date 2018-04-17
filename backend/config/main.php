@@ -54,7 +54,7 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => require 'routs.php',
+            'rules' => require 'routes.php',
         ],
 
         'urlManagerFrontend'=>[

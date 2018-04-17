@@ -11,6 +11,9 @@ use Yii;
  * @property string $title
  * @property int $parent
  * @property string $logo
+ *
+ * @property ItemOptionCategories $itemOptions
+ * @property Item[] $items
  */
 class Category extends BaseModel
 {
@@ -65,5 +68,22 @@ class Category extends BaseModel
     public static function search(string $title)
     {
          return self::find()->where(['ilike', 'title', $title])->all();
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getItemOptions()
+    {
+        return $this->hasMany(ItemOption::class, ['id' => 'option_id'])
+            ->viaTable(ItemOptionCategories::tableName(), ['category_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getItems()
+    {
+        return $this->hasMany(Item::class, ['category_id' => 'id']);
     }
 }
