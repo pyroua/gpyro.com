@@ -2,12 +2,12 @@
 return [
     'adminEmail' => 'admin@example.com',
     'uploadDirs' => [
-        'images' => [
+        'img' => [
             'items' => '/var/www/gpyro.com/backend/web/images/items'
         ]
     ],
     'webDirs' => [
-        'images' => [
+        'img' => [
             'items' => '/images/items'
         ]
     ]
