@@ -19,7 +19,7 @@ class m180417_182142_create_orders_tables extends Migration
         $this->createTable(self::TABLE_ORDER, [
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
-            'status' => "ENUM(0, 1, 2)",
+            'status' => "ENUM('0', '1', '2')",
             'ts' => $this->timestamp()
 
         ]);
@@ -32,6 +32,7 @@ class m180417_182142_create_orders_tables extends Migration
         ]);
         $this->addPrimaryKey('id', self::TABLE_ORDER_ITEMS, ['item_id', 'order_id']);
     }
+
 
     /**
      * {@inheritdoc}
