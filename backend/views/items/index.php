@@ -52,6 +52,7 @@ ItemIndexAsset::register($this);
             'id',
             'title',
             'article',
+            'price',
             'description',
             [
                 'class' => 'yii\grid\ActionColumn',
