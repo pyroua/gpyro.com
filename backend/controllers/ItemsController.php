@@ -13,6 +13,7 @@ use yii\filters\AccessControl;
 use yii\filters\AjaxFilter;
 use yii\data\ActiveDataProvider;
 use yii\web\UploadedFile;
+use yii\helpers\BaseFileHelper;
 
 class ItemsController extends BaseController
 {
@@ -131,7 +132,7 @@ class ItemsController extends BaseController
                             // save image
                             $imagesPath = $model->getImagesPath();
                             if (!is_dir($imagesPath)) {
-                                mkdir($imagesPath, 0777, true);
+                                BaseFileHelper::createDirectory($imagesPath, 0777, true);
                             }
 
                             $imageName = $formModel->getFileName();

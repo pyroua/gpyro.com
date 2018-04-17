@@ -111,7 +111,7 @@ class Item extends BaseModel
      */
     public function getImagesPath()
     {
-        return Yii::$app->params['uploadDirs']['images']['items'] . DIRECTORY_SEPARATOR . $this->id;
+        return Yii::$app->params['uploadDirs']['images']['items'] . DIRECTORY_SEPARATOR . $this->id . DIRECTORY_SEPARATOR;
     }
 
     /**
