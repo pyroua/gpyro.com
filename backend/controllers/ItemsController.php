@@ -7,7 +7,6 @@ use common\models\Category;
 use common\models\Item;
 use common\models\ItemOptionValue;
 use backend\models\forms\ItemForm;
-use yii\web\NotFoundHttpException;
 use yii\web\ForbiddenHttpException;
 use yii\filters\AccessControl;
 use yii\filters\AjaxFilter;
@@ -32,21 +31,31 @@ class ItemsController extends BaseController
                     throw new ForbiddenHttpException('Access denied');
                 },
                 'rules' => [
-//                    [
-//                        'actions' => ['index'], // these action are accessible
-//                        'allow' => true,
-//                        'permissions' => ['items', 'addEditItems', 'deleteItems'],
-//                    ],
+                    [
+                        'actions' => ['index'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['items', 'addEditItems', 'deleteItems'],
+                    ],
+                    [
+                        'actions' => ['create', 'update'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['addEditItems'],
+                    ],
+                    [
+                        'actions' => ['delete'], // these action are accessible
+                        'allow' => true,
+                        'permissions' => ['deleteItems'],
+                    ],
                     [    // all the action are accessible to admin
                         'allow' => true,
                         'roles' => ['admin'], //
                     ],
                 ],
             ],
-//            [
-//                'class' => AjaxFilter::class,
-//                'only' => ['test']
-//            ],
+            [
+                'class' => AjaxFilter::class,
+                'only' => ['get-options']
+            ],
         ];
     }
 

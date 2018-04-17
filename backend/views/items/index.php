@@ -17,12 +17,14 @@ ItemIndexAsset::register($this);
 ?>
 <h2>Items</h2>
 
-<div>
-    <a href="<?= Url::to(['items/create' . (isset($category) ? '/' . $category->id : '')]) ?>" type="button"
-       class="btn btn-primary ">
-        Add new
-    </a>
-</div>
+<?php if (Yii::$app->user->can('addEditItems')) { ?>
+    <div>
+        <a href="<?= Url::to(['items/create' . (isset($category) ? '/' . $category->id : '')]) ?>" type="button"
+           class="btn btn-primary ">
+            Add new
+        </a>
+    </div>
+<?php } ?>
 
 <div class="form-group field-itemform-title required">
     <label class="control-label" for="itemform-title"></label>
@@ -41,10 +43,6 @@ ItemIndexAsset::register($this);
     ]) ?>
 </div>
 
-<div>
-
-</div>
-
 <?php if (!empty($categoryId)) { ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -60,20 +58,23 @@ ItemIndexAsset::register($this);
                 'template' => '{update} {delete}',
                 'buttons' => [
                     'update' => function ($url, $model) {
-                        return Html::a(
-                            '<span class="glyphicon glyphicon-edit"></span> Edit',
-                            $url, [
-                            'class' => 'btn btn-default btn-xs'
-                        ]);
+                        return Yii::$app->user->can('addEditItems') ?
+                            Html::a(
+                                '<span class="glyphicon glyphicon-edit"></span> Edit',
+                                $url, [
+                                'class' => 'btn btn-default btn-xs'
+                            ]) : '';
                     },
                     'delete' => function ($url, $model, $key) {
-                        return Html::button(
+                        return Yii::$app->user->can('deleteItems') ?
+                            Html::button(
                                 '<span class="glyphicon glyphicon-remove"></span> Delete',
                                 [
                                     'class' => 'btn btn-danger btn-xs',
                                     'data-toggle' => 'modal',
                                     'data-target' => '#myModal' . $model->id
-                                ]) . $this->render('_modal_confirm', ['id' => $model->id]); //add modal
+                                ]) . $this->render('_modal_confirm', ['id' => $model->id]) :
+                            '';
                     },
                 ],
             ],
