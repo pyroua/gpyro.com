@@ -8,14 +8,15 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
+
 $header = 'Items';
+$this->title = $header;
 $this->params['breadcrumbs'][] = [
-    'label' => $header,
+    'label' => 'Items',
 ];
 
 ItemIndexAsset::register($this);
 ?>
-<h2><?= $header ?></h2>
 
 <?php if (Yii::$app->user->can('addEditItems')) { ?>
     <div>
@@ -54,7 +55,6 @@ ItemIndexAsset::register($this);
             'description',
             [
                 'class' => 'yii\grid\ActionColumn',
-                'contentOptions' => ['class' => 'text-right'],
                 'template' => '{update} {delete}',
                 'buttons' => [
                     'update' => function ($url, $model) {

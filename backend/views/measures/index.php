@@ -7,21 +7,20 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 
 $header = 'Measures';
-
+$this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => $header,
 ];
 
 
 ?>
-<h2><?= $header ?></h2>
 
 <a href="<?= Url::to(['measures/create']) ?>" type="button" class="btn btn-primary ">
     Add new
 </a>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'columns' => [

@@ -73,7 +73,7 @@ echo dmstr\widgets\Menu::widget(
                 'visible' => Yii::$app->user->isGuest
             ],
             [
-                'label' => 'Some tools',
+                'label' => 'Dev tools',
                 'icon' => 'share',
                 'url' => '#',
                 'items' => [

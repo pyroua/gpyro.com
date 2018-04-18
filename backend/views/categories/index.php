@@ -6,13 +6,12 @@ use execut\widget\TreeView;
 /* @var $this yii\web\View */
 
 $header = 'Categories';
-
+$this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => $header,
 ];
 
 ?>
-    <h2><?= $header ?></h2>
 
 <?php if (Yii::$app->user->can('addEditCategory')) : ?>
     <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-primary ">
@@ -22,7 +21,7 @@ $this->params['breadcrumbs'][] = [
 
 <?= TreeView::widget([
     'data' => $catTree,
-    'size' => TreeView::SIZE_MIDDLE,
+    'size' => TreeView::SIZE_NORMAL,
     'header' => 'Categories tree',
     'searchOptions' => [
         'inputOptions' => [
@@ -30,7 +29,8 @@ $this->params['breadcrumbs'][] = [
         ],
     ],
     'clientOptions' => [
-//        'onNodeSelected' => $onSelect,
+         'highlightSelected' => false,
+//        'onNodeSelected' => '',
 //        'onNodeUnselected  ' => $onUnSelect,
         //'selectedBackColor' => 'rgb(40, 153, 57)',
         'borderColor' => '#fff',

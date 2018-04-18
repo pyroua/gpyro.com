@@ -75,6 +75,11 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function action404()
+    {
+        return $this->render('404');
+    }
+
     /**
      * Logs in a user.
      *
