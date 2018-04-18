@@ -55,7 +55,6 @@ ItemIndexAsset::register($this);
             'description',
             [
                 'class' => 'yii\grid\ActionColumn',
-                'contentOptions' => ['class' => 'text-right'],
                 'template' => '{update} {delete}',
                 'buttons' => [
                     'update' => function ($url, $model) {

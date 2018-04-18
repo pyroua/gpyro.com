@@ -62,7 +62,6 @@ $this->params['breadcrumbs'][] = [
         ],
         [
             'class' => 'yii\grid\ActionColumn',
-            'contentOptions' => ['class' => 'text-right'],
             'template' => '{update} {delete}',
             'buttons' => [
                 'update' => function ($url, $model) {

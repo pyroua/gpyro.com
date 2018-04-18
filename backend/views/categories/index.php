@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = [
 
 <?= TreeView::widget([
     'data' => $catTree,
-    'size' => TreeView::SIZE_MIDDLE,
+    'size' => TreeView::SIZE_NORMAL,
     'header' => 'Categories tree',
     'searchOptions' => [
         'inputOptions' => [
@@ -29,7 +29,8 @@ $this->params['breadcrumbs'][] = [
         ],
     ],
     'clientOptions' => [
-//        'onNodeSelected' => $onSelect,
+         'highlightSelected' => false,
+//        'onNodeSelected' => '',
 //        'onNodeUnselected  ' => $onUnSelect,
         //'selectedBackColor' => 'rgb(40, 153, 57)',
         'borderColor' => '#fff',
