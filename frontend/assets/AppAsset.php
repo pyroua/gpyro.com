@@ -29,7 +29,7 @@ class AppAsset extends AssetBundle
         'js/jquery.scrollUp.min.js',
         'js/bootstrap.min.js',
         'js/jquery.prettyPhoto.js',
-        'js/main.js'
+        'js/main.js?5'
     ];
     public $depends = [
         'yii\web\YiiAsset',
