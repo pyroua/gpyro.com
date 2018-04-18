@@ -160,6 +160,8 @@ AppAsset::register($this);
 
 
 <footer id="footer"><!--Footer-->
+
+    <?php /*?>
     <div class="footer-top">
         <div class="container">
             <div class="row">
@@ -239,6 +241,7 @@ AppAsset::register($this);
             </div>
         </div>
     </div>
+    <?php */?>
 
     <div class="footer-widget">
         <div class="container">

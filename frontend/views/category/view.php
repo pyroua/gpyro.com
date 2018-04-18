@@ -23,6 +23,10 @@ $this->params['breadcrumbs'][] = [
                     <?php foreach ($items as $item) : ?>
                         <?= ItemView::widget(['item' => $item]) ?>
                     <?php endforeach; ?>
+
+                    <?php if (empty($items)) { ?>
+                        <div>No items here</div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
