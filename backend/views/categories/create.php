@@ -6,16 +6,12 @@ $this->params['breadcrumbs'][] = [
 ];
 
 $header = ucfirst($action) . ' category';
-
+$this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => $header,
 ];
 
 ?>
-
-<h3>
-    <?= $header ?>
-</h3>
 
 <?= $this->render('_form', [
     'model' => $formModel,

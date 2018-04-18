@@ -1,7 +1,7 @@
 <?php
 
 $header = ucfirst($action) . ' item option';
-
+$this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => 'Item options',
     'url' => ['/item-options'],
@@ -12,10 +12,6 @@ $this->params['breadcrumbs'][] = [
 ];
 
 ?>
-
-<h3>
-    <?= $header?>
-</h3>
 
 <?= $this->render('_form', [
     'model' => $formModel,
