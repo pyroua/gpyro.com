@@ -9,7 +9,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= Yii::$app->urlManagerFrontend->baseUrl?>/img/users/<?=Yii::$app->user->identity->profile->avatar?>" class="img-circle" alt="User Image"/>
+                <img src="<?= Yii::$app->urlManagerFrontend->baseUrl?>/storage/img/users/<?=Yii::$app->user->identity->profile->avatar?>" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
                 <p><?= Html::encode(Yii::$app->user->identity->profile->firstname)." ".Html::encode(Yii::$app->user->identity->profile->lastname) ?></p>

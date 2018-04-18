@@ -54,6 +54,24 @@ environments/            contains environment-based overrides
 common/config/db.php.dist скопыювати як common/config/db.php і внести свої дані по своїй БД 
 ```
 
+Nginx
+
+В конфіги фронта і бекенда додати:
+
+```
+    # всі запити директорії сторедж перенаправляєм в вище web директорії
+    #при спробі запросити неіснуючий файл редіректим  на індекс
+    location /storage {
+        root  /var/www/gpyro.com; # рут директорія конкретної машини
+        try_files $uri /storage/$uri;
+        
+        location /storage {
+            try_files $uri $uri/ /index.php$is_args$args;
+        }
+    }
+
+```
+
 Ініціалізація
 -------------------
 
