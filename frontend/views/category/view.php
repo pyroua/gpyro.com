@@ -1,5 +1,6 @@
 <?php
     use frontend\widgets\CategoriesList;
+    use dvizh\cart\widgets\BuyButton;
 ?>
 <?php
 $this->params['breadcrumbs'][] = [
@@ -25,7 +26,14 @@ $this->params['breadcrumbs'][] = [
                                     <img src="<?=$product->logoWebPath?>" alt="" />
                                     <h2>$<?=$product->price?></h2>
                                     <p><a href="/item/view/<?=$product->id?>"><?=$product->title?></a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <?php if (!Yii::$app->user->isGuest):?>
+                                    <?= BuyButton::widget([
+                                        'model' => $product,
+                                        'text' => '<i class="fa fa-shopping-cart"></i>Add to cart',
+                                        'htmlTag' => 'a',
+                                        'cssClass' => 'btn btn-default add-to-cart'
+                                    ]) ?>
+                                    <?php endif;?>
                                 </div>
                             </div>
                             <div class="choose">

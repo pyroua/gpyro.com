@@ -10,6 +10,8 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
+use dvizh\cart\widgets\ElementsList;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -135,9 +137,10 @@ AppAsset::register($this);
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="search_box pull-right">
+                        <?=ElementsList::widget(['type' => ElementsList::TYPE_DROPDOWN, 'showTruncate' => true, 'showOffer' => true,'showOptions' =>false, 'showTotal' => true, 'elementView' => '@frontend/views/cart/elementListRowFull']);?>
+                        <!-- <div class="search_box pull-right">
                             <input type="text" placeholder="Search"/>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -145,11 +148,13 @@ AppAsset::register($this);
     </header><!--/header-->
 
     <div class="container">
+        <div class="breadcrumbs">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
+        </div>
     </div>
 </div>
 

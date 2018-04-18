@@ -2521,3 +2521,6 @@ h2.title {
 }
 
 
+.dvizh-cart-block .dropdown-menu {
+  min-width: 450px !important;
+}

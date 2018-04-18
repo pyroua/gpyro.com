@@ -1,5 +1,7 @@
 <?php
 use frontend\widgets\CategoriesList;
+use dvizh\cart\widgets\BuyButton;
+use dvizh\cart\widgets\ChangeCount;
 
 $this->params['breadcrumbs'][] = [
     'label' => $item->title,
@@ -27,14 +29,20 @@ $this->params['breadcrumbs'][] = [
                             <h2><?=$item->title;?></h2>
                             <p><?=$item->article;?></p>
                             <img src="images/product-details/rating.png" alt="" />
-                            <span>
+                                <span>
 									<span>$<?=$item->price?></span>
+                                    <?php if (!Yii::$app->user->isGuest):?>
 									<label>Quantity:</label>
-									<input type="text" value="1" />
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
+
+                                    <?=ChangeCount::widget(['model' => $item, 'showArrows' => false]);?>
+
+                                    <?= BuyButton::widget([
+                                            'model' => $item,
+                                            'text' => '<i class="fa fa-shopping-cart"></i>Add to cart',
+                                            'htmlTag' => 'button',
+                                            'cssClass' => 'btn btn-fefault cart'
+                                    ]) ?>
+                                    <?php endif;?>
 								</span>
                             <?php foreach ($itemOptions as $option): ?>
                             <p><b><?php echo \common\models\ItemOption::getById($option->option_id)->title;?>: </b> <?=$option->string?></p>
