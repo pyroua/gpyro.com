@@ -90,8 +90,8 @@ return [
         // Yii2 User Extended
         'userextended' => [
             'class' => 'cinghie\userextended\Module',
-            'avatarPath' => '@webroot/img/users/', // Path to your avatar files
-            'avatarURL' => '@web/img/users/', // Url to your avatar files
+            'avatarPath' => '@storage/img/users/', // Path to your avatar files
+            'avatarURL' => '/storage/img/users/', // Url to your avatar files
             'defaultRole' => '',
             'avatar' => true,
             'bio' => false,

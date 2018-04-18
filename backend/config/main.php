@@ -62,8 +62,8 @@ return [
             'class' => 'yii\web\UrlManager',
             'showScriptName'=>false,
             'suffix' => '.html',
-            'hostInfo' => 'http://devbackend.gpyro.com',
-            'baseUrl' => 'http://devbackend.gpyro.com',
+            'hostInfo' => '/',
+            'baseUrl' => '/',
         ],
 
         'view' => [
