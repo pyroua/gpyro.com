@@ -26,7 +26,8 @@
         "dektrium/yii2-user": "^0.9.14",
         "cinghie/yii2-user-extended": "dev-master",
         "yiisoft/yii2-authclient": "^2.1.0",
-        "cinghie/yii2-traits": "*"
+        "cinghie/yii2-traits": "*",
+        "dvizh/yii2-cart": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

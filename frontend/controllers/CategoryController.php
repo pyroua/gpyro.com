@@ -17,9 +17,8 @@ class CategoryController extends \yii\web\Controller
 
     public function actionView($id)
     {
-        //TODO: use relations and findOne
-        $current = Category::find()->where(['id' => $id])->one();
-        $items = Item::find()->where(['category_id' => $id])->all();
+        $current = Category::findOne(['id' => $id]);
+        $items = $current->items;
 
         return $this->render('view', ['current' => $current, 'items' => $items]);
     }

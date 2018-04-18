@@ -33,6 +33,7 @@ return [
                 'pathMap' => [
                     '@dektrium/rbac/views' => '@vendor/cinghie/yii2-user-extended/views',
                     '@dektrium/user/views' => '@vendor/cinghie/yii2-user-extended/views',
+                    '@vendor/dvizh/yii2-cart/src/views/default' => '@frontend/views/cart/'
                 ],
             ],
         ],
@@ -53,6 +54,13 @@ return [
                 // etc.
             ],
         ]*/
+
+        'cart' => [
+            'class' => 'dvizh\cart\Cart',
+            'currency' => '$', //Валюта
+            'currencyPosition' => 'before', //after или before (позиция значка валюты относительно цены)
+            'priceFormat' => [2,'.', ''], //Форма цены
+        ],
     ],
 
     'modules' => [
@@ -108,6 +116,10 @@ return [
             'signature' => true,
             'terms' => true,
             'showTitles' => true, // Set false in adminLTE
+        ],
+
+        'cart' => [
+            'class' => 'dvizh\cart\Module',
         ],
     ],
 ];
