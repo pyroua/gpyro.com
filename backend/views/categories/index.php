@@ -6,13 +6,12 @@ use execut\widget\TreeView;
 /* @var $this yii\web\View */
 
 $header = 'Categories';
-
+$this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => $header,
 ];
 
 ?>
-    <h2><?= $header ?></h2>
 
 <?php if (Yii::$app->user->can('addEditCategory')) : ?>
     <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-primary ">

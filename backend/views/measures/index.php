@@ -7,14 +7,13 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 
 $header = 'Measures';
-
+$this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => $header,
 ];
 
 
 ?>
-<h2><?= $header ?></h2>
 
 <a href="<?= Url::to(['measures/create']) ?>" type="button" class="btn btn-primary ">
     Add new

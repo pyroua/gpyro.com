@@ -123,7 +123,6 @@ class ItemsController extends BaseController
     private function processData(ItemForm $formModel, $model = false)
     {
         if (Yii::$app->request->post()) {
-            var_dump(Yii::$app->request->post());
             try {
                 $formModel->load(Yii::$app->request->post());
                 $formModel->file = UploadedFile::getInstance($formModel, 'file');

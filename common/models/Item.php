@@ -18,6 +18,8 @@ use Yii;
  *
  * @property ItemOptionValue[] $itemOptionValues
  * @property string $logoWebPath
+ * @property string $logoPath
+ * @property string $imagesPath
  *
  */
 class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
@@ -60,6 +62,15 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
     }
 
     /**
+     * @param bool $insert
+     * @return bool
+     */
+    public function beforeSave($insert)
+    {
+        return parent::beforeSave($insert);
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getItemOptionValues()
@@ -91,7 +102,9 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
         }
 
         //delete logo
-
+        if (!empty($this->logoPath)) {
+            @unlink($this->logoPath);
+        }
         //delete item
         return $this->delete();
     }
@@ -104,15 +117,20 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
         return Yii::$app->params['uploadDirs']['images']['items'] . DIRECTORY_SEPARATOR . $this->id . DIRECTORY_SEPARATOR;
     }
 
+    public function getLogoPath()
+    {
+        return !empty($this->logo) ? $this->imagesPath . $this->logo : null;
+    }
+
     /**
      * @return string
      */
     public function getLogoWebPath()
     {
         return Yii::$app->params['webDirs']['images']['items'] .
-            DIRECTORY_SEPARATOR .
+            '/' .
             $this->id .
-            DIRECTORY_SEPARATOR .
+            '/' .
             $this->logo;
     }
 
