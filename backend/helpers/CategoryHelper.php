@@ -19,7 +19,7 @@ class CategoryHelper
      * @param Category[] $categories
      * @return array
      */
-    public static function buildCatTree(array $categories)
+    public static function buildCatTree(array $categories, $showButtons = true)
     {
         $result = [];
 
@@ -28,7 +28,7 @@ class CategoryHelper
             if ($cat->parent == 0) {
                 $result[] = [
                     'id' => $cat->id,
-                    'text' => $cat->title . self::getCatTreeButtons($cat->id),
+                    'text' => $cat->title . ($showButtons ? self::getCatTreeButtons($cat->id) : ''),
                     'nodes' => []
                 ];
 
@@ -38,7 +38,7 @@ class CategoryHelper
 
         // build other levels
         foreach ($result as $k => $val) {
-            self::processCatLevel($result[$k], $categories);
+            self::processCatLevel($result[$k], $categories, $showButtons);
         }
 
         return $result;
@@ -48,13 +48,13 @@ class CategoryHelper
      * @param $cat
      * @param $data
      */
-    private static function processCatLevel(&$cat, &$data)
+    private static function processCatLevel(&$cat, &$data, &$showButtons = true)
     {
         foreach ($data as $k => $val) {
             if ($val->parent == $cat['id']) {
                 $cat['nodes'][] = [
                     'id' => $val->id,
-                    'text' => $val->title . self::getCatTreeButtons($val->id),
+                    'text' => $val->title . ($showButtons ? self::getCatTreeButtons($val->id) : ''),
                     'nodes' => []
                 ];
 
@@ -63,7 +63,7 @@ class CategoryHelper
         }
 
         foreach ($cat['nodes'] as $k => $val) {
-            self::processCatLevel($cat['nodes'][$k], $data);
+            self::processCatLevel($cat['nodes'][$k], $data, $showButtons);
         }
     }
 
