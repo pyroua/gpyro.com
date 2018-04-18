@@ -15,11 +15,3 @@ $this->params['breadcrumbs'][] = [
 //ItemIndexAsset::register($this);
 ?>
 <h2><?= $header ?></h2>
-
-<?php if (Yii::$app->user->can('addEditOrders')) { ?>
-    <div>
-        <a href="<?= Url::to(['orders/create']) ?>" type="button" class="btn btn-primary ">
-            Add new
-        </a>
-    </div>
-<?php } ?>
