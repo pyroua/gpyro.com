@@ -52,7 +52,7 @@ ItemAsset::register($this);
         </div>
     <?php } ?>
 
-    <?= $form->field($model, 'file')->fileInput() ?>
+    <?= $form->field($model, 'file')->fileInput()->label('Photo') ?>
 
     <?= $form->field($model, 'video_url') ?>
 

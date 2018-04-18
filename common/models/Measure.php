@@ -41,7 +41,7 @@ class Measure extends BaseModel
         return [
             'id' => Yii::t('app', 'ID'),
             'title' => Yii::t('app', 'Title'),
-            'title_full' => Yii::t('app', 'Title Full'),
+            'title_full' => Yii::t('app', 'Title full'),
         ];
     }
 
