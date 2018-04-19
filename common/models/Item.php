@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\AttributeBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "items".
@@ -15,6 +17,7 @@ use Yii;
  * @property float $price
  * @property string $logo
  * @property string $video_url
+ * @property int $user_id
  *
  * @property ItemOptionValue[] $itemOptionValues
  * @property string $logoWebPath
@@ -24,6 +27,22 @@ use Yii;
  */
 class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
 {
+
+    /**
+     * @return array
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => AttributeBehavior::class,
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => 'user_id',
+                ],
+                'value' => Yii::$app->user->id,
+            ],
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -41,7 +60,8 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
         return [
             [['title', 'category_id'], 'required'],
             [['article', 'title', 'description', 'category_id', 'logo', 'video_url'], 'string', 'max' => 255],
-            [['price'], 'double']
+            [['price'], 'double'],
+            [['user_id'], 'integer']
         ];
     }
 
@@ -58,6 +78,7 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
             'category_id' => Yii::t('app', 'Category ID'),
             'price' => Yii::t('app', 'Price'),
             'logo' => Yii::t('app', 'Logo'),
+            'user_id' => Yii::t('app', 'User ID'),
         ];
     }
 
@@ -134,6 +155,7 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
             $this->logo;
     }
 
+    //TODO: що методи роботи із замовленям роблять в товарах!!!???
     public function getCartId()
     {
         return $this->id;

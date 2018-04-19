@@ -1,7 +1,10 @@
 <?php
+
 use frontend\widgets\CategoriesList;
 use dvizh\cart\widgets\BuyButton;
 use dvizh\cart\widgets\ChangeCount;
+
+/** @var \common\models\Item $item */
 
 $this->params['breadcrumbs'][] = [
     'label' => $item->title,
@@ -20,34 +23,38 @@ $this->params['breadcrumbs'][] = [
                 <div class="product-details"><!--product-details-->
                     <div class="col-sm-5">
                         <div class="view-product">
-                            <img src="<?=$item->logoWebPath;?>" alt="" />
+                            <img src="<?= $item->logoWebPath; ?>" alt=""/>
                         </div>
 
                     </div>
                     <div class="col-sm-7">
                         <div class="product-information"><!--/product-information-->
-                            <h2><?=$item->title;?></h2>
-                            <p><?=$item->article;?></p>
-                            <img src="images/product-details/rating.png" alt="" />
-                                <span>
-									<span>$<?=$item->price?></span>
-                                    <?php if (!Yii::$app->user->isGuest):?>
-									<label>Quantity:</label>
+                            <h2><?= $item->title; ?></h2>
+                            <p><?= $item->article; ?></p>
+                            <img src="images/product-details/rating.png" alt=""/>
+                            <span>
+									<span>$<?= $item->price ?></span>
+                                <?php if (!Yii::$app->user->isGuest): ?>
+                                    <label>Quantity:</label>
 
-                                    <?=ChangeCount::widget(['model' => $item, 'showArrows' => false]);?>
+                                    <?= ChangeCount::widget(['model' => $item, 'showArrows' => false]); ?>
 
                                     <?= BuyButton::widget([
-                                            'model' => $item,
-                                            'text' => '<i class="fa fa-shopping-cart"></i>Add to cart',
-                                            'htmlTag' => 'button',
-                                            'cssClass' => 'btn btn-fefault cart'
+                                        'model' => $item,
+                                        'text' => '<i class="fa fa-shopping-cart"></i>Add to cart',
+                                        'htmlTag' => 'button',
+                                        'cssClass' => 'btn btn-fefault cart'
                                     ]) ?>
-                                    <?php endif;?>
+                                <?php endif; ?>
 								</span>
-                            <?php foreach ($itemOptions as $option): ?>
-                            <p><b><?php echo \common\models\ItemOption::getById($option->option_id)->title;?>: </b> <?=$option->string?></p>
+                            <?php
+                            foreach ($item->itemOptionValues as $optionValue): ?>
+                                <p>
+                                    <b><?= $optionValue->itemOption->title; ?>: </b>
+                                    <?= $optionValue->string ?>
+                                </p>
                             <?php endforeach; ?>
-                            <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+                            <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt=""/></a>
                         </div><!--/product-information-->
                     </div>
                 </div><!--/product-details-->

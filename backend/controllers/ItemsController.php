@@ -13,6 +13,7 @@ use yii\filters\AjaxFilter;
 use yii\data\ActiveDataProvider;
 use yii\web\UploadedFile;
 use yii\helpers\BaseFileHelper;
+use common\helpers\UserHelper;
 
 class ItemsController extends BaseController
 {
@@ -190,27 +191,37 @@ class ItemsController extends BaseController
         return $formModel;
     }
 
+    /**
+     * @param int|null $id
+     * @return string
+     */
     public function actionIndex(int $id = null)
     {
         $data = [
             'categoryId' => $id,
             'categoriesList' => Category::getArrayList(),
-            'dataProvider' => new ActiveDataProvider([
-                'query' => Item::find()->where(['category_id' => $id]),
-                'pagination' => [
-                    'pageSize' => 50,
-                ],
-            ])
         ];
 
+        if(UserHelper::hasRole('admin')) { // адміну фігарим все
+            $items = Item::find();
+        } else {
+            $items = Item::find(['user_id' => Yii::$app->user->id]);
+        }
+
         if ($id !== null) {
-            $category = Category::findOne(['id' => $id]);
-            if (!$category) {
-                $id = null;
-            } else {
-                $data['category'] = $category;
+            $items->andWhere(['category_id' => $id]);
+            $data['category'] = Category::findOne(['id' => $id]);
+            if (!$data['category']) {
+                throw new NotFoundHttpException('Category not found');
             }
         }
+
+        $data['dataProvider'] = new ActiveDataProvider([
+            'query' => $items,
+            'pagination' => [
+                'pageSize' => 50,
+            ],
+        ]);
 
         return $this->render('index', $data);
     }
