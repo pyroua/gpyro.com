@@ -191,4 +191,22 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
         ];
     }
 
+    public function getYoutubeEmbedUrl()
+    {
+        if (empty($this->video_url))
+        {
+            return;
+        }
+
+        $exploded = explode('/watch?v=', $this->video_url);
+        if (isset($exploded[1]))
+        {
+            $id = substr($exploded[1], 0, 11);
+            if(strlen($id) == 11)
+            {
+                return 'https://www.youtube.com/embed/' . $id;
+            }
+        }
+    }
+
 }

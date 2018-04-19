@@ -197,33 +197,31 @@ class ItemsController extends BaseController
      */
     public function actionIndex(int $id = null)
     {
-        $data = [
+        $viewData = [
             'categoryId' => $id,
             'categoriesList' => Category::getArrayList(),
         ];
 
-        if(UserHelper::hasRole('admin')) { // адміну фігарим все
-            $items = Item::find();
-        } else {
-            $items = Item::find(['user_id' => Yii::$app->user->id]);
-        }
+        $items = UserHelper::hasRole('admin') ?
+            Item::find() :
+            Item::find(['user_id' => Yii::$app->user->id]);
 
         if ($id !== null) {
             $items->andWhere(['category_id' => $id]);
-            $data['category'] = Category::findOne(['id' => $id]);
-            if (!$data['category']) {
+            $viewData['category'] = Category::findOne(['id' => $id]);
+            if (!$viewData['category']) {
                 throw new NotFoundHttpException('Category not found');
             }
         }
 
-        $data['dataProvider'] = new ActiveDataProvider([
+        $viewData['dataProvider'] = new ActiveDataProvider([
             'query' => $items,
             'pagination' => [
                 'pageSize' => 50,
             ],
         ]);
 
-        return $this->render('index', $data);
+        return $this->render('index', $viewData);
     }
 
     /**

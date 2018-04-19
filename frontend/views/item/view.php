@@ -54,10 +54,14 @@ $this->params['breadcrumbs'][] = [
                                     <?= $optionValue->string ?>
                                 </p>
                             <?php endforeach; ?>
-                            <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt=""/></a>
+
                         </div><!--/product-information-->
                     </div>
                 </div><!--/product-details-->
+
+                <?php if ($item->youtubeEmbedUrl) {?>
+                    <iframe width="640" height="480" src="<?=$item->youtubeEmbedUrl?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <?php }?>
 
             </div>
         </div>
