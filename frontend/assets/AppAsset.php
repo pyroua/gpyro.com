@@ -23,16 +23,14 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/html5shiv.js',
-        'js/respond.min.js',
-        'js/jquery.js',
         'js/price-range.js',
         'js/jquery.scrollUp.min.js',
         'js/bootstrap.min.js',
         'js/jquery.prettyPhoto.js',
-        'js/main.js?5'
+        'js/main.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapAsset'
     ];
 }

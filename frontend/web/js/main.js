@@ -27,7 +27,7 @@ $(document).ready(function(){
 	        zIndex: 2147483647 // Z-Index for the overlay
 		});
 
-		$('#dvizh-cart-drop').click(function () {
+        $('.col-sm-3').on('click', '#dvizh-cart-drop', function () {
             if ($('.dropdown-menu').is(":visible")) $('.dropdown-menu').hide('slow');
             else $('.dropdown-menu').show('slow');
         });

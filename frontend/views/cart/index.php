@@ -6,6 +6,8 @@ use dvizh\cart\widgets\CartInformer;
 use dvizh\cart\widgets\ChangeOptions;
 use dvizh\cart\widgets\ElementCost;
 
+use dvizh\order\widgets\OrderForm;
+
 $this->title = yii::t('cart', 'Cart');
 
 $this->params['breadcrumbs'][] = [
@@ -56,5 +58,6 @@ $this->params['breadcrumbs'][] = [
                 </tbody>
             </table>
         </div>
+        <?=OrderForm::widget(['view' => '@frontend/views/order/orderFormFull']);?>
     </div>
 </section> <!--/#cart_items-->

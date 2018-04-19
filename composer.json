@@ -27,7 +27,10 @@
         "cinghie/yii2-user-extended": "dev-master",
         "yiisoft/yii2-authclient": "^2.1.0",
         "cinghie/yii2-traits": "*",
-        "dvizh/yii2-cart": "@dev"
+        "dvizh/yii2-cart": "@dev",
+        "kartik-v/yii2-mpdf": "@dev",
+        "nex/yii2-datepicker": "@dev",
+        "dvizh/yii2-order": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -47,5 +50,5 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         }
-    ]
+    ],
 }
