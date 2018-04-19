@@ -1,5 +1,6 @@
 <?php
 return [
+    'bootstrap' => ['dvizh\order\Bootstrap'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',

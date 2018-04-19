@@ -32,7 +32,7 @@ echo dmstr\widgets\Menu::widget(
             ],
             [
                 'label' => Yii::t('app', 'Orders'),
-                'url' => ['/orders'],
+                'url' => ['/order/order'],
                 'icon' => ' fa-shopping-cart',
                 'active' => ViewHelper::isActive($this->context, 'orders', ['index', 'create', 'update']),
                 'visible' => Yii::$app->user->can('orders') ||

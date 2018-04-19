@@ -30,7 +30,10 @@
         "dvizh/yii2-cart": "@dev",
         "kartik-v/yii2-mpdf": "@dev",
         "nex/yii2-datepicker": "@dev",
-        "dvizh/yii2-order": "@dev"
+        "2amigos/yii2-grid-view-library": "*",
+        "kartik-v/yii2-grid": "*",
+        "kartik-v/yii2-export": "@dev",
+        "udokmeci/yii2-phone-validator" : "~1.0.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -50,5 +53,10 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "dvizh\\order\\": "common/modules/order/src"
+        }
+    }
 }
