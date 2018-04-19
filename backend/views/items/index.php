@@ -5,6 +5,7 @@ use kartik\select2\Select2;
 use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\helpers\Html;
+use common\helpers\UserHelper;
 
 
 /* @var $this yii\web\View */
@@ -44,7 +45,7 @@ ItemIndexAsset::register($this);
     ]) ?>
 </div>
 
-<?php if (!empty($categoryId)) { ?>
+<?php if (!empty($categoryId) || UserHelper::hasRole('admin')) { ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [

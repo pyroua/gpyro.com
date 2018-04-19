@@ -8,10 +8,11 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 $header = 'Orders';
+$this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => $header,
 ];
 
 //ItemIndexAsset::register($this);
 ?>
-<h2><?= $header ?></h2>
+
