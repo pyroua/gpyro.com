@@ -32,12 +32,28 @@ echo dmstr\widgets\Menu::widget(
             ],
             [
                 'label' => Yii::t('app', 'Orders'),
-                'url' => ['/order/order'],
+                'url' => '#',
                 'icon' => ' fa-shopping-cart',
-                'active' => ViewHelper::isActive($this->context, 'orders', ['index', 'create', 'update']),
-                'visible' => Yii::$app->user->can('orders') ||
-                    Yii::$app->user->can('deleteOrders') ||
-                    Yii::$app->user->can('addEditOrders')
+                'visible' => Yii::$app->user->can('orders'),
+                'items' => [
+                    [
+                        'label' => Yii::t('app', 'Orders list'),
+                        'url' => ['/order/order'],
+                    ],
+                    ['label' => Yii::t('app', 'Fields'),
+                        'url' => ['/order/field'],
+                        'visible' => Yii::$app->user->can('configOrder'),
+                    ],
+                    ['label' => Yii::t('app', 'Shipping type'),
+                        'url' => ['/order/shipping-type'],
+                        'visible' => Yii::$app->user->can('configOrder'),
+                    ],
+                    ['label' => Yii::t('app', 'Payment params'),
+                        'url' => ['/order/payment-type'],
+                        'visible' => Yii::$app->user->can('configOrder'),
+
+                    ],
+                ],
             ],
             [
                 'label' => Yii::t('app', 'Items'),
