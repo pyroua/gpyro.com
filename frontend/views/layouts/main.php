@@ -36,7 +36,7 @@ AppAsset::register($this);
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+                                <li><a href="#"><i class="fa fa-phone"></i> +38 050 4625757</a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i> info@gpyro.com</a></li>
                             </ul>
                         </div>
@@ -243,7 +243,7 @@ AppAsset::register($this);
     </div>
     <?php */?>
 
-    <div class="footer-widget">
+    <?php /*<div class="footer-widget">
         <div class="container">
             <div class="row">
                 <div class="col-sm-2">
@@ -307,13 +307,12 @@ AppAsset::register($this);
 
             </div>
         </div>
-    </div>
+    </div> */?>
 
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-                <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+                <p class="pull-left">Copyright © <?= date('Y')?> <a href="gpyro.com">gpyro.com</a>. All rights reserved.</p>
             </div>
         </div>
     </div>

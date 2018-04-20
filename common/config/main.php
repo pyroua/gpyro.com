@@ -1,6 +1,6 @@
 <?php
 return [
-    'name' => 'gpyro.com',
+    'name' => 'dev.gpyro.com',
     'bootstrap' => ['dvizh\order\Bootstrap'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -35,7 +35,8 @@ return [
                 'pathMap' => [
                     '@dektrium/rbac/views' => '@vendor/cinghie/yii2-user-extended/views',
                     '@dektrium/user/views' => '@vendor/cinghie/yii2-user-extended/views',
-                    '@vendor/dvizh/yii2-cart/src/views/default' => '@frontend/views/cart/'
+                    '@vendor/dvizh/yii2-cart/src/views/default' => '@frontend/views/cart/',
+                    '@dektrium/user/admin/views/_profile' => '@backend/views/users/_profile'
                 ],
             ],
         ],
@@ -71,14 +72,6 @@ return [
         // Yii2 RBAC
         'rbac' => [
             'class' => 'dektrium\rbac\RbacWebModule',
-
-//            'admins' => ['admin2'],
-//
-//            // Yii2 User Controllers Overrides
-//            'controllerMap' => [
-//                'role' => 'dektrium\rbac\controllers\RoleController',
-//                'permission' => 'dektrium\rbac\controllers\PermissionController',
-//            ],
         ],
         // Yii2 User
         'user' => [
@@ -88,7 +81,8 @@ return [
             // Yii2 User Controllers Overrides
             'controllerMap' => [
                 'admin' => 'backend\controllers\AdminController',
-                'settings' => 'cinghie\userextended\controllers\SettingsController'
+                //'settings' => 'cinghie\userextended\controllers\SettingsController'
+                'settings' => 'common\controllers\User\SettingsController'
             ],
             // Yii2 User Models Overrides
             'modelMap' => [
@@ -129,8 +123,12 @@ return [
             'class' => 'dvizh\order\Module',
             'layoutPath' => 'frontend\views\layouts',
             'successUrl' => '/site/thanks', //Страница, куда попадает пользователь после успешного заказа
-            'adminNotificationEmail' => 'test@yandex.ru', //Мыло для отправки заказов
+            'adminNotificationEmail' => 'order@gpyro.com', //Мыло для отправки заказов
             'as order_filling' => '\common\aspects\OrderFilling',
+            'currency' => '$',
+            'currencyPosition' => 'before',
+            'orderStatuses' => ['new' => 'New', 'approve' => 'Approve', 'cancel' => 'Cancel', 'process' => 'In process', 'done' => 'Done'],
+            'cartCustomFields' => ['amount' => 'amount']
         ],
     ],
 ];
