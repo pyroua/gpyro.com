@@ -1,5 +1,6 @@
 <?php
 return [
+    'name' => 'gpyro.com',
     'bootstrap' => ['dvizh\order\Bootstrap'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -82,6 +83,7 @@ return [
         // Yii2 User
         'user' => [
             'class' => 'dektrium\user\Module',
+            'enableFlashMessages' => false,
 
             // Yii2 User Controllers Overrides
             'controllerMap' => [
