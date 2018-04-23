@@ -6,6 +6,7 @@ use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use common\helpers\UserHelper;
+use frontend\helpers\ItemHelper;
 
 
 /* @var $this yii\web\View */
@@ -22,7 +23,7 @@ ItemIndexAsset::register($this);
 <?php if (Yii::$app->user->can('addEditItems')) { ?>
     <div>
         <a href="<?= Url::to(['items/create' . (isset($category) ? '/' . $category->id : '')]) ?>" type="button"
-           class="btn btn-primary ">
+           class="btn btn-success ">
             Add new
         </a>
     </div>
@@ -55,22 +56,44 @@ ItemIndexAsset::register($this);
             'price',
             'description',
             [
+                'attribute' => 'Photo',
+                'contentOptions' => ['class' => 'text-center'],
+                'headerOptions' => ['class' => 'text-center'],
+                'content' => function ($model) {
+                    /** @var \common\models\Measure $model */
+                    return !empty($model->logo) ? '<span class="label label-success"><span class="glyphicon glyphicon-ok"></span></span>' : '';
+                }
+            ],
+            [
+                'contentOptions' => ['class' => 'text-center', 'style' => 'width:100px;'],
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update} {delete}',
+                'template' => '{view} {update} {delete}',
                 'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a(
+                            '<span class="fa fa-eye"></span>',
+                            ItemHelper::getItemUrl($model->id),
+                            [
+                                'title' => 'Preview on site',
+                                'class' => 'btn btn-default btn-xs'
+                            ]);
+                    },
                     'update' => function ($url, $model) {
                         return Yii::$app->user->can('addEditItems') ?
                             Html::a(
-                                '<span class="glyphicon glyphicon-edit"></span> Edit',
-                                $url, [
-                                'class' => 'btn btn-default btn-xs'
-                            ]) : '';
+                                '<span class="glyphicon glyphicon-edit"></span>',
+                                $url,
+                                [
+                                    'title' => 'Edit',
+                                    'class' => 'btn btn-primary btn-xs'
+                                ]) : '';
                     },
                     'delete' => function ($url, $model, $key) {
                         return Yii::$app->user->can('deleteItems') ?
                             Html::button(
-                                '<span class="glyphicon glyphicon-remove"></span> Delete',
+                                '<span class="glyphicon glyphicon-remove"></span>',
                                 [
+                                    'title' => 'Delete',
                                     'class' => 'btn btn-danger btn-xs',
                                     'data-toggle' => 'modal',
                                     'data-target' => '#myModal' . $model->id

@@ -14,6 +14,7 @@ $this->params['breadcrumbs'][] = [
 ?>
 
 <?= $this->render('_form', [
+    'category' => !empty($category) ? $category : null,
     'model' => $formModel,
     'action' => $action,
     'categoriesList' => $categoriesList

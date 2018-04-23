@@ -1,0 +1,5 @@
+<?php
+return [
+    'adminUrl' => 'http://gpyro.local',
+    'frontendUrl' => 'http://front.gpyro.local'
+];

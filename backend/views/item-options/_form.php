@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
+use \common\models\ItemOption;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\ItemOption */
@@ -14,7 +15,7 @@ use kartik\select2\Select2;
 
     <?= $form->field($model, 'title') ?>
     <?= $form->field($model, 'description') ?>
-    <?= $form->field($model, 'type')->dropDownList(\common\models\ItemOption::getTypes()); ?>
+    <?= $form->field($model, 'type')->dropDownList(ItemOption::getTypes()); ?>
     <?= $form->field($model, 'measure_id')->widget(Select2::class, [
         'data' => $measuresList,
         'language' => 'en',
@@ -22,7 +23,7 @@ use kartik\select2\Select2;
         'pluginOptions' => [
             'allowClear' => true
         ],
-    ]) ?>
+    ])->label('Measure') ?>
     <?= $form->field($model, 'categories')->widget(Select2::class, [
         'data' => $categoriesList,
         'language' => 'en',

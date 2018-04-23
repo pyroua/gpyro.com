@@ -2,11 +2,14 @@
 
 namespace backend\controllers;
 
+use common\models\ItemOption;
+use common\models\ItemOptionCategory;
 use Yii;
 use common\models\Category;
 use backend\models\forms\CategoryForm;
 use backend\helpers\CategoryHelper;
 use yii\base\Exception;
+use yii\filters\AjaxFilter;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
 use yii\web\ForbiddenHttpException;
@@ -33,7 +36,7 @@ class CategoriesController extends BaseController
                         'permissions' => ['categories', 'addEditCategory', 'deleteCategory'],
                     ],
                     [
-                        'actions' => ['create' , 'update'], // these action are accessible
+                        'actions' => ['create', 'update'], // these action are accessible
                         'allow' => true,
                         'permissions' => ['addEditCategory'],
                     ],
@@ -47,6 +50,10 @@ class CategoriesController extends BaseController
                         'roles' => ['admin'], //
                     ],
                 ],
+            ],
+            [
+                'class' => AjaxFilter::class,
+                'only' => ['get-item-option-block']
             ],
         ];
     }
@@ -64,12 +71,14 @@ class CategoriesController extends BaseController
     }
 
     /**
-     * @return CategoryForm|string
+     * @return CategoryForm|string|\yii\web\Response
+     * @throws \Throwable
      */
     public function actionCreate()
     {
         $formModel = new CategoryForm();
-        $formModel = $this->processData($formModel);
+        $categoryModel = new Category();
+        $formModel = $this->processData($formModel, $categoryModel);
 
         if ($formModel instanceof CategoryForm) {
             return $this->render('create', [
@@ -84,8 +93,8 @@ class CategoriesController extends BaseController
 
     /**
      * @param $id
-     * @return CategoryForm|string
-     * @throws \Exception
+     * @return CategoryForm|string|\yii\web\Response
+     * @throws \Throwable
      */
     public function actionUpdate($id)
     {
@@ -100,6 +109,7 @@ class CategoriesController extends BaseController
             $formModel->setAttributes($category->attributes);
 
             return $this->render('create', [
+                'category' => $category,
                 'action' => 'update',
                 'formModel' => $formModel,
                 'categoriesList' => Category::getArrayList()
@@ -111,24 +121,32 @@ class CategoriesController extends BaseController
 
     /**
      * @param CategoryForm $formModel
-     * @param bool $model
-     * @return CategoryForm|string
+     * @param Category $model
+     * @return CategoryForm|\yii\web\Response
+     * @throws \Throwable
      */
-    private function processData(CategoryForm $formModel, $model = false)
+    private function processData(CategoryForm $formModel, $model)
     {
         if (Yii::$app->request->post()) {
             try {
                 $formModel->load(Yii::$app->request->post());
                 if ($formModel->validate()) {
-                    if (!$model) {
-                        $model = new Category();
-                    }
                     $model->setAttributes($formModel->getAttributes());
                     if ($model->save()) {
+
+                        $itemOptionsPost = !empty($formModel->getAttributes()['item_options']) ?
+                            $formModel->getAttributes()['item_options'] :
+                            [];
+                        $requiredPost = !empty($formModel->getAttributes()['required']) ?
+                            $formModel->getAttributes()['required'] :
+                            [];
+
+                        $model->processItemOptions($itemOptionsPost, $requiredPost);
+
                         $this->setFlash('success', Yii::t('app', 'Success!'));
                         return $this->redirect(['categories/index']);
                     } else {
-                        $this->setFlash('error', 'Cant save model: ' . print_r($model->getErrors(), 1));
+                        $this->setFlash('error', 'Cant save category: ' . print_r($model->getErrors(), 1));
                     }
                 } else {
                     $this->setFlash('error', 'Cant validate form');
@@ -160,6 +178,19 @@ class CategoriesController extends BaseController
         return $this->redirect(['categories/index']);
     }
 
+    /**
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionGetItemOptionBlock($id)
+    {
+        $itemOption = ItemOption::findOne(['id' => $id]);
+        if (!$itemOption) {
+            throw new NotFoundHttpException('Option id not found');
+        }
 
+        return $this->renderPartial('_item_option_block', ['itemOption' => $itemOption]);
+    }
 
 }

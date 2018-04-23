@@ -7,5 +7,7 @@ return [
         'images' => [
             'items' => '/storage/img/items'
         ]
-    ]
+    ],
+    'adminUrl' => 'http://devbackend.gpyro.com',
+    'frontendUrl' => 'http://dev.gpyro.com'
 ];

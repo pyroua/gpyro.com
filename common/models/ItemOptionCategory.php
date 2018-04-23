@@ -9,10 +9,11 @@ use Yii;
  *
  * @property int $option_id
  * @property int $category_id
+ * @property boolean $required
  *
  * @property Category $category
  */
-class ItemOptionCategories extends BaseModel
+class ItemOptionCategory extends BaseModel
 {
     /**
      * @inheritdoc
@@ -31,6 +32,8 @@ class ItemOptionCategories extends BaseModel
             [['option_id', 'category_id'], 'required'],
             [['option_id', 'category_id'], 'integer'],
             [['option_id', 'category_id'], 'unique', 'targetAttribute' => ['option_id', 'category_id']],
+            [['required'], 'boolean'],
+            [['required'], 'default', 'value' => false]
         ];
     }
 
@@ -52,4 +55,6 @@ class ItemOptionCategories extends BaseModel
     {
         return $this->hasone(Category::class, ['id' => 'category_id']);
     }
+
+
 }

@@ -3,10 +3,14 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
+use common\models\ItemOption;
+use backend\assets\CategoryAsset;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Measure */
 /* @var $form ActiveForm */
+
+CategoryAsset::register($this);
 
 ?>
 
@@ -26,6 +30,40 @@ use kartik\select2\Select2;
         ],
     ]) ?>
 
+    <div class="form-group field-categoryform-item-options">
+        <label class="control-label" for="categoryform-item-options">ItemOptions</label>
+
+        <?= /** @var \common\models\Category $category */
+        Select2::widget([
+            'value' => !empty($category) ? array_keys($category->itemOptionsArrayList) : [],
+            'name' => 'CategoryForm[item_options]',
+            'data' => ItemOption::getArrayList(),
+            'language' => 'en',
+            'options' => [
+                'placeholder' => 'Select a option...',
+                'multiple' => true,
+            ],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+            'pluginEvents' => [
+                "change.select2" => "document.category_engine.onAllOptionSelect",
+                "select2:select" => "document.category_engine.onOptionSelect",
+                "select2:unselect" => "document.category_engine.onOptionUnselect",
+            ],
+            'showToggleAll' => false
+        ]) ?>
+    </div>
+
+
+    <?php if ($action == 'update') { ?>
+        <?php foreach ($category->itemOptions as $itemOption) { ?>
+            <?= $this->render('_item_option_block', [
+                'itemOption' => $itemOption,
+                'category' => !empty($category) ? $category : null
+            ]) ?>
+        <?php } ?>
+    <?php } ?>
 
     <div class="form-group">
         <?= Html::submitButton(

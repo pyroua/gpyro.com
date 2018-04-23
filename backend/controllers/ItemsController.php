@@ -68,7 +68,8 @@ class ItemsController extends BaseController
     public function actionCreate(int $id = null)
     {
         $formModel = new ItemForm();
-        $formModel = $this->processData($formModel);
+        $itemModel = new Item();
+        $formModel = $this->processData($formModel, $itemModel);
 
         if ($formModel instanceof ItemForm) {
 
@@ -117,11 +118,11 @@ class ItemsController extends BaseController
 
     /**
      * @param ItemForm $formModel
-     * @param bool $model
+     * @param Item $model
      * @return ItemForm|\yii\web\Response
      * @throws \Exception
      */
-    private function processData(ItemForm $formModel, $model = false)
+    private function processData(ItemForm $formModel, $model)
     {
         if (Yii::$app->request->post()) {
             try {
@@ -130,9 +131,6 @@ class ItemsController extends BaseController
 
                 if ($formModel->validate()) {
 
-                    if (!$model) {
-                        $model = new Item();
-                    }
                     $model->setAttributes($formModel->getAttributes());
 
                     if ($model->save()) {
@@ -144,9 +142,8 @@ class ItemsController extends BaseController
                                 BaseFileHelper::createDirectory($imagesPath, 0777, true);
                             }
 
-                            $imageName = $formModel->getFileName();
-                            if ($formModel->file->saveAs($imagesPath . $imageName)) {
-                                $model->setAttribute('logo', $imageName);
+                            if ($formModel->file->saveAs($imagesPath . $formModel->getFileName())) {
+                                $model->setAttribute('logo', $formModel->getFileName());
                                 $model->save();
                             }
                         }
@@ -168,8 +165,7 @@ class ItemsController extends BaseController
                             ]);
 
                             if (!$itemOptionValue->save()) {
-                                $this->setFlash('error', 'Cant save item option value: ' . $itemOptions->id . ' = ' . $itemOptions->value);
-                                return $this->redirect(['items/index']);
+                                throw new \Exception('Cant save itemOptionValue');
                             }
                         }
 
@@ -181,8 +177,7 @@ class ItemsController extends BaseController
                 } else {
                     $this->setFlash('error', 'Cant validate form');
                 }
-            } catch
-            (Exception $e) {
+            } catch (Exception $e) {
                 // треба писати в логи
                 //TODO: logger
             }

@@ -16,7 +16,7 @@ use yii\base\Exception;
  * @property string $default_value
  * @property int $required
  *
- * @property ItemOptionCategories[] $categories
+ * @property ItemOptionCategory[] $categories
  * @property ItemOptionValue[] $itemOptionValues
  */
 class ItemOption extends BaseModel
@@ -86,7 +86,7 @@ class ItemOption extends BaseModel
             'type' => Yii::t('app', 'Type'),
             'categories' => Yii::t('app', 'Categories'),
             'measure_id' => Yii::t('app', 'Measure'),
-            'default_value' => Yii::t('app', 'Default Value'),
+            'default_value' => Yii::t('app', 'Default value'),
             'required' => Yii::t('app', 'Required'),
         ];
     }
@@ -109,7 +109,7 @@ class ItemOption extends BaseModel
     public function afterSave($insert, $changedAttributes)
     {
         if ($insert) {
-            /** @var ItemOptionCategories $itemOptionCategory */
+            /** @var ItemOptionCategory $itemOptionCategory */
             foreach ($this->categories as $itemOptionCategory) {
                 $itemOptionCategory->setAttribute('option_id', $this->id);
                 if (!$itemOptionCategory->save()) {
@@ -150,7 +150,7 @@ class ItemOption extends BaseModel
      */
     public function getCategories()
     {
-        return $this->hasMany(ItemOptionCategories::class, ['option_id' => 'id']);
+        return $this->hasMany(ItemOptionCategory::class, ['option_id' => 'id']);
     }
 
     /**
@@ -178,7 +178,7 @@ class ItemOption extends BaseModel
         if (is_array($categories)) {
             foreach ($categories as $val) {
                 // will save it in afterSave
-                $res[] = new ItemOptionCategories(['category_id' => $val]);
+                $res[] = new ItemOptionCategory(['category_id' => $val]);
             }
         }
 
@@ -191,9 +191,25 @@ class ItemOption extends BaseModel
     public function getCategoriesAsArray()
     {
         $result = [];
-        /** @var ItemOptionCategories $cat */
+        /** @var ItemOptionCategory $cat */
         foreach ($this->categories as $cat) {
             $result[] = $cat->category_id;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param array $fields
+     * @return array
+     */
+    public static function getArrayList(array $fields = ['id', 'title'])
+    {
+        $data = self::find()->select($fields)->asArray()->all();
+        $result = [];
+
+        foreach ($data as $val) {
+            $result[$val['id']] = $val['title'];
         }
 
         return $result;
@@ -207,7 +223,7 @@ class ItemOption extends BaseModel
     public function deleteItemOption()
     {
         // delete categories from relations
-        /** @var ItemOptionCategories $cat */
+        /** @var ItemOptionCategory $cat */
         foreach ($this->categories as $cat) {
             $cat->delete();
         }
@@ -219,4 +235,5 @@ class ItemOption extends BaseModel
 
         return $this->delete();
     }
+
 }

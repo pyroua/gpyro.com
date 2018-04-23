@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = [
 ?>
 
 <?php if (Yii::$app->user->can('addEditCategory')) : ?>
-    <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-primary ">
+    <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-success ">
         Add new
     </a>
 <?php endif; ?>

@@ -8,9 +8,9 @@ use yii\helpers\Html;
  */
 foreach ($item->itemOptionValues as $itemOptionValue) { ?>
     <div class="form-group field-itemform-article">
-        <label class="control-label" for="itemform-article"><?= Html::label($itemOptionValue->itemOption->title) ?></label>
+        <label class="control-label" for="itemform-article"><?= Html::label(ucfirst($itemOptionValue->itemOption->title)) ?></label>
         <?= Html::textInput('ItemForm[option_id_' . $itemOptionValue->itemOption->id . ']',
-            $itemOptionValue->string, //TODO: заутлити сюди номральне отримання значення
+            $itemOptionValue->string, //TODO: затулити сюди номральне отримання значення
             [
                 'id' => 'item-form-option-id-' . $itemOptionValue->itemOption->id,
                 'class' => 'form-control'
