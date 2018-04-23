@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\forms\ItemSearchForm;
 use Yii;
 use common\models\Category;
 use common\models\Item;
@@ -187,36 +188,26 @@ class ItemsController extends BaseController
     }
 
     /**
-     * @param int|null $id
      * @return string
      */
-    public function actionIndex(int $id = null)
+    public function actionIndex()
     {
-        $viewData = [
-            'categoryId' => $id,
-            'categoriesList' => Category::getArrayList(),
-        ];
+        $searchModel = new ItemSearchForm();
 
-        $items = UserHelper::hasRole('admin') ?
-            Item::find() :
-            Item::find(['user_id' => Yii::$app->user->id]);
-
-        if ($id !== null) {
-            $items->andWhere(['category_id' => $id]);
-            $viewData['category'] = Category::findOne(['id' => $id]);
-            if (!$viewData['category']) {
-                throw new NotFoundHttpException('Category not found');
-            }
+        if (Yii::$app->request->post()) {
+            $searchModel->load(Yii::$app->request->post());
         }
 
-        $viewData['dataProvider'] = new ActiveDataProvider([
-            'query' => $items,
-            'pagination' => [
-                'pageSize' => 50,
-            ],
+        return $this->render('index', [
+            'categoriesList' => Category::getArrayList(),
+            'searchModel' => $searchModel,
+            'dataProvider' => new ActiveDataProvider([
+                'query' => Item::search($searchModel->attributes),
+                'pagination' => [
+                    'pageSize' => 50,
+                ],
+            ])
         ]);
-
-        return $this->render('index', $viewData);
     }
 
     /**

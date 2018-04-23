@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\helpers\UserHelper;
 use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
@@ -207,6 +208,33 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
                 return 'https://www.youtube.com/embed/' . $id;
             }
         }
+    }
+
+    /**
+     * @param array $params
+     * @return \yii\db\ActiveQuery
+     */
+    public static function search(array $params = [])
+    {
+        $query = self::find();
+
+        if(!UserHelper::hasRole('admin'))
+        {
+            $query->andWhere(['=', 'user_id', Yii::$app->user->id]);
+        }
+
+        // якщо присутнє query то для xjnbhmj[ полів берем умову "АБО"
+        if (!empty($params['query']))
+        {
+            $query->orWhere(['like', 'id', $params['query']]);
+            $query->orWhere(['like', 'article', $params['query']]);
+            $query->orWhere(['like', 'title', $params['query']]);
+            $query->orWhere(['like', 'description', $params['query']]);
+        }
+
+        $query->andFilterWhere(['=', 'category_id', $params['category_id']]);
+
+        return $query;
     }
 
 }

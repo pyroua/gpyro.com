@@ -7,6 +7,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use common\helpers\UserHelper;
 use frontend\helpers\ItemHelper;
+use yii\widgets\ActiveForm;
 
 
 /* @var $this yii\web\View */
@@ -20,6 +21,12 @@ $this->params['breadcrumbs'][] = [
 ItemIndexAsset::register($this);
 ?>
 
+<?= $this->render('_search_form', [
+    'category' => !empty($category) ? $category : null,
+    'searchModel' => $searchModel,
+    'categoriesList' => $categoriesList
+]); ?>
+
 <?php if (Yii::$app->user->can('addEditItems')) { ?>
     <div>
         <a href="<?= Url::to(['items/create' . (isset($category) ? '/' . $category->id : '')]) ?>" type="button"
@@ -28,23 +35,6 @@ ItemIndexAsset::register($this);
         </a>
     </div>
 <?php } ?>
-
-<div class="form-group field-itemform-title required">
-    <label class="control-label" for="itemform-title"></label>
-    <?= Select2::widget([
-        'value' => isset($category) ? $category->id : null,
-        'name' => 'category',
-        'data' => $categoriesList,
-        'language' => 'en',
-        'options' => ['placeholder' => 'Select a category...'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-        'pluginEvents' => [
-            "change" => "document.item_index.onCategoryChange",
-        ]
-    ]) ?>
-</div>
 
 <?php if (!empty($categoryId) || UserHelper::hasRole('admin')) { ?>
     <?= GridView::widget([
