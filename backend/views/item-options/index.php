@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = [
             'contentOptions' => ['class' => 'text-center'],
             'content' => function ($model) {
                 /** @var \common\models\Measure $model */
-                return $model->measure->title;
+                return !empty($model->measure) ? $model->measure->title : '';
             }
         ],
         [
