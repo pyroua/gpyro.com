@@ -151,6 +151,7 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
 
             $filename = $this->getFileName();
             if ($this->file->saveAs($imagesPath . $filename)) {
+                $this->deleteLogo(); // at first delete old logo
                 $this->setAttribute('logo', $filename);
                 $this->save();
             }
@@ -186,6 +187,15 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
         return ItemOptionValue::findOne(['item_id' => $this->id, 'option_id' => $optionId]);
     }
 
+
+    public function deleteLogo()
+    {
+        //delete logo
+        if (!empty($this->logoPath)) {
+            @unlink($this->logoPath);
+        }
+    }
+
     /**
      * @return false|int
      * @throws \Throwable
@@ -200,10 +210,8 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
             }
         }
 
-        //delete logo
-        if (!empty($this->logoPath)) {
-            @unlink($this->logoPath);
-        }
+        $this->deleteLogo();
+
         //delete item
         return $this->delete();
     }
