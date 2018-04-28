@@ -13,6 +13,7 @@ use Yii;
  * @property double $decimal
  * @property string $string
  *
+ * @property string $value
  * @property ItemOption $itemOption
  */
 class ItemOptionValue extends BaseModel
@@ -59,5 +60,59 @@ class ItemOptionValue extends BaseModel
     public function getItemOption()
     {
         return $this->hasOne(ItemOption::class, ['id' => 'option_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getItem()
+    {
+        return $this->hasOne(Item::class, ['id' => 'item_id']);
+    }
+
+
+    /**
+     * Defines wich field use to get data
+     *
+     */
+    public function getValue()
+    {
+        $types = ['int', 'decimal', 'string'];
+        foreach ($types as $type) {
+            if (!empty($this->$type)) {
+                return $this->$type;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @param $value
+     * @throws \Exception
+     */
+    public function setValue($value)
+    {
+        switch ($this->itemOption->type) {
+            case 0:
+                $this->int = $value;
+                break;
+
+            case 1:
+                $this->decimal = $value;
+                break;
+
+            case 2:
+                $this->string = $value;
+                break;
+
+            case 3:
+                $this->string = $value;
+                break;
+
+            default:
+                throw new \Exception('Wrong type');
+
+        }
     }
 }

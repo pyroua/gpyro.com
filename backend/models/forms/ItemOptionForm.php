@@ -20,11 +20,11 @@ class ItemOptionForm extends \yii\base\Model
     public function rules()
     {
         return [
-            [['title', 'measure_id'], 'required'],
-            [['type', 'measure_id'], 'integer'],
+            [['title'], 'required'],
+            [['type'], 'integer'],
             [['title', 'description', 'default_value'], 'string', 'max' => 255],
             [['required'], 'boolean'],
-            [['categories'], 'safe']
+            [['categories', 'measure_id'], 'safe']
         ];
     }
 

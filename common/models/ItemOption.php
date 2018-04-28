@@ -25,6 +25,8 @@ class ItemOption extends BaseModel
     const TYPE_INT = 'integer';
     const TYPE_DECIMAL = 'decimal';
     const TYPE_STRING = 'string';
+    const TYPE_DATE = 'date (dd.mm.yyyy)';
+//    const TYPE_CATALOGUE = 'catalogue';
 
 
     /**
@@ -36,18 +38,8 @@ class ItemOption extends BaseModel
             self::TYPE_INT,
             self::TYPE_DECIMAL,
             self::TYPE_STRING,
-        ];
-    }
-
-    /**
-     * @return array
-     */
-    public function getTypesTitles()
-    {
-        return [
-            self::TYPE_INT => 'Integer',
-            self::TYPE_DECIMAL => 'decimal',
-            self::TYPE_STRING => 'string',
+            self::TYPE_DATE,
+ //           self::TYPE_CATALOGUE,
         ];
     }
 
@@ -66,11 +58,11 @@ class ItemOption extends BaseModel
     public function rules()
     {
         return [
-            [['title', 'measure_id'], 'required'],
-            [['measure_id'], 'integer'],
+            [['title'], 'required'],
+            [[], 'integer'],
             [['title', 'description', 'default_value', 'type'], 'string', 'max' => 255],
             [['required'], 'string', 'max' => 1],
-            [['categories'], 'safe'],
+            [['categories', 'measure_id'], 'safe'],
         ];
     }
 

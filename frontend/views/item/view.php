@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = [
                             foreach ($item->itemOptionValues as $optionValue): ?>
                                 <p>
                                     <b><?= $optionValue->itemOption->title; ?>: </b>
-                                    <?= $optionValue->string ?>
+                                    <?= $optionValue->value ?>
                                 </p>
                             <?php endforeach; ?>
 

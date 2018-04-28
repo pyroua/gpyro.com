@@ -34,17 +34,6 @@ $this->params['breadcrumbs'][] = [
         ],
         'default_value',
         [
-            'attribute' => 'Categories',
-            'content' => function ($model) {
-                $labels = '';
-                foreach ($model->categories as $itemOptionCat) {
-                    $labels .= '<span class="label label-default">' . $itemOptionCat->category->title . '</span> ';
-                }
-                /** @var \common\models\Measure $model */
-                return $labels;
-            }
-        ],
-        [
             'attribute' => 'Measure',
             'headerOptions' => ['class' => 'text-center'],
             'contentOptions' => ['class' => 'text-center'],

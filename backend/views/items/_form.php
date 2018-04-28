@@ -15,7 +15,11 @@ ItemAsset::register($this);
 ?>
 <div class="ItemForm">
 
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?php $form = ActiveForm::begin([
+        'id' => 'createItemForm',
+        'options' => ['enctype' => 'multipart/form-data'],
+        'enableClientScript' => true,
+    ]); ?>
 
     <?= $form->field($model, 'article') ?>
 
@@ -28,9 +32,8 @@ ItemAsset::register($this);
     <?= $form->field($model, 'category_id')
         ->widget(Select2::class, [
             'data' => $categoriesList,
-//            'value' => isset($category) ? $category->id : null,
             'language' => 'en',
-            //  'readonly' => $action == 'update' ? true : false,
+            'disabled' => $action == 'update' ? true : false,
             'options' => ['placeholder' => 'Select a category...'],
             'pluginOptions' => [
                 'allowClear' => true
@@ -57,11 +60,9 @@ ItemAsset::register($this);
     <?= $form->field($model, 'video_url') ?>
 
     <?php if ($action == 'update') { ?>
-        <?= $this->render('item_options_update', ['item' => $item]) ?>
-    <?php } ?>
-
-    <?php if (!empty($category)) { ?>
-        <?= $this->render('item_options', ['options' => $category->itemOptions]) ?>
+        <?php foreach ($item->itemOptionValues as $itemOptioValue) { ?>
+            <?= $this->render('_item_options', ['value' => $itemOptioValue]) ?>
+        <?php } ?>
     <?php } ?>
 
     <div class="default-fields-end"></div>

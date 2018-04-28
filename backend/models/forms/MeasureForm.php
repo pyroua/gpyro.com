@@ -19,7 +19,7 @@ class MeasureForm extends \yii\base\Model
     {
         return [
             [['id'], 'integer'],
-            [['title'], 'required'],
+            [['title', 'title_full'], 'required'],
             [['title', 'title_full'], 'string', 'max' => 255],
         ];
     }

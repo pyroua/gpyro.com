@@ -98,8 +98,9 @@ class ItemsController extends BaseController
     {
         /** @var Item $model */
         $model = $this->getModel($id);
+        $model->scenario = $model::SCENARIO_UPDATE;
 
-        $formModel = new ItemForm();
+        $formModel = new ItemForm(['scenario' => ItemForm::SCENARIO_UPDATE]);
         $formModel = $this->processData($formModel, $model);
 
         if ($formModel instanceof ItemForm) {
@@ -133,43 +134,13 @@ class ItemsController extends BaseController
                 if ($formModel->validate()) {
 
                     $model->setAttributes($formModel->getAttributes());
+                    $model->setItemOptions($formModel->getItemOptions());
+
+                    if ($formModel->file) {
+                        $model->setFile($formModel->file);
+                    }
 
                     if ($model->save()) {
-
-                        if ($formModel->file) {
-                            // save image
-                            $imagesPath = $model->getImagesPath();
-                            if (!is_dir($imagesPath)) {
-                                BaseFileHelper::createDirectory($imagesPath, 0777, true);
-                            }
-
-                            if ($formModel->file->saveAs($imagesPath . $formModel->getFileName())) {
-                                $model->setAttribute('logo', $formModel->getFileName());
-                                $model->save();
-                            }
-                        }
-
-                        // item option values
-                        foreach ($formModel->tmpItemOptions as $itemOptions) {
-                            if ($model->isNewRecord) {
-                                $itemOptionValue = new ItemOptionValue();
-                            } else {
-                                $itemOptionValue = $model->getItemOptionValue($itemOptions->id);
-                                if (!$itemOptionValue) {
-                                    $itemOptionValue = new ItemOptionValue();
-                                }
-                            }
-                            $itemOptionValue->setAttributes([
-                                'item_id' => $model->id,
-                                'option_id' => $itemOptions->id,
-                                'string' => $itemOptions->value //TODO: додати байду, яка буде писати значення в праивльні поля
-                            ]);
-
-                            if (!$itemOptionValue->save()) {
-                                throw new \Exception('Cant save itemOptionValue');
-                            }
-                        }
-
                         $this->setFlash('success', Yii::t('app', 'Success!'));
                         return $this->redirect(['items/index/' . $model->category_id]);
                     } else {
@@ -218,7 +189,11 @@ class ItemsController extends BaseController
     {
         $category = Category::findOne(['id' => $id]);
 
-        return $this->renderPartial('item_options', ['options' => $category->itemOptions]);
+        if (empty($category)) {
+            $this->asJson([]);
+        }
+
+        return $this->renderAjax('_ajax_item_options', ['options' => $category->itemOptions]);
     }
 
     /**

@@ -2,7 +2,8 @@
 
 namespace backend\models\forms;
 
-class ItemSearchForm extends \yii\base\Model {
+class ItemSearchForm extends \yii\base\Model
+{
 
     public $query;
     public $category_id;
@@ -11,7 +12,8 @@ class ItemSearchForm extends \yii\base\Model {
     {
         return [
             [['category_id'], 'integer'],
-            [['query'], 'safe']
+            [['query'], 'safe'],
+            [['query'], 'filter', 'filter' => 'trim']
         ];
     }
 
