@@ -56,5 +56,16 @@ class ItemOptionCategory extends BaseModel
         return $this->hasone(Category::class, ['id' => 'category_id']);
     }
 
+    /**
+     * @param int $categoryId
+     * @param $itemOptionId
+     * @return bool
+     */
+    public static function isRequired(int $categoryId, $itemOptionId)
+    {
+        $data = self::findOne(['category_id' => $categoryId, 'option_id' => $itemOptionId]);
+
+        return ($data === null || $data->required == 0) ? false : true;
+    }
 
 }

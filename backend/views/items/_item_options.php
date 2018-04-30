@@ -15,6 +15,11 @@ $inputValue = null;
 if (isset($value->itemOption)) { // $value is item record
     /** @var \common\models\ItemOptionValue $value */
     $data = $value->itemOption;
+
+    // сетим категорію, через яку потім пролізем в таблиц item_option_category
+    // щоб взяти звідти занчення поля required
+    $data->setCategoryId($value->item->category_id);
+
     $inputValue = $value->value;
 } else { // $value is itemOption
     /** @var \common\models\ItemOption $value */
@@ -35,15 +40,12 @@ $this->registerJs(
         'createItemForm',
         'item-form-option-id-' . $data->id,
         'ItemForm[option_id_' . $data->id . ']',
-        ViewHelper::getValidatorsByOptionType($data->type, $data->required)
+        ViewHelper::getValidatorsByOptionType($data->type, $data->isRequired)
     ),
     View::POS_READY
 );
-
-$required = ($data->required) ? ' required ' : '';
-
 ?>
-<div class="form-group field-<?= 'item-form-option-id-' . $data->id ?> <?= $required ?>">
+<div class="form-group field-<?= 'item-form-option-id-' . $data->id ?> <?= ($data->isRequired) ? ' required ' : '' ?>">
     <label class="control-label" for="itemform-<?= 'item-form-option-id-' . $data->id ?>">
         <?= Html::label(ucfirst($data->title)) ?>
     </label>

@@ -51,7 +51,7 @@ ItemOptionsAsset::register($this);
 
     <?= $form->field($model, 'default_value') ?>
 
-    <?= $form->field($model, 'required')->checkbox() ?>
+    <?php // $form->field($model, 'required')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>

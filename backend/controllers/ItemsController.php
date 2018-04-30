@@ -190,7 +190,13 @@ class ItemsController extends BaseController
         $category = Category::findOne(['id' => $id]);
 
         if (empty($category)) {
-            $this->asJson([]);
+            return $this->asJson([]);
+        }
+
+        foreach ($category->itemOptions as $itemOption) {
+            // сетим категорію, через яку потім пролізем в таблиц item_option_category
+            // щоб взяти звідти занчення поля required
+            $itemOption->setCategoryId($id);
         }
 
         return $this->renderAjax('_ajax_item_options', ['options' => $category->itemOptions]);

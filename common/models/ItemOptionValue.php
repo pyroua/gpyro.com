@@ -14,6 +14,8 @@ use Yii;
  * @property string $string
  *
  * @property string $value
+ *
+ * @property Item $item
  * @property ItemOption $itemOption
  */
 class ItemOptionValue extends BaseModel

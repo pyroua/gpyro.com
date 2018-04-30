@@ -15,7 +15,7 @@ class ItemOptionForm extends \yii\base\Model
     public $categories;
     public $measure_id;
     public $default_value;
-    public $required;
+    //public $required;
 
     public function rules()
     {
@@ -23,7 +23,7 @@ class ItemOptionForm extends \yii\base\Model
             [['title'], 'required'],
             [['type'], 'integer'],
             [['title', 'description', 'default_value'], 'string', 'max' => 255],
-            [['required'], 'boolean'],
+            //[['required'], 'boolean'],
             [['categories', 'measure_id'], 'safe']
         ];
     }

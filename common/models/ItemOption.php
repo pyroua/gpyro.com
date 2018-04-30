@@ -14,7 +14,9 @@ use yii\base\Exception;
  * @property int $type
  * @property int $measure_id
  * @property string $default_value
- * @property int $required
+ *
+ * @property bool $isRequired
+ * @property int $categoryId
  *
  * @property ItemOptionCategory[] $categories
  * @property ItemOptionValue[] $itemOptionValues
@@ -22,12 +24,14 @@ use yii\base\Exception;
 class ItemOption extends BaseModel
 {
 
+    private $_required = null;
+    private $_categoryId = null;
+
     const TYPE_INT = 'integer';
     const TYPE_DECIMAL = 'decimal';
     const TYPE_STRING = 'string';
     const TYPE_DATE = 'date (dd.mm.yyyy)';
 //    const TYPE_CATALOGUE = 'catalogue';
-
 
     /**
      * @return array
@@ -39,7 +43,7 @@ class ItemOption extends BaseModel
             self::TYPE_DECIMAL,
             self::TYPE_STRING,
             self::TYPE_DATE,
- //           self::TYPE_CATALOGUE,
+            //           self::TYPE_CATALOGUE,
         ];
     }
 
@@ -59,9 +63,9 @@ class ItemOption extends BaseModel
     {
         return [
             [['title'], 'required'],
-            [[], 'integer'],
+            //[[], 'integer'],
             [['title', 'description', 'default_value', 'type'], 'string', 'max' => 255],
-            [['required'], 'string', 'max' => 1],
+            //[['required'], 'string', 'max' => 1],
             [['categories', 'measure_id'], 'safe'],
         ];
     }
@@ -79,7 +83,7 @@ class ItemOption extends BaseModel
             'categories' => Yii::t('app', 'Categories'),
             'measure_id' => Yii::t('app', 'Measure'),
             'default_value' => Yii::t('app', 'Default value'),
-            'required' => Yii::t('app', 'Required'),
+            //'required' => Yii::t('app', 'Required'),
         ];
     }
 
@@ -226,6 +230,49 @@ class ItemOption extends BaseModel
         }
 
         return $this->delete();
+    }
+
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    public function getIsRequired(): string
+    {
+        if ($this->_required === null)
+        {
+            $this->setIsRequired(ItemOptionCategory::isRequired($this->categoryId, $this->id));
+        }
+
+        return $this->_required;
+    }
+
+    /**
+     * @param $required
+     */
+    private function setIsRequired($required)
+    {
+        $this->_required = $required;
+    }
+
+    /**
+     * @return null
+     * @throws \Exception
+     */
+    public function getCategoryId()
+    {
+        if ($this->_categoryId == null) {
+            throw new \Exception('CategoryId is not set before!');
+        }
+
+        return $this->_categoryId;
+    }
+
+    /**
+     * @param null $categoryId
+     */
+    public function setCategoryId($categoryId)
+    {
+        $this->_categoryId = $categoryId;
     }
 
 }

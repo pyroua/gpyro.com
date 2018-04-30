@@ -42,15 +42,15 @@ $this->params['breadcrumbs'][] = [
                 return !empty($model->measure) ? $model->measure->title : '';
             }
         ],
-        [
-            'attribute' => 'required',
-            'contentOptions' => ['class' => 'text-center'],
-            'headerOptions' => ['class' => 'text-center'],
-            'content' => function ($model) {
-                /** @var \common\models\Measure $model */
-                return $model->required ? '<span class="label label-success"><span class="glyphicon glyphicon-ok"></span></span>' : '';
-            }
-        ],
+//        [
+//            'attribute' => 'required',
+//            'contentOptions' => ['class' => 'text-center'],
+//            'headerOptions' => ['class' => 'text-center'],
+//            'content' => function ($model) {
+//                /** @var \common\models\Measure $model */
+//                return $model->required ? '<span class="label label-success"><span class="glyphicon glyphicon-ok"></span></span>' : '';
+//            }
+//        ],
         [
             'contentOptions' => ['class' => 'text-center', 'style' => 'width:80px;'],
             'class' => 'yii\grid\ActionColumn',

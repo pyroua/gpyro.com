@@ -60,8 +60,8 @@ ItemAsset::register($this);
     <?= $form->field($model, 'video_url') ?>
 
     <?php if ($action == 'update') { ?>
-        <?php foreach ($item->itemOptionValues as $itemOptioValue) { ?>
-            <?= $this->render('_item_options', ['value' => $itemOptioValue]) ?>
+        <?php foreach ($item->itemOptionValues as $itemOptionValue) { ?>
+            <?= $this->render('_item_options', ['value' => $itemOptionValue]) ?>
         <?php } ?>
     <?php } ?>
 
