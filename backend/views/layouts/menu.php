@@ -31,6 +31,15 @@ echo dmstr\widgets\Menu::widget(
                     Yii::$app->user->can('addEditMeasure')
             ],
             [
+                'label' => Yii::t('app', 'Currencies'),
+                'url' => ['/currencies'],
+                'icon' => ' fa-usd',
+                'active' => ViewHelper::isActive($this->context, 'measures', ['index', 'create', 'update']),
+                'visible' => Yii::$app->user->can('currencies') ||
+                    Yii::$app->user->can('deleteCurrency') ||
+                    Yii::$app->user->can('addEditCurrency')
+            ],
+            [
                 'label' => Yii::t('app', 'Orders'),
                 'url' => '#',
                 'icon' => ' fa-shopping-cart',
