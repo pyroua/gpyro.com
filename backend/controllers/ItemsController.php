@@ -3,18 +3,17 @@
 namespace backend\controllers;
 
 use backend\models\forms\ItemSearchForm;
+use common\models\User;
 use Yii;
 use common\models\Category;
 use common\models\Item;
-use common\models\ItemOptionValue;
 use backend\models\forms\ItemForm;
 use yii\web\ForbiddenHttpException;
 use yii\filters\AccessControl;
 use yii\filters\AjaxFilter;
 use yii\data\ActiveDataProvider;
 use yii\web\UploadedFile;
-use yii\helpers\BaseFileHelper;
-use common\helpers\UserHelper;
+
 
 class ItemsController extends BaseController
 {
@@ -171,6 +170,7 @@ class ItemsController extends BaseController
 
         return $this->render('index', [
             'categoriesList' => Category::getArrayList(),
+            'manufacturesList' => User::getArrayListOfManufactures(),
             'searchModel' => $searchModel,
             'dataProvider' => new ActiveDataProvider([
                 'query' => Item::search($searchModel->attributes),

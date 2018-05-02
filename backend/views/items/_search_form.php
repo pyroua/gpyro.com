@@ -26,6 +26,19 @@ use yii\widgets\ActiveForm;
                     ])->label('Category') ?>
             </div>
 
+            <div class="col-md-6">
+                <?= $form->field($searchModel, 'user_id')
+                    ->widget(Select2::class, [
+                        'name' => 'manufactures',
+                        'data' => $manufacturesList,
+                        'language' => 'en',
+                        'options' => ['placeholder' => 'Select a manufacture...'],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ]
+                    ])->label('Manufacture') ?>
+            </div>
+
             <div class="col-md-2">
                 <input class="btn btn-primary" type="submit" value="Search">
                 <input class="btn btn-default" type="reset" value="Reset">

@@ -1,10 +1,11 @@
 <?php
+
 namespace common\models;
 
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
+use dektrium\rbac\components\DbManager;
 use yii\web\IdentityInterface;
 
 /**
@@ -21,8 +22,11 @@ use yii\web\IdentityInterface;
  * @property integer $updated_at
  * @property string $password write-only password
  */
-class User extends ActiveRecord implements IdentityInterface
+class User extends BaseModel implements IdentityInterface
 {
+
+    const ROLE_MANUFACTURER = 'manufacturer';
+
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
@@ -115,7 +119,7 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
@@ -156,9 +160,8 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Generates password hash from password and sets it to the model
-     *
-     * @param string $password
+     * @param $password
+     * @throws \yii\base\Exception
      */
     public function setPassword($password)
     {
@@ -187,5 +190,31 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * @param array $fields
+     * @return array
+     */
+    public static function getArrayListOfManufactures(array $fields = ['id', 'username'])
+    {
+        $DbManager = new DbManager();
+
+        $data = self::find()
+            ->select($fields)
+            ->leftJoin(
+                $DbManager->assignmentTable,
+                $DbManager->assignmentTable . '.`user_id` = ' . self::tableName() . '.`id`'
+            )
+            ->where([$DbManager->assignmentTable . '.`item_name`' => self::ROLE_MANUFACTURER])
+            ->asArray()
+            ->all();
+
+        $result = [];
+        foreach ($data as $val) {
+            $result[$val[$fields[0]]] = $val[$fields[1]];
+        }
+
+        return $result;
     }
 }

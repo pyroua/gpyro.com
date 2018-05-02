@@ -302,6 +302,8 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
 
         if (!UserHelper::hasRole('admin')) {
             $query->andWhere(['=', 'user_id', Yii::$app->user->id]);
+        } else {
+            $query->andFilterWhere(['=', 'user_id', $params['user_id']]);
         }
 
         // якщо присутнє query то для xjnbhmj[ полів берем умову "АБО"

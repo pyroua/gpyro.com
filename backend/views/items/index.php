@@ -24,7 +24,8 @@ ItemIndexAsset::register($this);
 <?= $this->render('_search_form', [
     'category' => !empty($category) ? $category : null,
     'searchModel' => $searchModel,
-    'categoriesList' => $categoriesList
+    'categoriesList' => $categoriesList,
+    'manufacturesList' => $manufacturesList
 ]); ?>
 
 <?php if (Yii::$app->user->can('addEditItems')) { ?>
