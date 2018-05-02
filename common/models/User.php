@@ -196,7 +196,7 @@ class User extends BaseModel implements IdentityInterface
      * @param array $fields
      * @return array
      */
-    public static function getArrayListOfManufactures(array $fields = ['id', 'username'])
+    public static function getArrayListOfManufacturer(array $fields = ['id', 'username'])
     {
         $DbManager = new DbManager();
 

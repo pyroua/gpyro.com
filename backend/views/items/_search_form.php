@@ -30,13 +30,13 @@ use yii\widgets\ActiveForm;
                 <?= $form->field($searchModel, 'user_id')
                     ->widget(Select2::class, [
                         'name' => 'manufactures',
-                        'data' => $manufacturesList,
+                        'data' => $manufacturerList,
                         'language' => 'en',
-                        'options' => ['placeholder' => 'Select a manufacture...'],
+                        'options' => ['placeholder' => 'Select a manufacturer...'],
                         'pluginOptions' => [
                             'allowClear' => true
                         ]
-                    ])->label('Manufacture') ?>
+                    ])->label('Manufacturer') ?>
             </div>
 
             <div class="col-md-2">

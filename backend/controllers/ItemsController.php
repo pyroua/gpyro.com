@@ -170,7 +170,7 @@ class ItemsController extends BaseController
 
         return $this->render('index', [
             'categoriesList' => Category::getArrayList(),
-            'manufacturesList' => User::getArrayListOfManufactures(),
+            'manufacturerList' => User::getArrayListOfManufacturer(),
             'searchModel' => $searchModel,
             'dataProvider' => new ActiveDataProvider([
                 'query' => Item::search($searchModel->attributes),
