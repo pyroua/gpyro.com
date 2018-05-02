@@ -8,11 +8,13 @@ $(document).ready(function () {
                 $('.field-categoryform-item-options').after(data);
             });
         },
+
         onOptionUnselect: function (event) {
             var option = event.params.data;
 
             $('#item-form-option-id-' + option.id).hide();
         },
+
         onAllOptionSelect: function (event) {
             console.log(event);
             //var option = event.params.data;

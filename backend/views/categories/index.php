@@ -1,7 +1,12 @@
 <?php
 
 use yii\helpers\Url;
+use yii\helpers\Html;
 use execut\widget\TreeView;
+use backend\assets\CategoryAsset;
+
+
+CategoryAsset::register($this);
 
 /* @var $this yii\web\View */
 
@@ -19,15 +24,17 @@ $this->params['breadcrumbs'][] = [
     </a>
 <?php endif; ?>
 
+
+<div class="form-group">
+    <?= Html::label('Search', 'search')?>
+    <?= Html::textInput('search', null, ['class'=> 'form-control', 'placeholder' => 'Search...'])?>
+</div>
+
 <?= TreeView::widget([
+    'template' =>     TreeView::TEMPLATE_SIMPLE,
     'data' => $catTree,
     'size' => TreeView::SIZE_NORMAL,
     'header' => 'Categories tree',
-    'searchOptions' => [
-        'inputOptions' => [
-            'placeholder' => 'Search...'
-        ],
-    ],
     'clientOptions' => [
          'highlightSelected' => false,
 //        'onNodeSelected' => '',

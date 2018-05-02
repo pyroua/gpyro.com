@@ -13,9 +13,8 @@ class CategoryAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [];
     public $js = [
-
+        '/js/categories/search.js',
         '/js/categories/create_form.js'
-
     ];
     public $depends = [
         'yii\web\JqueryAsset',

@@ -28,7 +28,7 @@ class CategoryHelper
             if ($cat->parent == 0) {
                 $result[] = [
                     'id' => $cat->id,
-                    'text' => $cat->title . ($showButtons ? self::getCatTreeButtons($cat->id) : ''),
+                    'text' => '<span class="cat-title">' . $cat->title . '</span>' . ($showButtons ? self::getCatTreeButtons($cat->id) : ''),
                     'nodes' => []
                 ];
 
@@ -54,7 +54,7 @@ class CategoryHelper
             if ($val->parent == $cat['id']) {
                 $cat['nodes'][] = [
                     'id' => $val->id,
-                    'text' => $val->title . ($showButtons ? self::getCatTreeButtons($val->id) : ''),
+                    'text' => '<span class="cat-title">' . $val->title . '</span>' . ($showButtons ? self::getCatTreeButtons($val->id) : ''),
                     'nodes' => []
                 ];
 
