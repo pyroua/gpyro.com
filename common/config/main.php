@@ -26,6 +26,13 @@ return [
             'sourceMessageTable' => 'i18n_source_messages',
         ],
 
+        'i18n' => [
+            'class' => common\modules\I18n\components\I18N::class,
+            'languages' => ['ru-RU'],
+            'messageTable' => 'i18n_messages',
+            'sourceMessageTable' => 'i18n_source_messages',
+        ],
+
         'authManager' => [
             'class' => 'dektrium\rbac\components\DbManager',
         ],
@@ -101,13 +108,4 @@ return [
 
     ],
 
-    'controllerMap' => [
-        'migrate' => [
-            'class' => 'yii\console\controllers\MigrateController',
-            'migrationPath' => dirname(dirname(__DIR__)) . '/console/migrations',
-            'migrationNamespaces' => [
-                'common\modules\i18n\migrations', // Migrations for the specific project's module
-            ],
-        ],
-    ],
 ];

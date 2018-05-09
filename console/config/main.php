@@ -31,5 +31,14 @@ return [
             ],
         ],
     ],
+    'controllerMap' => [
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => dirname(dirname(__DIR__)) . '/console/migrations',
+            'migrationNamespaces' => [
+                'common\modules\i18n\migrations', // Migrations for the specific project's module
+            ],
+        ],
+    ],
     'params' => $params,
 ];
