@@ -709,4 +709,4 @@ YiiApp.tt = function (message, params) {
 //console.log(YiiApp.tt('У меня есть {n, number, currency} в кармане!', [{value: 2134, currency: 'RUB'}]));
 //console.log(YiiApp.tt('У меня есть {n, number, currency} в кармане!', [{value: 2134, currency: 'RUB'}]));
 
-console.log(YiiApp.tt('Translations'));
+//console.log(YiiApp.tt('Translations'));
