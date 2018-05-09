@@ -1,6 +1,6 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
+    'adminEmail' => 'admin@pyro.ua',
     'supportEmail' => 'support@example.com',
     'user.passwordResetTokenExpire' => 3600,
     'webDirs' => [
