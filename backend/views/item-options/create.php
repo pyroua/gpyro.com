@@ -1,6 +1,6 @@
 <?php
 
-$header = ucfirst($action) . ' item option';
+$header = Yii::t('back', ucfirst($action) . ' item option');
 $this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => 'Item options',

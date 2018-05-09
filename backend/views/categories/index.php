@@ -10,7 +10,7 @@ CategoryAsset::register($this);
 
 /* @var $this yii\web\View */
 
-$header = 'Categories';
+$header = Yii::t('back', 'Categories');
 $this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => $header,
@@ -20,21 +20,21 @@ $this->params['breadcrumbs'][] = [
 
 <?php if (Yii::$app->user->can('addEditCategory')) : ?>
     <a href="<?= Url::to(['categories/create']) ?>" type="button" class="btn btn-success ">
-        Add new
+        <?=Yii::t('back', 'Add new'); ?>
     </a>
 <?php endif; ?>
 
 
 <div class="form-group">
-    <?= Html::label('Search', 'search')?>
-    <?= Html::textInput('search', null, ['class'=> 'form-control', 'placeholder' => 'Search...'])?>
+    <?= Html::label(Yii::t('back', 'Search'), 'search')?>
+    <?= Html::textInput('search', null, ['class'=> 'form-control', 'placeholder' => Yii::t('back', 'Search') . '...'])?>
 </div>
 
 <?= TreeView::widget([
     'template' =>     TreeView::TEMPLATE_SIMPLE,
     'data' => $catTree,
     'size' => TreeView::SIZE_NORMAL,
-    'header' => 'Categories tree',
+    'header' => Yii::t('back', 'Categories tree'),
     'clientOptions' => [
          'highlightSelected' => false,
 //        'onNodeSelected' => '',

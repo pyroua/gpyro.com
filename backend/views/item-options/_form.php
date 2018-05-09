@@ -31,7 +31,7 @@ ItemOptionsAsset::register($this);
     <?= $form->field($model, 'measure_id')->widget(Select2::class, [
         'data' => array_merge(['none' => 'None'], $measuresList),
         'language' => 'en',
-        'options' => ['placeholder' => 'Select a measure...'],
+        'options' => ['placeholder' => Yii::t('back', 'Select a measure...')],
         'pluginOptions' => [
             'allowClear' => true
         ],
@@ -41,7 +41,7 @@ ItemOptionsAsset::register($this);
         'data' => $categoriesList,
         'language' => 'en',
         'options' => [
-            'placeholder' => 'Select a category...',
+            'placeholder' => Yii::t('back', 'Select a category...'),
             'multiple' => true,
         ],
         'pluginOptions' => [
@@ -54,7 +54,7 @@ ItemOptionsAsset::register($this);
     <?php // $form->field($model, 'required')->checkbox() ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton(Yii::t('back', 'Submit'), ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 

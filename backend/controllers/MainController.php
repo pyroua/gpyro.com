@@ -1,4 +1,5 @@
 <?php
+
 namespace backend\controllers;
 
 use Yii;
@@ -7,6 +8,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use backend\models\Category;
+use yii\web\NotFoundHttpException;
 
 /**
  * Main controller
@@ -27,7 +29,7 @@ class MainController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'change-language'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -86,6 +88,34 @@ class MainController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    /**
+     * @param $lang
+     * @return \yii\web\Response
+     * @throws \Exception
+     */
+    public function actionChangeLanguage($lang)
+    {
+        switch ($lang) {
+            case 'ru':
+                $lang = 'ru-RU';
+                break;
+
+            case 'en';
+                $lang = 'en-US';
+                break;
+
+            default:
+                throw new NotFoundHttpException('Unknow language');
+        }
+
+        Yii::$app->user->identity->changeLanguage($lang);
+
+        \Yii::$app->session->set('language', $lang);
+
+        return $this->goBack();
+
     }
 
     /**

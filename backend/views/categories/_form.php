@@ -31,7 +31,7 @@ CategoryAsset::register($this);
     ]) ?>
 
     <div class="form-group field-categoryform-item-options">
-        <label class="control-label" for="categoryform-item-options">ItemOptions</label>
+        <label class="control-label" for="categoryform-item-options"><?=Yii::t('back', 'ItemOptions')?></label>
 
         <?= /** @var \common\models\Category $category */
         Select2::widget([
@@ -68,8 +68,8 @@ CategoryAsset::register($this);
     <div class="form-group">
         <?= Html::submitButton(
             $action == 'create' ?
-                Yii::t('app', 'Create') :
-                Yii::t('app', 'Update'),
+                Yii::t('back', 'Create') :
+                Yii::t('back', 'Update'),
             ['class' => 'btn btn-primary'])
         ?>
     </div>

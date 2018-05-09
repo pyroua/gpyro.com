@@ -1,9 +1,7 @@
 <?php
 
 use kartik\date\DatePickerAsset;
-use yii\helpers\Html;
 use yii\web\View;
-use backend\helpers\ViewHelper;
 
 DatePickerAsset::register($this);
 

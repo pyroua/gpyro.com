@@ -15,5 +15,5 @@ use yii\helpers\Html;
         !empty($category) ? $category->isItemOptionRequired($itemOption->id) : false,
         ['value' => $itemOption->id]
     ) ?>
-    Required
+    <?=Yii::t('back', 'Required')?>
 </div>

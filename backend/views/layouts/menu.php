@@ -7,13 +7,13 @@ echo dmstr\widgets\Menu::widget(
         'options' => ['class' => 'sidebar-menu tree', 'data-widget' => 'tree'],
         'items' => [
             [
-                'label' => Yii::t('app', 'Users'),
+                'label' => Yii::t('back', 'Users'),
                 'url' => ['/user/admin/index'],
                 'icon' => ' fa-users',
                 'visible' => Yii::$app->user->can('manageUsers')
             ],
             [
-                'label' => Yii::t('app', 'Categories'),
+                'label' => Yii::t('back', 'Categories'),
                 'url' => ['/categories'],
                 'icon' => ' fa-align-justify',
                 'active' => ViewHelper::isActive($this->context, 'categories', ['index', 'create', 'update']),
@@ -22,7 +22,7 @@ echo dmstr\widgets\Menu::widget(
                     Yii::$app->user->can('addEditCategory')
             ],
             [
-                'label' => Yii::t('app', 'Measures'),
+                'label' => Yii::t('back', 'Measures'),
                 'url' => ['/measures'],
                 'icon' => ' fa-arrows-v',
                 'active' => ViewHelper::isActive($this->context, 'measures', ['index', 'create', 'update']),
@@ -31,7 +31,7 @@ echo dmstr\widgets\Menu::widget(
                     Yii::$app->user->can('addEditMeasure')
             ],
             [
-                'label' => Yii::t('app', 'Currencies'),
+                'label' => Yii::t('back', 'Currencies'),
                 'url' => ['/currencies'],
                 'icon' => ' fa-usd',
                 'active' => ViewHelper::isActive($this->context, 'measures', ['index', 'create', 'update']),
@@ -40,24 +40,24 @@ echo dmstr\widgets\Menu::widget(
                     Yii::$app->user->can('addEditCurrency')
             ],
             [
-                'label' => Yii::t('app', 'Orders'),
+                'label' => Yii::t('back', 'Orders'),
                 'url' => '#',
                 'icon' => ' fa-shopping-cart',
                 'visible' => Yii::$app->user->can('orders'),
                 'items' => [
                     [
-                        'label' => Yii::t('app', 'Orders list'),
+                        'label' => Yii::t('back', 'Orders list'),
                         'url' => ['/order/order'],
                     ],
-                    ['label' => Yii::t('app', 'Fields'),
+                    ['label' => Yii::t('back', 'Fields'),
                         'url' => ['/order/field'],
                         'visible' => Yii::$app->user->can('configOrder'),
                     ],
-                    ['label' => Yii::t('app', 'Shipping type'),
+                    ['label' => Yii::t('back', 'Shipping type'),
                         'url' => ['/order/shipping-type'],
                         'visible' => Yii::$app->user->can('configOrder'),
                     ],
-                    ['label' => Yii::t('app', 'Payment params'),
+                    ['label' => Yii::t('back', 'Payment params'),
                         'url' => ['/order/payment-type'],
                         'visible' => Yii::$app->user->can('configOrder'),
 
@@ -65,7 +65,7 @@ echo dmstr\widgets\Menu::widget(
                 ],
             ],
             [
-                'label' => Yii::t('app', 'Items'),
+                'label' => Yii::t('back', 'Items'),
                 'url' => ['/items'],
                 'active' => ViewHelper::isActive($this->context, 'items', ['index', 'create', 'update']),
                 'visible' => Yii::$app->user->can('items') ||
@@ -73,12 +73,17 @@ echo dmstr\widgets\Menu::widget(
                     Yii::$app->user->can('addEditItems')
             ],
             [
-                'label' => Yii::t('app', 'Item options'),
+                'label' => Yii::t('back', 'Item options'),
                 'url' => ['/item-options'],
                 'active' => ViewHelper::isActive($this->context, 'item-options', ['index', 'create', 'update']),
                 'visible' => Yii::$app->user->can('itemOptions') ||
                     Yii::$app->user->can('deleteItemOption') ||
                     Yii::$app->user->can('addEditItemOption')
+            ],
+            [
+                'label' => Yii::t('back', 'Translations'),
+                'url' => ['/translations'],
+                'active' => ViewHelper::isActive($this->context, 'default', ['index', 'update']),
             ],
             [
                 'label' => 'Gii',
@@ -93,12 +98,12 @@ echo dmstr\widgets\Menu::widget(
                 'visible' => Yii::$app->user->can('developerTools')
             ],
             [
-                'label' => 'Login',
+                'label' => Yii::t('back', 'Login'),
                 'url' => ['main/login'],
                 'visible' => Yii::$app->user->isGuest
             ],
             [
-                'label' => 'Dev tools',
+                'label' => Yii::t('back', 'Dev tools'),
                 'icon' => 'share',
                 'url' => '#',
                 'items' => [

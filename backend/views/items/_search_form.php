@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
         <div class="panel-body">
             <?php $form = ActiveForm::begin(); ?>
             <div class="col-md-6">
-                <?= $form->field($searchModel, 'query')->label('Query (ID/Title/Description)') ?>
+                <?= $form->field($searchModel, 'query')->label(Yii::t('back', 'Query (ID/Title/Description)')) ?>
             </div>
 
             <div class="col-md-6">
@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
                         'name' => 'category',
                         'data' => $categoriesList,
                         'language' => 'en',
-                        'options' => ['placeholder' => 'Select a category...'],
+                        'options' => ['placeholder' => Yii::t('back', 'Select a category...')],
                         'pluginOptions' => [
                             'allowClear' => true
                         ]
@@ -32,16 +32,16 @@ use yii\widgets\ActiveForm;
                         'name' => 'manufactures',
                         'data' => $manufacturerList,
                         'language' => 'en',
-                        'options' => ['placeholder' => 'Select a manufacturer...'],
+                        'options' => ['placeholder' => Yii::t('back', 'Select a manufacturer...')],
                         'pluginOptions' => [
                             'allowClear' => true
                         ]
-                    ])->label('Manufacturer') ?>
+                    ])->label(Yii::t('back', 'Manufacturer')) ?>
             </div>
 
             <div class="col-md-2">
-                <input class="btn btn-primary" type="submit" value="Search">
-                <input class="btn btn-default" type="reset" value="Reset">
+                <input class="btn btn-primary" type="submit" value="<?=Yii::t('back', 'Search'); ?>">
+                <input class="btn btn-default" type="reset" value="<?=Yii::t('back', 'Reset'); ?>">
             </div>
             <?php ActiveForm::end(); ?>
         </div>

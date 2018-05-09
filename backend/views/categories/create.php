@@ -1,11 +1,11 @@
 <?php
 
 $this->params['breadcrumbs'][] = [
-    'label' => 'Categories',
+    'label' => Yii::t('back', 'Categories'),
     'url' => ['/categories'],
 ];
 
-$header = ucfirst($action) . ' category';
+$header = Yii::t('back', ucfirst($action) . ' category');
 $this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => $header,

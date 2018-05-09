@@ -34,14 +34,16 @@ ItemAsset::register($this);
             'data' => $categoriesList,
             'language' => 'en',
             'disabled' => $action == 'update' ? true : false,
-            'options' => ['placeholder' => 'Select a category...'],
+            'options' => [
+                    'placeholder' => Yii::t('back', 'Select a category...')
+            ],
             'pluginOptions' => [
                 'allowClear' => true
             ],
             'pluginEvents' => [
                 "change" => "document.item_engine.onCategoryChange",
             ]
-        ])->label('Category') ?>
+        ])->label(Yii::t('back', 'Category')) ?>
 
 
     <?php /** @var \common\models\Item $item */
@@ -55,7 +57,10 @@ ItemAsset::register($this);
         </div>
     <?php } ?>
 
-    <?= $form->field($model, 'file')->fileInput()->label('Photo') ?>
+    <?= $form->field($model, 'file')
+        ->fileInput()
+        ->label(Yii::t('back', 'Photo'))
+    ?>
 
     <?= $form->field($model, 'video_url') ?>
 
@@ -68,7 +73,7 @@ ItemAsset::register($this);
     <div class="default-fields-end"></div>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton(Yii::t('back', Yii::t('back', 'Submit')), ['class' => 'btn btn-primary']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 

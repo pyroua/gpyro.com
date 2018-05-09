@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 
-$header = 'Measures';
+$header = Yii::t('back', 'Measures');
 $this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => $header,
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = [
 ?>
 
 <a href="<?= Url::to(['measures/create']) ?>" type="button" class="btn btn-success ">
-    Add new
+    <?=Yii::t('back', 'Add new'); ?>
 </a>
 
 <div class="row">
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = [
                                 '<span class="glyphicon glyphicon-edit"></span>',
                                 $url,
                                 [
-                                    'title' => 'Edit',
+                                    'title' => Yii::t('back', 'Edit'),
                                     'class' => 'btn btn-primary btn-xs'
                                 ]);
                         },
@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = [
                             return Html::button(
                                     '<span class="glyphicon glyphicon-remove"></span>',
                                     [
-                                        'title' => 'Delete',
+                                        'title' => Yii::t('back', 'Delete'),
                                         'class' => 'btn btn-danger btn-xs',
                                         'data-toggle' => 'modal',
                                         'data-target' => '#myModal' . $model->id

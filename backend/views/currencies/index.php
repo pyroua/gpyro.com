@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 
-$header = 'Currencies';
+$header = Yii::t('back', 'Currencies');
 $this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => $header,
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = [
 ?>
 
 <a href="<?= Url::to(['currencies/create']) ?>" type="button" class="btn btn-success ">
-    Add new
+    <?=Yii::t('back', 'Add new'); ?>
 </a>
 
 <div class="row">

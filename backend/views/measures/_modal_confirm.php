@@ -9,16 +9,19 @@ use yii\helpers\Url;
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Delete measure</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="<?= Yii::t('back', 'Close'); ?>">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel"><?= Yii::t('back', 'Delete measure'); ?></h4>
             </div>
             <div class="modal-body">
-                Are you shure?
+                <?= Yii::t('back', 'Are you shure?'); ?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="<?= Url::to(['measures/delete/' . $id]) ?>" type="button" class="btn btn-danger">Yes</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?=Yii::t('back', 'Close'); ?></button>
+                <a href="<?= Url::to(['measures/delete/' . $id]) ?>" type="button" class="btn btn-danger">
+                    <?= Yii::t('back', 'Yes'); ?>
+                </a>
             </div>
         </div>
     </div>

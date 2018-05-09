@@ -19,12 +19,12 @@ class Bootstrap implements BootstrapInterface
             ]);
         }
         
-        if (!isset($app->i18n->translations['order']) && !isset($app->i18n->translations['order*'])) {
-            $app->i18n->translations['order'] = [
-                'class' => 'yii\i18n\PhpMessageSource',
-                'basePath' => __DIR__.'/messages',
-                'forceTranslation' => true
-            ];
-        }
+//        if (!isset($app->i18n->translations['order']) && !isset($app->i18n->translations['order*'])) {
+//            $app->i18n->translations['order'] = [
+//                'class' => 'yii\i18n\PhpMessageSource',
+//                'basePath' => __DIR__.'/messages',
+//                'forceTranslation' => true
+//            ];
+//        }
     }
 }

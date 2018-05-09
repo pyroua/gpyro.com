@@ -1,4 +1,6 @@
 <?php
+
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -10,10 +12,47 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        'languageSelector'
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+        ],
+        'i18n' => [
+            'translations' => [
+                'userextended' => [
+                    'class' => yii\i18n\DbMessageSource::className(),
+                    'messageTable' => 'i18n_messages',
+                    'sourceMessageTable' => 'i18n_source_messages',
+                    'on missingTranslation' => ['common\modules\I18n\Module', 'missingTranslation']
+                ],
+                'rbac*' => [
+                    'class' => yii\i18n\DbMessageSource::className(),
+                    'messageTable' => 'i18n_messages',
+                    'sourceMessageTable' => 'i18n_source_messages',
+                    'on missingTranslation' => ['common\modules\I18n\Module', 'missingTranslation']
+                ],
+                'user' => [
+                    'class' => yii\i18n\DbMessageSource::className(),
+                    'messageTable' => 'i18n_messages',
+                    'sourceMessageTable' => 'i18n_source_messages',
+                    'on missingTranslation' => ['common\modules\I18n\Module', 'missingTranslation']
+                ],
+                'order' => [
+                    'class' => yii\i18n\DbMessageSource::className(),
+                    'messageTable' => 'i18n_messages',
+                    'sourceMessageTable' => 'i18n_source_messages',
+                    'on missingTranslation' => ['common\modules\I18n\Module', 'missingTranslation']
+                ],
+                'back' => [
+                    'class' => yii\i18n\DbMessageSource::className(),
+                    'messageTable' => 'i18n_messages',
+                    'sourceMessageTable' => 'i18n_source_messages',
+                    'on missingTranslation' => ['common\modules\I18n\Module', 'missingTranslation']
+                ],
+            ]
         ],
         /*'user' => [
             'class' => 'backend\components\User',
@@ -51,16 +90,17 @@ return [
         'errorHandler' => [
             'errorAction' => 'main/error',
         ],
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => require 'routes.php',
         ],
 
-        'urlManagerFrontend'=>[
+        'urlManagerFrontend' => [
             'enablePrettyUrl' => true,
             'class' => 'yii\web\UrlManager',
-            'showScriptName'=>false,
+            'showScriptName' => false,
             'suffix' => '.html',
             'hostInfo' => '/',
             'baseUrl' => '/',
@@ -73,10 +113,14 @@ return [
                 ],
             ],
         ],
+        'languageSelector' => [
+            'class' => 'backend\components\LanguageSelector',
+        ]
     ],
     'params' => $params,
 
     'modules' => [
+
         'user' => [
             'class' => 'dektrium\user\Module',
             'as backend' => 'cinghie\userextended\filters\BackendFilter',
@@ -85,6 +129,14 @@ return [
             'enableUnconfirmedLogin' => false,
             'modelMap' => [
                 'User' => 'backend\models\User',
+            ],
+            'controllerMap' => [
+                'security' => [
+                    'class' => \dektrium\user\controllers\SecurityController::class,
+                    'on ' . \dektrium\user\controllers\SecurityController::EVENT_AFTER_LOGIN => function ($e) {
+                        \Yii::$app->session->set('language', Yii::$app->user->identity->lang);
+                    }
+                ],
             ],
         ],
     ],

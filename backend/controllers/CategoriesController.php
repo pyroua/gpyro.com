@@ -143,7 +143,7 @@ class CategoriesController extends BaseController
 
                         $model->processItemOptions($itemOptionsPost, $requiredPost);
 
-                        $this->setFlash('success', Yii::t('app', 'Success!'));
+                        $this->setFlash('success', Yii::t('back', 'Success!'));
                         return $this->redirect(['categories/index']);
                     } else {
                         $this->setFlash('error', 'Cant save category: ' . print_r($model->getErrors(), 1));
@@ -172,7 +172,7 @@ class CategoriesController extends BaseController
         /** @var Category $category */
         $category = $this->getModel($id);
         $category->deleteCategory() ?
-            $this->setFlash('success', Yii::t('app', 'Deleted')) :
+            $this->setFlash('success', Yii::t('back', 'Deleted')) :
             $this->setFlash('error', 'Cant delete category: some reason');
 
         return $this->redirect(['categories/index']);

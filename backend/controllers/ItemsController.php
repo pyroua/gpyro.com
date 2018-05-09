@@ -140,7 +140,7 @@ class ItemsController extends BaseController
                     }
 
                     if ($model->save()) {
-                        $this->setFlash('success', Yii::t('app', 'Success!'));
+                        $this->setFlash('success', Yii::t('back', 'Success!'));
                         return $this->redirect(['items/index/' . $model->category_id]);
                     } else {
                         $this->setFlash('error', 'Cant save model: ' . print_r($model->getErrors(), 1));
@@ -215,7 +215,7 @@ class ItemsController extends BaseController
         $categoryId = $model->category_id;
 
         $model->deleteItem() ?
-            $this->setFlash('success', Yii::t('app', 'Deleted')) :
+            $this->setFlash('success', Yii::t('back', 'Deleted')) :
             $this->setFlash('error', 'Cant delete item');
 
         return $this->redirect(['items/index/' . $categoryId]);

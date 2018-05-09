@@ -15,7 +15,7 @@ $(document).ready(function () {
             if (data_type == 3) // if date
             {
                 $(this.typeDefaulValueSelector).kvDatepicker({
-                    format: "dd-mm-yyyy",
+                    format: 'dd-mm-yyyy',
                     clearBtn: true
                 });
             } else {

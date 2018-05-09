@@ -1,32 +1,32 @@
 <?php
+
 return [
     'name' => 'dev.gpyro.com',
-    'bootstrap' => ['dvizh\order\Bootstrap'],
+    'language' => 'en-US',
+    'bootstrap' => [
+        'dvizh\order\Bootstrap',
+        'common\modules\i18n\Bootstrap',
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'db' => require 'db.php',
+
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
 
         'i18n' => [
-            'translations' => [
-                '*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@app/messages', // if advanced application, set @frontend/messages
-                    'sourceLanguage' => 'ru-RU',
-                    'fileMap' => [
-                        //'main' => 'main.php',
-                    ],
-                ],
-            ],
+            'class' => common\modules\I18n\components\I18N::class,
+            'languages' => ['ru-RU'],
+            'messageTable' => 'i18n_messages',
+            'sourceMessageTable' => 'i18n_source_messages',
         ],
 
-        'authManager'  => [
+        'authManager' => [
             'class' => 'dektrium\rbac\components\DbManager',
         ],
 
@@ -41,32 +41,12 @@ return [
             ],
         ],
 
-        /*'authClientCollection' => [
-            'class' => 'yii\authclient\Collection',
-            'clients' => [
-                'google' => [
-                    'class' => 'yii\authclient\clients\Google',
-                    'clientId' => 'google_client_id',
-                    'clientSecret' => 'google_client_secret',
-                ],
-                'facebook' => [
-                    'class' => 'yii\authclient\clients\Facebook',
-                    'clientId' => 'facebook_client_id',
-                    'clientSecret' => 'facebook_client_secret',
-                ],
-                // etc.
-            ],
-        ]*/
-
-        'cart' => [
-            'class' => 'dvizh\cart\Cart',
-            'currency' => '$', //Валюта
-            'currencyPosition' => 'before', //after или before (позиция значка валюты относительно цены)
-            'priceFormat' => [2,'.', ''], //Форма цены
-        ],
     ],
 
     'modules' => [
+
+        'i18n' => common\modules\I18n\Module::class,
+
         'gridview' => ['class' => 'kartik\grid\Module'],
 
         // Yii2 RBAC
@@ -115,20 +95,19 @@ return [
             'showTitles' => true, // Set false in adminLTE
         ],
 
-        'cart' => [
-            'class' => 'dvizh\cart\Module',
-        ],
-
         'order' => [
             'class' => 'dvizh\order\Module',
-            'layoutPath' => 'frontend\views\layouts',
-            'successUrl' => '/site/thanks', //Страница, куда попадает пользователь после успешного заказа
-            'adminNotificationEmail' => 'order@gpyro.com', //Мыло для отправки заказов
-            'as order_filling' => '\common\aspects\OrderFilling',
-            'currency' => '$',
-            'currencyPosition' => 'before',
-            'orderStatuses' => ['new' => 'New', 'approve' => 'Approve', 'cancel' => 'Cancel', 'process' => 'In process', 'done' => 'Done'],
-            'cartCustomFields' => ['amount' => 'amount']
+        ],
+
+    ],
+
+    'controllerMap' => [
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => dirname(dirname(__DIR__)) . '/console/migrations',
+            'migrationNamespaces' => [
+                'common\modules\i18n\migrations', // Migrations for the specific project's module
+            ],
         ],
     ],
 ];

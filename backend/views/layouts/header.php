@@ -242,29 +242,29 @@ use yii\helpers\Html;
 
                             <p>
                                 <?= Html::encode(Yii::$app->user->identity->profile->firstname)." ".Html::encode(Yii::$app->user->identity->profile->lastname) ?> - <?= Html::encode(Yii::$app->user->identity->profile->signature)?>
-                                <small>Member since <?= Yii::t('user', '{0, date, MMMM dd, YYYY}', [Yii::$app->user->identity->created_at]) ?></small>
                             </p>
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
+                            <div class="four wide column">
+                                <div class="form-group field-message-ru-ru-translation">
+                                    <label class="control-label" for="message-ru-ru-translation"><?=Yii::t('*', 'Language')?></label>
+                                    <select id="change-language">
+                                        <option value="ru" <?php if(Yii::$app->language == 'ru-RU'){?>selected<?php }?>>Russian</option>
+                                        <option value="en" <?php if(Yii::$app->language == 'en-US'){?>selected<?php }?>>English</option>
+                                    </select>
+
+                                </div>
                             </div>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="/user/admin/update?id=<?= Yii::$app->user->id; ?>" class="btn btn-default btn-flat">Profile</a>
+                                <a href="/user/admin/update?id=<?= Yii::$app->user->id; ?>" class="btn btn-default btn-flat"><?=Yii::t('back', 'Profile'); ?></a>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(
-                                    'Sign out',
+                                    Yii::t('back', 'Sign out'),
                                     ['/main/logout'],
                                     ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
                                 ) ?>

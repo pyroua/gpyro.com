@@ -84,7 +84,7 @@ class CurrenciesController extends BaseController
                     }
                     $model->setAttributes($formModel->getAttributes());
                     if ($model->save()) {
-                        $this->setFlash('success', Yii::t('app', 'Success!'));
+                        $this->setFlash('success', Yii::t('back', 'Success!'));
                         return $this->redirect(['currencies/index']);
                     } else {
                         $this->setFlash('error', 'Cant save model: ' . print_r($model->getErrors(), 1));
@@ -112,7 +112,7 @@ class CurrenciesController extends BaseController
         /** @var Currency $currency */
         $currency = $this->getModel($id);
         $currency->deleteCurrency() ?
-            $this->setFlash('success', Yii::t('app', 'Deleted')) :
+            $this->setFlash('success', Yii::t('back', 'Deleted')) :
             $this->setFlash('error', 'Cant delete category: some reason');
 
         return $this->redirect(['currencies/index']);

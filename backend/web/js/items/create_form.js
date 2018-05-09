@@ -8,7 +8,7 @@ function dateValidator(value, messages, options) {
     };
 
     if(!options.pattern.test(value)) {
-        addMessage(messages, 'Incorrect date formast. Correct: ' + options.date_format);
+        addMessage(messages, YiiApp.tt('Incorrect date format. Correct:') + options.date_format);
     }
 
 }

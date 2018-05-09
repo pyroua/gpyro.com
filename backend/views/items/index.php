@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 
-$header = 'Items';
+$header = Yii::t('back', 'Items');
 $this->title = $header;
 $this->params['breadcrumbs'][] = [
     'label' => 'Items',
@@ -32,7 +32,7 @@ ItemIndexAsset::register($this);
     <div>
         <a href="<?= Url::to(['items/create' . (isset($category) ? '/' . $category->id : '')]) ?>" type="button"
            class="btn btn-success ">
-            Add new
+            <?=Yii::t('back', 'Add new'); ?>
         </a>
     </div>
 <?php } ?>
@@ -47,7 +47,7 @@ ItemIndexAsset::register($this);
             'price',
             'description',
             [
-                'attribute' => 'Photo',
+                'attribute' => Yii::t('back', 'Photo'),
                 'contentOptions' => ['class' => 'text-center'],
                 'headerOptions' => ['class' => 'text-center'],
                 'content' => function ($model) {
@@ -65,7 +65,7 @@ ItemIndexAsset::register($this);
                             '<span class="fa fa-eye"></span>',
                             ItemHelper::getItemUrl($model->id),
                             [
-                                'title' => 'Preview on site',
+                                'title' => Yii::t('back', 'Preview on site'),
                                 'class' => 'btn btn-default btn-xs'
                             ]);
                     },
@@ -75,7 +75,7 @@ ItemIndexAsset::register($this);
                                 '<span class="glyphicon glyphicon-edit"></span>',
                                 $url,
                                 [
-                                    'title' => 'Edit',
+                                    'title' => Yii::t('back', 'Edit'),
                                     'class' => 'btn btn-primary btn-xs'
                                 ]) : '';
                     },
@@ -84,7 +84,7 @@ ItemIndexAsset::register($this);
                             Html::button(
                                 '<span class="glyphicon glyphicon-remove"></span>',
                                 [
-                                    'title' => 'Delete',
+                                    'title' => Yii::t('back', 'Delete'),
                                     'class' => 'btn btn-danger btn-xs',
                                     'data-toggle' => 'modal',
                                     'data-target' => '#myModal' . $model->id

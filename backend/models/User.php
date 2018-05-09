@@ -17,6 +17,7 @@ use cinghie\userextended\models\User as BaseUser;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property string $lang password
  */
 class User extends BaseUser
 {
@@ -29,5 +30,14 @@ class User extends BaseUser
             'admin',
             \Yii::$app->authManager->getRolesByUser(\Yii::$app->user->id)
         );
+    }
+
+    /**
+     * @param string $lang
+     * @return bool
+     */
+    public function changeLanguage(string $lang) {
+        $this->lang = $lang;
+        return $this->save();
     }
 }
