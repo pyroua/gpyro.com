@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\I18n;
+namespace common\modules\i18n;
 
 use Yii;
 use yii\i18n\MissingTranslationEvent;

@@ -1,5 +1,5 @@
 <?php
-namespace common\modules\I18n;
+namespace common\modules\i18n;
 
 trait i18nTrait {
 
