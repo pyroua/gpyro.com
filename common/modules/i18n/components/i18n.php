@@ -6,7 +6,7 @@ use yii\base\InvalidConfigException;
 use yii\i18n\DbMessageSource;
 use common\modules\I18n\i18nTrait;
 
-class I18N extends \yii\i18n\I18N
+class i18n extends \yii\i18n\I18N
 {
 
     use i18nTrait;
