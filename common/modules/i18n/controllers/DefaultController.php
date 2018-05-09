@@ -1,15 +1,15 @@
 <?php
 
-namespace common\modules\I18n\controllers;
+namespace common\modules\i18n\controllers;
 
 use yii\base\Model;
 use backend\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use Yii;
-use common\modules\I18n\models\search\SourceMessageSearch;
-use common\modules\I18n\models\SourceMessage;
-use common\modules\I18n\Module;
+use common\modules\i18n\models\search\SourceMessageSearch;
+use common\modules\i18n\models\SourceMessage;
+use common\modules\i18n\Module;
 
 class DefaultController extends BaseController
 {

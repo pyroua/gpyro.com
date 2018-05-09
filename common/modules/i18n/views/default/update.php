@@ -6,8 +6,8 @@
 
 use yii\helpers\Html;
 use yii\web\View;
-use common\modules\I18n\models\SourceMessage;
-use common\modules\I18n\Module;
+use common\modules\i18n\models\SourceMessage;
+use common\modules\i18n\Module;
 use yii\widgets\Breadcrumbs;
 use yii\widgets\ActiveForm;
 

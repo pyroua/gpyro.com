@@ -21,19 +21,19 @@ return [
                     'class' => yii\i18n\DbMessageSource::className(),
                     'messageTable' => 'i18n_messages',
                     'sourceMessageTable' => 'i18n_source_messages',
-                    'on missingTranslation' => ['common\modules\I18n\Module', 'missingTranslation']
+                    'on missingTranslation' => ['common\modules\i18n\Module', 'missingTranslation']
                 ],
                 'app' => [
                     'class' => yii\i18n\DbMessageSource::className(),
                     'messageTable' => 'i18n_messages',
                     'sourceMessageTable' => 'i18n_source_messages',
-                    'on missingTranslation' => ['common\modules\I18n\Module', 'missingTranslation']
+                    'on missingTranslation' => ['common\modules\i18n\Module', 'missingTranslation']
                 ],
                 'yii' => [
                     'class' => yii\i18n\DbMessageSource::className(),
                     'messageTable' => 'i18n_messages',
                     'sourceMessageTable' => 'i18n_source_messages',
-                    'on missingTranslation' => ['common\modules\I18n\Module', 'missingTranslation']
+                    'on missingTranslation' => ['common\modules\i18n\Module', 'missingTranslation']
                 ],
             ]
         ],

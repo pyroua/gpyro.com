@@ -3,8 +3,8 @@
 namespace console\controllers;
 
 use yii\rbac\DbManager;
-use common\modules\I18n\models\SourceMessage;
-use common\modules\I18n\models\Message;
+use common\modules\i18n\models\SourceMessage;
+use common\modules\i18n\models\Message;
 
 class HelperController extends \yii\console\Controller
 {

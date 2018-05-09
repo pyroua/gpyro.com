@@ -1,10 +1,10 @@
 <?php
 
-namespace common\modules\I18n\models\query;
+namespace common\modules\i18n\models\query;
 
 use Yii;
 use yii\db\ActiveQuery;
-use common\modules\I18n\models\Message;
+use common\modules\i18n\models\Message;
 
 class SourceMessageQuery extends ActiveQuery
 {

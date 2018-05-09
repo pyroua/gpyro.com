@@ -20,7 +20,7 @@ return [
         ],
 
         'i18n' => [
-            'class' => common\modules\I18n\components\i18n::class,
+            'class' => common\modules\i18n\components\i18n::class,
             'languages' => ['ru-RU'],
             'messageTable' => 'i18n_messages',
             'sourceMessageTable' => 'i18n_source_messages',
@@ -45,7 +45,7 @@ return [
 
     'modules' => [
 
-        'i18n' => common\modules\I18n\Module::class,
+        'i18n' => common\modules\i18n\Module::class,
 
         'gridview' => ['class' => 'kartik\grid\Module'],
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace common\modules\I18n\models\search;
+namespace common\modules\i18n\models\search;
 
 use yii\data\ActiveDataProvider;
 use Yii;
 use yii\helpers\ArrayHelper;
-use common\modules\I18n\models\SourceMessage;
-use common\modules\I18n\Module;
+use common\modules\i18n\models\SourceMessage;
+use common\modules\i18n\Module;
 
 class SourceMessageSearch extends SourceMessage
 {

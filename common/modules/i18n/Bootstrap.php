@@ -5,7 +5,7 @@ namespace common\modules\I18n;
 use Yii;
 use yii\base\BootstrapInterface;
 use yii\data\Pagination;
-use common\modules\I18n\console\controllers\I18nController;
+use common\modules\i18n\console\controllers\I18nController;
 
 class Bootstrap implements BootstrapInterface
 {

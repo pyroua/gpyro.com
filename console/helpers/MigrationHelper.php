@@ -2,7 +2,7 @@
 
 namespace console\helpers;
 
-use common\modules\I18n\console\controllers\I18nController;
+use common\modules\i18n\console\controllers\I18nController;
 
 class MigrationHelper{
 
