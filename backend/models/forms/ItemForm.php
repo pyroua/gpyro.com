@@ -2,9 +2,11 @@
 
 namespace backend\models\forms;
 
+use Yii;
+use common\models\Item;
+use common\traits\ModelTrait;
 use yii\base\DynamicModel;
 use common\models\ItemOption;
-use common\traits\ModelTrait;
 use yii\validators\Validator;
 
 /**
@@ -18,8 +20,12 @@ class ItemForm extends \yii\base\Model
 
     use ModelTrait;
 
-    public $title;
-    public $description;
+   //public $title;
+    public $title_i18n_en;
+    public $title_i18n_ru;
+    public $description_i18n_en;
+    public $description_i18n_ru;
+    //public $description;
     public $article;
     public $category_id;
     public $price;
@@ -29,12 +35,38 @@ class ItemForm extends \yii\base\Model
     private $itemOptions = [];
 
     /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'title_i18n_en' => Yii::t('app', 'Title EN'),
+            'title_i18n_ru' => Yii::t('app', 'Title RU'),
+            'description_i18n_en' => Yii::t('app', 'Description RU'),
+            'description_i18n_ru' => Yii::t('app', 'Description RU'),
+        ];
+    }
+
+
+    /**
      * @return array
      */
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_UPDATE] = ['title', 'description',  'article', 'price', 'video_url', 'file', 'category_id'];
+        $scenarios[self::SCENARIO_UPDATE] = [
+            //'title',
+            Item::getI18nFieldTitle('title', 'en'),
+            Item::getI18nFieldTitle('title', 'ru'),
+            Item::getI18nFieldTitle('description', 'en'),
+            Item::getI18nFieldTitle('description', 'ru'),
+            //'description',
+            'article',
+            'price',
+            'video_url',
+            'file',
+            'category_id'
+        ];
         return $scenarios;
     }
 
@@ -44,7 +76,15 @@ class ItemForm extends \yii\base\Model
     public function rules()
     {
         return [
-            [['title', 'description',  'article', 'price'], 'required'],
+            [[/*'title', */
+                Item::getI18nFieldTitle('title', 'en'),
+                Item::getI18nFieldTitle('title', 'ru'),
+                Item::getI18nFieldTitle('description', 'en'),
+                Item::getI18nFieldTitle('description', 'ru'),
+               // 'description',
+                'article',
+                'price'
+            ], 'required'],
             [['category_id'], 'required', 'on' => self::SCENARIO_DEFAULT],
             [['price'], 'double'],
             [['video_url'], 'string'],

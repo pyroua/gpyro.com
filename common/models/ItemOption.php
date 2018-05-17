@@ -24,6 +24,15 @@ use yii\base\Exception;
 class ItemOption extends BaseModel
 {
 
+    use ContentI18nTrait;
+
+    /* i18n content fields config */
+    protected $i18nType = 'item_option';
+    public static $i18nFields = [
+        'title',
+        'description'
+    ];
+
     private $_required = null;
     private $_categoryId = null;
 
@@ -62,9 +71,23 @@ class ItemOption extends BaseModel
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [[
+//                'title',
+                ItemOption::getI18nFieldTitle('title', 'en'),
+                ItemOption::getI18nFieldTitle('title', 'ru'),
+
+            ], 'required'],
             //[[], 'integer'],
-            [['title', 'description', 'default_value', 'type'], 'string', 'max' => 255],
+            [[
+//                'title',
+//                'description',
+                ItemOption::getI18nFieldTitle('title', 'en'),
+                ItemOption::getI18nFieldTitle('title', 'ru'),
+                ItemOption::getI18nFieldTitle('description', 'en'),
+                ItemOption::getI18nFieldTitle('description', 'ru'),
+                'default_value',
+                'type'
+            ], 'string', 'max' => 255],
             //[['required'], 'string', 'max' => 1],
             [['categories', 'measure_id'], 'safe'],
         ];
@@ -238,8 +261,7 @@ class ItemOption extends BaseModel
      */
     public function getIsRequired(): string
     {
-        if ($this->_required === null)
-        {
+        if ($this->_required === null) {
             $this->setIsRequired(ItemOptionCategory::isRequired($this->categoryId, $this->id));
         }
 

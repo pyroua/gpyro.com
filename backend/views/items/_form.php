@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Item;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
@@ -23,19 +24,27 @@ ItemAsset::register($this);
 
     <?= $form->field($model, 'article') ?>
 
-    <?= $form->field($model, 'title') ?>
+    <!--<?php //= $form->field($model, 'title') ?>-->
 
-    <?= $form->field($model, 'description') ?>
+    <?php foreach (Item::getI18nLangs() as $lang) { ?>
+        <?= $form->field($model, Item::getI18nFieldTitle('title', $lang)) ?>
+    <?php } ?>
+
+    <!--<?php //= $form->field($model, 'description') ?>-->
+
+    <?php foreach (Item::getI18nLangs() as $lang) { ?>
+        <?= $form->field($model, Item::getI18nFieldTitle('description', $lang))->textarea() ?>
+    <?php } ?>
 
     <?= $form->field($model, 'price') ?>
 
     <?= $form->field($model, 'category_id')
         ->widget(Select2::class, [
             'data' => $categoriesList,
-            'language' => 'en',
+            'language' => 'en', //TODO: підставити коректну мову
             'disabled' => $action == 'update' ? true : false,
             'options' => [
-                    'placeholder' => Yii::t('back', 'Select a category...')
+                'placeholder' => Yii::t('back', 'Select a category...')
             ],
             'pluginOptions' => [
                 'allowClear' => true

@@ -19,9 +19,18 @@ ItemOptionsAsset::register($this);
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title') ?>
+    <!--<?php //= $form->field($model, 'title') ?>-->
 
-    <?= $form->field($model, 'description') ?>
+    <!--<?php //= $form->field($model, 'description') ?>-->
+
+    <?php foreach (ItemOption::getI18nLangs() as $lang) { ?>
+        <?= $form->field($model, ItemOption::getI18nFieldTitle('title', $lang)) ?>
+    <?php } ?>
+
+
+    <?php foreach (ItemOption::getI18nLangs() as $lang) { ?>
+        <?= $form->field($model, ItemOption::getI18nFieldTitle('description', $lang))->textarea() ?>
+    <?php } ?>
 
     <?= $form->field($model, 'type')->dropDownList(
         array_merge(['none' => ''], ItemOption::getTypes()),
