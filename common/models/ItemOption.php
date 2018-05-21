@@ -222,13 +222,13 @@ class ItemOption extends BaseModel
      * @param array $fields
      * @return array
      */
-    public static function getArrayList(array $fields = ['id', 'title'])
+    public static function getArrayList(array $fields = null)
     {
-        $data = self::find()->select($fields)->asArray()->all();
-        $result = [];
+        $data = self::find()->all();
 
+        $result = [];
         foreach ($data as $val) {
-            $result[$val['id']] = $val['title'];
+            $result[$val->id] = $val->title;
         }
 
         return $result;
@@ -296,5 +296,6 @@ class ItemOption extends BaseModel
     {
         $this->_categoryId = $categoryId;
     }
+
 
 }

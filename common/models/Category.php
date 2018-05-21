@@ -20,6 +20,15 @@ use Yii;
  */
 class Category extends BaseModel
 {
+
+    use ContentI18nTrait;
+
+    /* i18n content fields config */
+    protected $i18nType = 'category';
+    public static $i18nFields = [
+        'title',
+    ];
+
     /**
      * @inheritdoc
      */
@@ -34,8 +43,15 @@ class Category extends BaseModel
     public function rules()
     {
         return [
-            [['title'], 'required'],
-            [['title', 'logo'], 'string', 'max' => 255],
+            [[
+                self::getI18nFieldTitle('title', 'ru'),
+                self::getI18nFieldTitle('title', 'en'),
+            ], 'required'],
+            [[
+                self::getI18nFieldTitle('title', 'ru'),
+                self::getI18nFieldTitle('title', 'en'),
+                'logo'
+            ], 'string', 'max' => 255],
             [['parent'], 'integer'],
             [['parent'], 'default', 'value' => 0]
         ];
@@ -48,7 +64,6 @@ class Category extends BaseModel
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
             'parent' => Yii::t('app', 'Parent category'),
             'logo' => Yii::t('app', 'Logo'),
         ];
@@ -82,12 +97,17 @@ class Category extends BaseModel
             ->viaTable(ItemOptionCategory::tableName(), ['category_id' => 'id']);
     }
 
-
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getItemOptionsCategory()
     {
         return $this->hasMany(ItemOptionCategory::class, ['category_id' => 'id']);
     }
 
+    /**
+     * @return array
+     */
     public function getItemOptionsArrayList()
     {
         $data = $this->itemOptions;
@@ -108,6 +128,10 @@ class Category extends BaseModel
         return $this->hasMany(Item::class, ['category_id' => 'id']);
     }
 
+    /**
+     * @param $optionId
+     * @return bool
+     */
     public function isItemOptionRequired($optionId)
     {
         $data = ItemOptionCategory::find()
@@ -196,5 +220,22 @@ class Category extends BaseModel
                 }
             }
         }
+    }
+
+    /**
+     * @param array|null $fields
+     * @return array
+     */
+    public static function getArrayList(array $fields = null)
+    {
+        $data = self::find()->all();
+
+        $result = [];
+        foreach ($data as $val) {
+
+            $result[$val->id] = $val->title;
+        }
+        //var_dump($result);die;
+        return $result;
     }
 }

@@ -40,10 +40,10 @@ class ItemForm extends \yii\base\Model
     public function attributeLabels()
     {
         return [
-            'title_i18n_en' => Yii::t('app', 'Title EN'),
-            'title_i18n_ru' => Yii::t('app', 'Title RU'),
-            'description_i18n_en' => Yii::t('app', 'Description RU'),
-            'description_i18n_ru' => Yii::t('app', 'Description RU'),
+            Item::getI18nFieldTitle('title', 'en') => Yii::t('app', 'Title EN'),
+            Item::getI18nFieldTitle('title', 'ru') => Yii::t('app', 'Title RU'),
+            Item::getI18nFieldTitle('description', 'en') => Yii::t('app', 'Description RU'),
+            Item::getI18nFieldTitle('description', 'ru') => Yii::t('app', 'Description EN'),
         ];
     }
 

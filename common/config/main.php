@@ -3,6 +3,7 @@
 return [
     'name' => 'dev.gpyro.com',
     'language' => 'en-US',
+    'sourceLanguage' => 'en-US',
     'bootstrap' => [
         'dvizh\order\Bootstrap',
         'common\modules\i18n\Bootstrap',

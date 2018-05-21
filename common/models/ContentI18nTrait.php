@@ -115,7 +115,7 @@ trait ContentI18nTrait
     protected static function getLanguages()
     {
         $result = [
-            substr(Yii::$app->language, 0, 2)
+            substr(Yii::$app->sourceLanguage, 0, 2)
         ];
 
         foreach (Yii::$app->i18n->languages as $language) {
@@ -179,6 +179,9 @@ trait ContentI18nTrait
      */
     public function __get($name)
     {
+        /* припустим у нас є магічне поле title_i18n_ru
+         * цуй блок коду буде шукати його в базі і повертати
+         */
         if (($suffixPos = strpos($name, self::$i18nSuffix)) !== false) {
             $lang = substr($name, $suffixPos + self::$i18nSuffixLen);
 
@@ -187,6 +190,15 @@ trait ContentI18nTrait
 
                 return $this->getValueByLang($this->getAttribute('id'), $titleCleared, $lang);
             }
+        }
+
+        /*
+         *  Щоб в коді всди не писати атку фігю типу title_i18n_ru,  ми можем писати просто title
+         * тоді наступний блок  коду буде шукати таке поле в моделі і намагатись отирмати його з моделі
+         * яка в свою чергу запускатиме цей же магічний метод, але все закінчуватиметься на поепредньому блоці
+         */
+        if (in_array(self::getI18nFieldTitle($name), $this->getI18nAttributes())) {
+            return $this->{self::getI18nFieldTitle($name)};
         }
 
         return parent::__get($name);
@@ -266,9 +278,29 @@ trait ContentI18nTrait
      * @param $lang
      * @return string
      */
-    public static function getI18nFieldTitle($fieldTitle, $lang)
+    public static function getI18nFieldTitle($fieldTitle, $lang = null)
     {
+        if ($lang === null) {
+            $lang = substr(\Yii::$app->language, 0, 2);
+        }
+
         return $fieldTitle . self::$i18nSuffix . $lang;
     }
 
+    /**
+     * @param $title
+     * @return false|null|string
+     */
+    public function getFieldValue($title)
+    {
+        return i18nContentValue::find()
+            ->select('value')
+            ->where([
+                'id' => $this->getAttribute('id'),
+                'type' => $this->i18nType,
+                'title' => $title,
+                'lang' => substr(\Yii::$app->language, 0, 2)
+            ])
+            ->scalar();
+    }
 }

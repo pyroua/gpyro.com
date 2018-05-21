@@ -13,6 +13,7 @@ use kartik\date\DatePickerAsset;
 
 DatePickerAsset::register($this);
 ItemOptionsAsset::register($this);
+use yii\helpers\ArrayHelper;
 
 ?>
 <div class="form">
@@ -27,36 +28,38 @@ ItemOptionsAsset::register($this);
         <?= $form->field($model, ItemOption::getI18nFieldTitle('title', $lang)) ?>
     <?php } ?>
 
-
     <?php foreach (ItemOption::getI18nLangs() as $lang) { ?>
         <?= $form->field($model, ItemOption::getI18nFieldTitle('description', $lang))->textarea() ?>
     <?php } ?>
 
     <?= $form->field($model, 'type')->dropDownList(
-        array_merge(['none' => ''], ItemOption::getTypes()),
+        ArrayHelper::merge([0 => ''], ItemOption::getTypes()),
         ['onchange' => 'document.item_options_engine.onChangeDataType(this)']
     ); ?>
 
-    <?= $form->field($model, 'measure_id')->widget(Select2::class, [
-        'data' => array_merge(['none' => 'None'], $measuresList),
-        'language' => 'en',
-        'options' => ['placeholder' => Yii::t('back', 'Select a measure...')],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ])->label('Measure') ?>
+    <?= $form->field($model, 'measure_id')
+        ->widget(Select2::class, [
+            'data' => ArrayHelper::merge([0 => ''], $measuresList),
+            'language' => 'en',
+            'options' => ['placeholder' => Yii::t('back', 'Select a measure...')],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ])
+        ->label('Measure') ?>
 
-    <?= $form->field($model, 'categories')->widget(Select2::class, [
-        'data' => $categoriesList,
-        'language' => 'en',
-        'options' => [
-            'placeholder' => Yii::t('back', 'Select a category...'),
-            'multiple' => true,
-        ],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]) ?>
+    <?= $form->field($model, 'categories')
+        ->widget(Select2::class, [
+            'data' => $categoriesList,
+            'language' => 'en',
+            'options' => [
+                'placeholder' => Yii::t('back', 'Select a category...'),
+                'multiple' => true,
+            ],
+            'pluginOptions' => [
+                'allowClear' => true
+            ],
+        ]) ?>
 
     <?= $form->field($model, 'default_value') ?>
 

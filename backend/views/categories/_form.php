@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
 use common\models\ItemOption;
 use backend\assets\CategoryAsset;
+use common\models\Category;
+
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Measure */
@@ -19,7 +21,13 @@ CategoryAsset::register($this);
         'method' => 'post',
         'id' => 'create-form',
     ]) ?>
-    <?= $form->field($model, 'title') ?>
+
+    <!--<?php //= $form->field($model, 'title') ?>-->
+
+    <?php foreach (Category::getI18nLangs() as $lang) { ?>
+        <?= $form->field($model, Category::getI18nFieldTitle('title', $lang)) ?>
+    <?php } ?>
+
 
     <?= $form->field($model, 'parent')->widget(Select2::class, [
         'data' => $categoriesList,

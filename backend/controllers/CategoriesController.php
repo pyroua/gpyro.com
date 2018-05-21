@@ -154,6 +154,7 @@ class CategoriesController extends BaseController
             } catch (Exception $e) {
                 // треба писати в логи
                 //TODO: logger
+                $this->setFlash('error', Yii::t('back', $e->getMessage()));
             }
         }
 

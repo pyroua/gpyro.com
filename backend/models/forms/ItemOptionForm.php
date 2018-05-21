@@ -32,7 +32,7 @@ class ItemOptionForm extends \yii\base\Model
             'title_i18n_en' => Yii::t('app', 'Title EN'),
             'title_i18n_ru' => Yii::t('app', 'Title RU'),
             'description_i18n_en' => Yii::t('app', 'Description RU'),
-            'description_i18n_ru' => Yii::t('app', 'Description RU'),
+            'description_i18n_ru' => Yii::t('app', 'Description EN'),
         ];
     }
 
