@@ -72,19 +72,17 @@ class ItemOption extends BaseModel
     {
         return [
             [[
-//                'title',
                 ItemOption::getI18nFieldTitle('title', 'en'),
                 ItemOption::getI18nFieldTitle('title', 'ru'),
 
             ], 'required'],
-            //[[], 'integer'],
             [[
-//                'title',
-//                'description',
-                ItemOption::getI18nFieldTitle('title', 'en'),
-                ItemOption::getI18nFieldTitle('title', 'ru'),
                 ItemOption::getI18nFieldTitle('description', 'en'),
                 ItemOption::getI18nFieldTitle('description', 'ru'),
+            ], 'string'],
+            [[
+                ItemOption::getI18nFieldTitle('title', 'en'),
+                ItemOption::getI18nFieldTitle('title', 'ru'),
                 'default_value',
                 'type'
             ], 'string', 'max' => 255],

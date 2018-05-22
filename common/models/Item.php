@@ -85,11 +85,14 @@ class Item extends BaseModel implements \dvizh\cart\interfaces\CartElement
             ], 'required'],
             [['category_id'], 'required', 'on' => self::SCENARIO_DEFAULT],
             [[
-                'article',
-                'title',
-                //'description',
                 Item::getI18nFieldTitle('description', 'en'),
                 Item::getI18nFieldTitle('description', 'ru'),
+            ],
+                'string'
+            ],
+            [[
+                'article',
+                'title',
                 'category_id',
                 'logo',
                 'video_url'
